@@ -157,7 +157,7 @@ return [
 		Laravel\Cashier\CashierServiceProvider::class,
 		'Chencha\Share\ShareServiceProvider',
 		'Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider',
-
+		'Torann\GeoIP\GeoIPServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 	],

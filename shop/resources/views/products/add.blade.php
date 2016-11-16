@@ -44,17 +44,15 @@
         </div>
 
 
-        <div class="col-md-offset-6 col-md-6 margin-top-20">
-            <div class="col-md-6">
-                <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
 
-            </div>
-
-            <div class="col-md-6">
-            {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-success')) !!}
-            </div>
-            {!! Form::close() !!}
+        <div class="col-md-3" style="margin-top:20px;">
+            {!! Form::submit(Lang::get('app.Cancel'), array('class' => 'btn btn-secondary','style'=>'border:1px solid gray')) !!}
         </div>
+
+        <div class="col-md-3" style="margin-top:20px;float:right">
+        {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-success')) !!}
+        </div>
+        {!! Form::close() !!}
     </div>
 
 @stop

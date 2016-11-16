@@ -1,0 +1,31 @@
+<?php
+
+return [
+	'wishlist'=>'Wishlist',
+	'signup'=>'Sign Up',
+	'login'=>'Log in',
+	'dashboard'=>'Dashboard',
+	'myaccount'=>'My Account',
+	'myprofile'=>'My Profile',
+	'logout'=>'Log Out',
+	'cart'=>'Cart',
+	'recentlyadded'=>'Recently added item(s)',
+	'noproducts'=>'No product in cart',
+	'checkout'=>'Checkout',
+	'viewcart'=>'View Cart',
+	'subtotal'=>'Subtotal',
+	'home'=>'Home',
+	'shop'=>'Shop',
+	'exchange'=>'Exchange',
+	'auction'=>'Auction',
+	'travel'=>'Travel',
+	'eveniment'=>'Eveniment',
+	'contact'=>'Contact',
+	'search'=>'Search',
+	'mycart'=>'My Cart',
+	'cart_subtotal'=>'Cart Subtotal',
+	'there_are'=>'There are',
+	'in_your_cart'=>'in your cart',
+	'contact_us'=>'Contact Us',
+
+];

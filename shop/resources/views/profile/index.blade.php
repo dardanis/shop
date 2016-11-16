@@ -52,8 +52,7 @@
 
     </div>
     <div class="col-md-9">
-        @include('offers/create')
-        @include('profile/listoffers')
+
         </div>
     </div>
     @stop

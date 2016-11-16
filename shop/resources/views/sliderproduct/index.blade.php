@@ -11,7 +11,7 @@
             <section class="panel">
 
                 <header class="panel-heading">
-                    Sliders {!! link_to_route('createsliderproduct', 'Add Slider', array(), array('class' => 'btn btn-primary btn-xs')) !!}
+                    Sliders {!! link_to_route('addcategory', 'Add Slider', array(), array('class' => 'btn btn-primary btn-xs')) !!}
                 </header>
                 <div class="panel-body">
                     <div class="adv-table">

@@ -192,21 +192,18 @@ $user_role = $user['role']['name']; ?>
                         </div>
                     </div>
                     <?php } ?>
-                        <div class="col-md-offset-6 col-md-6">
+                    <div class="form-group">
 
-                            <div class="form-group">
-
-                                <input type="hidden" id="token" value="{{ csrf_token() }}">
-                                <div class="col-md-6">
-                                    <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
-                                </div>
-                                <div class="col-md-6">
-                                    {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-success')) !!}
-                                </div>
-
-                            </div>
+                        <input type="hidden" id="token" value="{{ csrf_token() }}">
+                        <div class="col-md-3">
+                            {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-secondary')) !!}
                         </div>
-                     </div>
+                        <div class="col-md-3" style="float:right">
+                            {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-success')) !!}
+                        </div>
+
+                    </div>
+                </div>
 
                 {!! Form::close() !!}
 

@@ -59,11 +59,9 @@ $user_role = $user['role']['name']; ?>
     </div>
 </div>
 
-<div class="col-md-offset-6 col-md-6">
+
 <div class="form-group">
-        <div class="col-md-6">
-            <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
-        </div>
+    <div class="col-sm-offset-8">
         <input type="hidden" id="token" value="{{ csrf_token() }}">
         <div class="col-md-6">
             {!! Form::submit($SubmitbuttonText, array('class' => 'btn btn-success')) !!}

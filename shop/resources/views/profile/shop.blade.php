@@ -36,7 +36,9 @@
                 @include('profile/leftcategories')
             </div>
         </div>
+        <div class="user-profile-top h2-custom">
 
+        </div>
 
     </div>
     <div class="col-md-9">

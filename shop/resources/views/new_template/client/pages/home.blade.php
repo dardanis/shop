@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         @include('common/breadcrumbs')
     </div>
-            <div class="div-content" style="padding-bottom: 30px;">
+            <div class="div-content">
 
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -17,7 +17,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <?php $SliderProduct1=DB::table('slider_products')->skip(0)->take(4)->get();?>
+                            <?php $SliderProduct1=DB::table('slider_products')->skip(0)->take(3)->get();?>
                             <?php $products1=array();?>
                             <?php foreach($SliderProduct1 as $sp1){?>
 
@@ -143,15 +143,5 @@
                 </div>
             </div>
         </div>
-    <div class="div-content">
-        <div class="col-md-12">
-
-            <div class="div-content-category">
-                <h2 class="title-category">{{Lang::get('app.Travel')}}</h2>
-                @include('new_template/client/pages/partialshome/travel')
-
-            </div>
-        </div>
-    </div>
 
     @stop

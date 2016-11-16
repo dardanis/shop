@@ -33,7 +33,7 @@
 
             <div class="user-follow">
                 <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
-                {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart inline-form')) !!}
+                {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn-follow" id=""
                         style="padding:10px;border:none;margin-left:0px;display:block">
@@ -43,18 +43,10 @@
 
                 {!! Form::close() !!}
             </div>
-
             <?php } ?>
-            {!! Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart inline-form')) !!}
-            <button type="submit" class="wishlist-btn" id="cartBtn">
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <span class="hover-state">{{ Lang::get('app.Wishlist')}}</span>
-
-            </button>
-            {!! Form::close() !!}
             <?php } ?>
             <?php  $url=URL::route('product_show',array($product->slug,$product->id));?>
-    {{--        <div class="tools">
+            <div class="tools">
 
 
                 <!--Add To Cart Button-->
@@ -73,7 +65,7 @@
 
                 </button>
                 {!! Form::close() !!}
-            </div>--}}
+            </div>
         </div>
     </div>
 </div>

@@ -2,7 +2,18 @@
 @section('content')
 
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @include('common/breadcrumbs')
+        <ol class="breadcrumb">
+            <li class="active"></li>
+        </ol>
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li class="active"></li>
+        </ol>
+        <ol class="breadcrumb" style="margin-bottom: 5px;">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
     </div>
     <div class="col-md-3 profile-left">
         @include('common.left_myaccount')

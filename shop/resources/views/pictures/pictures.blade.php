@@ -127,22 +127,19 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="col-md-offset-6 col-md-6">
-                        <div class="form-group">
 
+                        <div class="form-group">
+                            <div class="col-sm-offset-2">
                                 <input type="hidden" id="token" value="{{ csrf_token() }}">
+
                                 <div class="col-md-6">
-                                    <a href="/profile" class="btn btn-default btn-default-links">{{Lang::get('app.Cancel')}}</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href='{{ url("product/create/adress/$product->slug/$product->id") }}'
+                                    <a href='{{ url("edit/$product->slug/$product->id") }}'
                                        class="btn btn-success">{{ Lang::get('app.Save') }}</a>
                                 </div>
 
-
                             </div>
-                    </div>
-
+                            </div>
+                        </div>
                 </div>
             </div>
     </div>

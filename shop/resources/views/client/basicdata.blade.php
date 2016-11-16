@@ -51,7 +51,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Avatar</label>
                             <div class="col-sm-10">
                                 <div class="fileupload-new thumbnail" style="width: 200px; height: 200px;">
-                                    <img src="/{{$user->profile}}" alt="" id="preview_profile" src="#" style="max-height:190px;max-width:180px;" />
+                                    <img src="{{$user->profile}}" alt="" id="preview_profile" src="#" style="max-height:190px;max-width:180px;" />
                                 </div>
                                 <input id="profile" name="profile" type="file" onchange="profilechange(this)"; />
                             </div>
@@ -81,14 +81,14 @@
                             </div>
                         </div>
 
-                        <div class="col-md-offset-6 col-md-6">
-                            <div class="form-group">
 
-                                    <div class="col-md-6">
-                                        <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel')}}</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                    <button type="submit" class="btn btn-success">{{ Lang::get('app.Save') }}</button>
+                        <div class="form-group">
+                            <div class="col-lg-offset-4 col-lg-6">
+                                <div class="col-md-3">
+                                <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                                <div class="col-md-3">
+                                <button type="button" class="btn btn-default">Cancel</button>
                                     </div>
                             </div>
                         </div>
@@ -122,16 +122,14 @@
                                     <input type="password"  class="form-control" name="password_again" >
                                 </div>
                             </div>
-                            <div class="col-md-offset-6 col-md-6">
-                                <div class="form-group">
-                                        <div class="col-md-6">
-                                            <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
-
+                            <div class="form-group">
+                                <div class="col-lg-offset-4 col-lg-6">
+                                    <div class="col-md-3">
+                                    <button type="submit" class="btn btn-success">Save</button>
                                         </div>
-                                        <div class="col-md-6">
-                                          <button type="submit" class="btn btn-success">{{Lang::get('app.Save')}}</button>
+                                    <div class="col-md-3">
+                                    <button type="button" class="btn btn-default">Cancel</button>
                                         </div>
-
                                 </div>
                             </div>
                             {!! Form::close() !!}
