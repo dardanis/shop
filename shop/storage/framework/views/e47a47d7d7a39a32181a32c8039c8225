@@ -1,0 +1,122 @@
+<?php $__env->startSection('style'); ?>
+    <link href="<?php echo e(asset('/css/demo_page.css')); ?>" />
+    <link href="<?php echo e(asset('/css/demo_table.css')); ?>" />
+    <link href="<?php echo e(asset('/css/DT_bootstrap.css')); ?>" />
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <?php echo e(trans('shop.client_users')); ?> <?php echo link_to_route('create_users', trans('shop.add_user'), array(), array('class' => 'btn btn-primary btn-xs')); ?>
+
+            </header>
+            <?php $user=\App\User::find(Auth::user()->id);?>
+            <?php $issuperadmin=$user['is_superadmin'];?>
+            <div class="panel-body">
+                <?php if( Session::has( 'success' )): ?>
+                    <div class="alert alert-success"><?php echo e(Session::get( 'success' )); ?></div>
+                    <?php elseif( Session::has( 'warning' )): ?>
+                    <?php echo e(Session::get( 'warning' )); ?> <!-- here to 'withWarning()' -->
+                <?php endif; ?>
+                  <div class="adv-table">
+                      <table  class="display table table-bordered table-striped" id="example">
+                        <thead>
+                        <tr>
+                            <th><?php echo e(trans('shop.id')); ?></th>
+                            <th><?php echo e(trans('shop.username')); ?></th>
+                            <th><?php echo e(trans('shop.email')); ?></th>
+                            <th><?php echo e(trans('shop.role')); ?></th>
+                            <th><?php echo e(trans('shop.created_at')); ?></th>
+                            <th><?php echo e(trans('shop.edit')); ?></th>
+                            <th><?php echo e(trans('shop.delete')); ?></th>
+                            <?php if($issuperadmin==1){?>
+                            <th><?php echo e(Lang::get('app.Status')); ?></th>
+                            <?php } ?>
+                            <th><?php echo e(Lang::get('app.Receive Emails')); ?></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php foreach($users as $u): ?>
+                            <?php  $user_role=$u['role_id'];?>
+                            <?php  $receive_emails=$u['receive_emails'];?>
+                       <tr >
+                          <td><?php echo e($u->id); ?></td>
+                          <td ><?php echo e($u->username); ?></td>
+                          <td ><?php echo e($u->email); ?></td>
+                          <td ><span class="label label-success"><?php echo e($u->role->name); ?></span></td>
+                          <td><span class="label label-info"><?php echo e(Carbon::createFromTimestamp(strtotime($u->created_at))->diffForHumans()); ?></span></td>
+                          <td ><?php echo link_to_route('edit_users', trans('shop.edit'), array($u->name), array('class' => 'btn btn-warning btn-xs')); ?></td>
+                          <td >
+                            <?php echo Form::open(array('method' => 'DELETE', 'route' => array('admin.users.delete', $u->id))); ?>
+
+                            <?php echo Form::submit(trans('shop.delete'), array('class' => 'btn btn-danger btn-xs')); ?>
+
+                            <?php echo Form::close(); ?>
+
+                          </td>
+                           <?php if($user_role==1){?>
+                           <td>
+
+                               <?php echo Form::open(array('method' => 'Patch', 'route' => array('removeadmin', $u->id))); ?>
+
+                               <?php echo Form::submit(Lang::get('app.Remove as admin'), array('class' => 'btn btn-danger btn-xs')); ?>
+
+                               <?php echo Form::close(); ?>
+
+                           </td>
+                           <?php }else { ?>
+                           <td >
+                               <?php echo Form::open(array('method' => 'Patch', 'route' => array('isadmin', $u->id))); ?>
+
+                               <?php echo Form::submit(Lang::get('app.Make admin'), array('class' => 'btn btn-success btn-xs')); ?>
+
+                               <?php echo Form::close(); ?>
+
+                           </td>
+                           <?php } ?>
+                           <?php if($receive_emails==1){?>
+                           <td>
+                               <?php echo Form::open(array('method' => 'Patch', 'route' => array('rmvreceiveemails', $u->id))); ?>
+
+                               <?php echo Form::submit(Lang::get('app.Remove to Receive emails'), array('class' => 'btn btn-danger btn-xs')); ?>
+
+                               <?php echo Form::close(); ?>
+
+                           </td>
+                           <?php }else {?>
+                           <td>
+                               <?php echo Form::open(array('method' => 'Patch', 'route' => array('receiveemails', $u->id))); ?>
+
+                               <?php echo Form::submit(Lang::get('app.Receive emails'), array('class' => 'btn btn-success btn-xs')); ?>
+
+                               <?php echo Form::close(); ?>
+
+                           </td>
+                           <?php } ?>
+                        </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+        </section>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+  <script src="<?php echo e(asset('/js/jquery.dataTables.js')); ?>"></script>
+  <script src="<?php echo e(asset('/js/DT_bootstrap.js')); ?>"></script>
+  <script type="text/javascript" charset="utf-8">
+          $(document).ready(function() {
+              $('#example').dataTable( {
+                  "aaSorting": [[ 4, "desc" ]]
+              } );
+          } );
+      </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

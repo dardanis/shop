@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>Shop</title>
+    <link href="<?php echo e(asset('/css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/bootstrap-reset.css')); ?>" rel="stylesheet" type="text/css">
+
+    <link href="<?php echo e(asset('/css/style2.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/style-responsive.css')); ?>" rel="stylesheet"/>
+    <link href="<?php echo e(asset('/css/dropzone.css')); ?>" rel="stylesheet"/>
+    <link href="<?php echo e(asset('/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css')); ?>" rel="stylesheet"/>
+
+    <?php echo $__env->yieldContent('style'); ?>
+</head>
+
+<body class="cms-index-index cms-home-page" style="background:none !important">
+
+<head>
+    <?php echo $__env->make('new_template.client.includes.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</head>
+
+<header>
+    <?php echo $__env->make('new_template.client.includes.header_user_settings', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</header>
+<div>    <?php echo $__env->make('common.usernav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></div>
+<div class="main-col">
+    <div class="container">
+        <div class="row step">
+
+            <div id="div1" class="col-md-2 step-tab start activestep activeMenu" href="<?php echo e(url('client/add/product')); ?>" onclick="location.href='<?php echo e(url('client/add/product')); ?>'">
+                <span class="fa fa-cog"></span>
+
+                <p>Basic info</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<section class="main-col">
+    <div class="container">
+
+
+    <section class="row" style="background:#f1f2f7;min-height:1200px">
+        <section class="wrapper" style="margin-top: 10px">
+            <?php echo $__env->yieldContent('content'); ?>
+
+        </section>
+    </section>
+    <!--main content end-->
+        </div>
+    </div>
+</section>
+<script src="<?php echo e(asset('/js/jquery.js')); ?>"></script>
+
+<script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/parsley.js')); ?>"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+
+<script class="include" src="<?php echo e(asset('/js/jquery.dcjqaccordion.2.7.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery.scrollTo.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery.nicescroll.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery.customSelect.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/respond.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/common-scripts.js')); ?>"></script>
+
+
+<script src="<?php echo e(asset('/js/dropzone.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/upload.js')); ?>"></script>
+
+<script src="<?php echo e(asset('/js/photopreview.js')); ?>"></script>
+
+</body>
+</html>
+<style>
+    .nav-tabs li {
+        width:100%;
+    }
+    .nav > li > a:hover, .nav > li > a:focus{
+        background-color: #e74c3c !important;
+    }
+    .nav-tabs>li>a:hover{
+        border-color:#e74c3c;
+    }
+    .nav>li>a:hover, .nav>li>a:focus{
+        background-color: #e74c3c !important;
+    }
+    .nav-tabs>li>a:hover{
+        border-color:#e74c3c;
+    }
+    .nav>li>a:hover, .nav>li>a:focus{
+        background-color: #e74c3c !important;
+    }
+    .nav-tabs>li>a{
+        border-radius: 0px;
+    }
+    #sidebar {
+        width: 210px;
+        /* height: 100%; */
+        position: inherit;
+        background: #2a3542;
+        float: left;
+    }
+
+
+    .hiddenStepInfo {
+        display: none;
+    }
+
+    .activeStepInfo {
+        display: block !important;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    .step {
+        margin-top: 27px;
+    }
+
+    .setup-content {
+        margin-top: 30px
+    }
+
+    .setup-content .tabbable-line > .nav-tabs > li.active {
+        border-bottom: 4px solid #F3565D;
+        position: relative;
+    }
+
+    .setup-content .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+        border-bottom: 4px solid #fbcdcf;
+    }
+
+    .progress {
+        position: relative;
+        height: 25px;
+    }
+
+    .progress > .progress-type {
+        position: absolute;
+        left: 0px;
+        font-weight: 800;
+        padding: 3px 30px 2px 10px;
+        color: rgb(255, 255, 255);
+        background-color: rgba(25, 25, 25, 0.2);
+    }
+
+    .progress > .progress-completed {
+        position: absolute;
+        right: 0px;
+        font-weight: 800;
+        padding: 3px 10px 2px;
+    }
+
+    .step {
+        text-align: center;
+    }
+
+    .step .step-tab {
+        background-color: #fff;
+        border: 1px solid #C0C0C0;
+        border-right: none;
+    }
+
+    .step .step-tab:last-child {
+        border: 1px solid #C0C0C0;
+    }
+
+    .step .disabled-menu {
+        background-color: #dedede;
+    }
+
+    .step .step-tab:first-child {
+        border-radius: 5px 0 0 5px;
+    }
+
+    .step .step-tab:last-child {
+        border-radius: 0 5px 5px 0;
+    }
+
+    .step .step-tab:nth-child(5) {
+        border-right: 1px solid #C0C0C0;
+    }
+
+    .step .step-tab:hover {
+        color: #F58723;
+        cursor: pointer;
+    }
+
+    .step .activestep {
+        color: #F58723;
+        height: 100px;
+        margin-top: -7px;
+        padding-top: 7px;
+        border-left: 6px solid #1B7396 !important;
+        border-right: 6px solid #1B7396 !important;
+        border-top: 3px solid #1B7396 !important;
+        border-bottom: 3px solid #1B7396 !important;
+        vertical-align: central;
+    }
+
+    .step .fa {
+        padding-top: 15px;
+        font-size: 40px;
+    }
+
+    .well {
+        background-color: #FFFFFF;
+        border: 1px solid #C0C0C0;
+    }
+    .stickit{
+        border:1px solid gray;
+        background:white;
+        margin-bottom:10px;
+        padding:10px;
+    }
+</style>
+<script>
+
+
+
+    $(function () {
+        $('#locale').change(function () {
+            this.form.submit();
+        });
+    });
+
+
+    $(document).on('change', '#first', function () {
+        var first = $(this).find(':selected').val();
+        var token = $('#token').val();
+        $.ajax({
+            url: "/ajax",
+            type: "POST",
+            data: {'_token': token, 'first': first},
+            success: function (data) {
+                var html = '';
+                $.each(data, function (id, name) {
+                    html += '<option value="' + id + '">' + name + '</option>';
+                });
+                $('#second').html(html);
+            }, error: function () {
+                alert("error!!!!");
+            }
+        });
+    });
+
+
+    $(document).ready(function(){
+
+        $("#second").on("change",function(){
+            var val=$(this).val();
+            console.log(val);
+
+            if(val==0){
+
+            }
+            else{
+
+                $.ajax({
+                    url: "<?php echo e(url('ajaxfindproduct')); ?>",
+                    type: "get",
+                    data: {subcategoryid:$(this).val()},
+                    dataType: "json",
+                    success: function(data)
+                    {
+                        // alert( data["data"][0]["id"] );
+                        $.each(data,function(index,val)
+                        {
+                            $('#ajax_here').append("<a href='#' id='"+val.id+"' class='ajax-product'><div class='stickit col-lg-12' id='"+val.id+"'><div class='description' style='word-break: break-all'>"+val.description+"</div></div></a>");
+
+                         })
+                        $('.ajax-product').on('click',function()
+                        {
+                            $.ajax({
+                                url: "<?php echo e(url('getproductajax')); ?>",
+                                type: "get",
+                                contentType:'multipart/form-data',
+                                data: {prodid: $(this).prop('id')},
+                                dataType: "json",
+                                success: function (data) {
+
+                                    $.each(data,function(index,val)
+                                    {
+                                        var input="";
+                                     $('#title').val(val.title);
+
+                                        var formData = new FormData();
+                                        formData.append('file', $('#imgfile')[0].files["http://localhost:5555/img/products/1456680377.jpg"]);
+
+
+                                       //$('body#tinymce').text(val.description);
+                                        tinyMCE.activeEditor.setContent(val.description);
+                                        $('#price').val(val.price);
+
+                                    })
+                                }
+                            })
+
+                        })
+                    }
+                })
+            }
+
+        })
+
+
+
+    })
+
+
+</script>
+
+

@@ -1,0 +1,80 @@
+<?php $__env->startSection('content'); ?>
+<section class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">
+      <div class="col-main col-sm-9">
+        <div class="page-title">
+          <h1><?php echo e(trans('shop.signup')); ?></h1>
+        </div>
+        <?php if(count($errors) > 0): ?>
+            <div class="alert alert-danger">
+              <strong><?php echo e(trans('shop.whoops')); ?></strong> <?php echo e(trans('shop.input_error')); ?><br><br>
+              <ul>
+                <?php foreach($errors->all() as $error): ?>
+                  <li><?php echo e($error); ?></li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
+            <div id="checkout-step-billing" class="step a-item">
+              <form class="form-horizontal" role="form" method="POST" action="register">
+              <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                <fieldset class="group-select">
+                  <ul>
+                    <li id="billing-new-address-form">
+                      <fieldset>
+                        <ul>
+                          <li>
+                            <div class="customer-name">
+                              <div class="input-box name-firstname">
+                                <label for="billing:firstname"><?php echo e(trans('shop.first_name')); ?><span class="required">*</span></label>
+                                <br />
+                                <input type="text" id="billing:firstname" name="name" value="<?php echo e(old('name')); ?>" title="First Name" class="input-text" />
+                              </div>
+                              <div class="input-box name-lastname">
+                                <label for="billing:lastname"><?php echo e(trans('shop.last_name')); ?><span class="required">*</span> </label>
+                                <br />
+                                <input type="text" id="billing:lastname" name="lastname" value="<?php echo e(old('lastname')); ?>" title="Last Name" class="input-text" />
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <label for="billing:street1"><?php echo e(trans('shop.email_address')); ?> <span class="required">*</span></label>
+                            <br />
+                            <input type="text" title="Email" name="email" value="<?php echo e(old('email')); ?>" id="billing:street1  street1" class="input-text" style="width:601px;" />
+                          </li>
+                          <li>
+                            <label for="billing:street1"><?php echo e(trans('shop.username')); ?><span class="required">*</span></label>
+                            <br />
+                            <input type="text" title="Username" name="username" value="<?php echo e(old('username')); ?>" id="billing:street2 street2" class="input-text" style="width:601px;" />
+                          </li>
+                          
+                          <li id="register-customer-password">
+                            <div class="input-box">
+                              <label for="billing:customer_password"><?php echo e(trans('shop.password')); ?> <span class="required">*</span></label>
+                              <br />
+                              <input type="password" name="password" id="billing:customer_password" title="Password" class="input-text" />
+                            </div>
+                            <div class="input-box">
+                              <label for="billing:confirm_password"><?php echo e(trans('shop.confirm_password')); ?><span class="required">*</span></label>
+                              <br />
+                              <input type="password" name="password_confirmation" title="Confirm Password" id="billing:confirm_password" class="input-text" />
+                            </div>
+                          </li>
+                        </ul>
+                      </fieldset>
+                    </li>
+                  </ul>
+                  <p class="require"><em class="required">* </em><?php echo e(trans('shop.required')); ?></p>
+                  <button type="submit" class="button continue" onClick="billing.save()"><span><?php echo e(trans('shop.register')); ?></span></button>
+                </fieldset>
+              </form>
+            </div>
+          </li>
+        </ol>
+      </div>      
+    </div>
+  </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

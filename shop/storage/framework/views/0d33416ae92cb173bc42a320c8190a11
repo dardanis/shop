@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>Shop</title>
+
+    <link href="<?php echo e(asset('/css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/bootstrap-reset.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('/css/style2.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/style-responsive.css')); ?>" rel="stylesheet"/>
+    <link href="<?php echo e(asset('/css/demo_page.css')); ?>"/>
+    <link href="<?php echo e(asset('/css/demo_table.css')); ?>"/>
+    <link href="<?php echo e(asset('/css/DT_bootstrap.css')); ?>"/>
+    <link rel="stylesheet" href="<?php echo e(asset('/css/dropzone.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/colorpicker.css')); ?>">
+
+    <?php echo $__env->yieldContent('style'); ?>
+</head>
+<body>
+<section id="container">
+    <header class="header white-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Collapse"></div>
+        </div>
+        <a href="<?php echo e(url('/')); ?>" class="logo">LOGO HERE</a>
+
+        <div class="top-nav ">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <form action="<?php echo e(URL::route('language-chooser')); ?>" method="post">
+                        <select id="locale" name="locale" class="form-control input-sm m-bot15">
+                            <option value="en">English</option>
+                            <option value="de" <?php echo e(Lang::locale()==='de'? ' selected':''); ?>>German</option>
+                            <option value="fr" <?php echo e(Lang::locale()==='fr'? ' selected':''); ?>>French</option>
+                        </select>
+                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img alt="" src="<?php echo e(asset(Auth::user()->avatar)); ?>">
+                        <span class="username"><?php echo e(Auth::user()->name); ?></span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <div class="log-arrow-up"></div>
+                        <li><a href="<?php echo e(url('admin/profile')); ?>"><i
+                                        class=" fa fa-suitcase"></i><?php echo e(trans('header.myprofile')); ?></a></li>
+                        <li><a href="<?php echo e(url('logout')); ?>"><i class="fa fa-key"></i><?php echo e(Lang::get('app.Logout')); ?></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!--sidebar start-->
+    <aside>
+
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a class="<?php echo e(Active::route('admin_dashboard', 'active')); ?>" href="<?php echo e(url('admin/dashboard')); ?>">
+                        <i class="fa fa-dashboard"></i>
+                        <span><?php echo e(Lang::get('app.Dashboard')); ?></span>
+                    </a>
+                </li>
+
+
+
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('admin_products', 'products_add'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span><?php echo e(Lang::get('app.Products')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('admin_products', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/a_products')); ?>"><?php echo e(Lang::get('app.All products')); ?></a></li>
+                        <li class="<?php echo e(Active::route('products_add', 'active')); ?>"><a
+                                    href="<?php echo e(url('client/add/product')); ?>"><?php echo e(Lang::get('app.Add product')); ?></a></li>
+                    </ul>
+
+
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('sliderindex', 'sliderindex'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span><?php echo e(Lang::get('app.Slider Products')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('sliderindex', 'active')); ?>"><a
+                                    href="<?php echo e(url('sliderindex')); ?>"><?php echo e(Lang::get('app.All Sliders')); ?></a></li>
+                        <li class="<?php echo e(Active::route('createsliderproduct', 'active')); ?>"><a
+                                    href="<?php echo e(url('createsliderproduct')); ?>"><?php echo e(Lang::get('app.Add Slider')); ?></a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('categoriesindex', 'addcategory'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span><?php echo e(Lang::get('app.Categories')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('categoriesindex', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/categories')); ?>"><?php echo e(Lang::get('app.All Categories')); ?></a></li>
+                        <li class="<?php echo e(Active::route('addcategory', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/categories/add')); ?>"><?php echo e(Lang::get('app.Add Category')); ?></a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('formnameindex', 'formnameindex'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span><?php echo e(Lang::get('app.Form Naming')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('formnameindex', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/formname')); ?>"><?php echo e(Lang::get('app.All Forms')); ?></a></li>
+                        <li class="<?php echo e(Active::route('formnameadd', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/formname/add')); ?>"><?php echo e(Lang::get('app.Add Form Name')); ?></a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('type_form', 'type_form'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-archive"></i>
+                        <span><?php echo e(Lang::get('app.Product Type')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('typeindex', 'active')); ?>"><a
+                                    href="<?php echo e(url('types/admin')); ?>"><?php echo e(Lang::get('app.Types')); ?></a></li>
+                        <li class="<?php echo e(Active::route('type_form', 'active')); ?>"><a
+                                    href="<?php echo e(url('types/add')); ?>"><?php echo e(Lang::get('app.Create Type')); ?></a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('areas_create', 'areas_create'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-archive"></i>
+                        <span><?php echo e(Lang::get('app.Areas')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('areaindex', 'active')); ?>"><a
+                                    href="<?php echo e(url('area/admin')); ?>"><?php echo e(Lang::get('app.All Areas')); ?></a></li>
+                        <li class="<?php echo e(Active::route('areas_create', 'active')); ?>"><a
+                                    href="<?php echo e(url('areas/add')); ?>"><?php echo e(Lang::get('app.Create Area')); ?></a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('users', 'create_users','client_users','business_users'), 'active')); ?>"
+                       href="javascript:;">
+                        <i class="fa fa-users"></i>
+                        <span><?php echo e(Lang::get('app.Users')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('users', 'active')); ?>">
+
+                        </li>
+                        <li class="<?php echo e(Active::route('business_users', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/users/business')); ?>"> <?php echo e(Lang::get('app.Bussiness Users')); ?></a></li>
+                        <li class="<?php echo e(Active::route('client_users', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/users/clients')); ?>"><?php echo e(Lang::get('app.Client Users')); ?></a></li>
+                        <li class="<?php echo e(Active::route('create_users', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/users/add')); ?>"><?php echo e(Lang::get('app.Add User')); ?></a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('subscription_plans', 'plan_add'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-archive"></i>
+                        <span> <?php echo e(Lang::get('app.Subscription Plans')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('subscription_plans', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/plans')); ?>"><?php echo e(Lang::get('app.All Plans')); ?></a></li>
+                        <li class="<?php echo e(Active::route('plan_add', 'active')); ?>"><a
+                                    href="<?php echo e(url('admin/plans/add')); ?>"><?php echo e(Lang::get('app.Add Plan')); ?></a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('translation_add', 'translation_add'), 'active')); ?>" href="javascript:;">
+                        <i class="fa fa-archive"></i>
+                        <span><?php echo e(Lang::get('app.Translations')); ?></span>
+                    </a>
+                    <ul class="sub">
+                        <li class="<?php echo e(Active::route('translationindex', 'active')); ?>"><a
+                                    href="<?php echo e(url('translation/admin')); ?>"><?php echo e(Lang::get('app.All Translations')); ?></a></li>
+                        <li class="<?php echo e(Active::route('translation_add', 'active')); ?>"><a
+                                    href="<?php echo e(url('translation/add')); ?>"><?php echo e(Lang::get('app.Add Translation')); ?></a></li>
+
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a class="<?php echo e(Active::route(array('admin_ads'), 'active')); ?>" href="<?php echo e(url('admin/ads')); ?>">
+                        <i class="fa fa-users"></i>
+                        <span><?php echo e(Lang::get('app.Ads')); ?></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <section id="main-content">
+        <section class="wrapper">
+            <?php echo $__env->yieldContent('content'); ?>
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">
+<script src="<?php echo e(asset('/js/jquery.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+
+<script class="include" src="<?php echo e(asset('/js/jquery.dcjqaccordion.2.7.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery.scrollTo.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery.nicescroll.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery.customSelect.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/respond.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/common-scripts.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/colorpicker.js')); ?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete" async defer></script>
+<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+
+<script src="<?php echo e(asset('/js/dropzone.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/upload.js')); ?>"></script>
+
+<script>
+    $(function () {
+        $('#header_color, #background_color, #text_color').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val(hex);
+                $(el).ColorPickerHide();
+            },
+            onBeforeShow: function () {
+                $(this).ColorPickerSetColor(this.value);
+            }
+        })
+                .bind('keyup', function(){
+                    $(this).ColorPickerSetColor(this.value);
+                });
+        $('select.styled').customSelect();
+    });
+</script>
+<script src="<?php echo e(asset('/js/photopreview.js')); ?>"></script>
+<script>
+    $(function () {
+        $('#locale').change(function () {
+            this.form.submit();
+        });
+    });
+
+    $('#datepicker').datetimepicker();
+
+
+    $(function () {
+        refreshTable();
+    });
+    function refreshTable() {
+        $('#online_users').load('dashboard' + ' #online_users', function () {
+            setTimeout(refreshTable(), 1000);
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(document).on('change', '#first', function () {
+        var first = $(this).find(':selected').val();
+        var token = $('#token').val();
+        $.ajax({
+            url: "/ajax",
+            type: "POST",
+            data: {'_token': token, 'first': first},
+            success: function (data) {
+                var html = '';
+                $.each(data, function (id, name) {
+                    html += '<option value="' + id + '">' + name + '</option>';
+                });
+                $('#second').html(html);
+            }, error: function () {
+                alert("error!!!!");
+            }
+        });
+    });
+
+    tinymce.init({
+        selector: '#mytextarea'
+    });
+
+
+    $("#data-type").on('change',function() {
+        $list= $('option:selected', this).text();
+        if($list=="list"){
+            $('#list-attributes').show();
+        }else {
+            $('#list-attributes').hide();
+        }
+    })
+
+    $("#btn-list-attributes").on('click',function () {
+        var newTextBoxDiv = $(document.createElement('Div'))
+                .attr("class", 'otheroptions');
+        newTextBoxDiv.html('<div class="col-md-2 col-sm-2"></div><div class="col-md-3"><input type="text" class="form-control txtplus" placeholder="Enter Values" style="margin-top:10px" name="attribute_item[]"></div>');
+        newTextBoxDiv.appendTo("#add-dynamic-items");
+    });
+
+    $('.btn-list-attributes_edit').click(function(){
+        var clickedID = this.id;
+        var newTextBoxDiv = $(document.createElement('Div'))
+                .attr("class", 'otheroptions');
+        newTextBoxDiv.html('<input type="hidden" name="edit_add_item[]" value="'+clickedID+'"/><div class="col-md-2 col-sm-2"></div><div class="col-md-3"><input type="text" class="form-control txtplus" placeholder="Enter Values" style="margin-top:10px" name="attribute_item_'+clickedID+'[]"></div>');
+        newTextBoxDiv.appendTo("#add-dynamic-items_edit_"+clickedID);
+    });
+
+        $(".btn-add-sub").on('click',function () {
+            var newTextBoxDiv = $(document.createElement('Div'))
+                    .attr("class", 'otheroptions');
+            newTextBoxDiv.html('<div class="col-md-2 col-sm-2"></div><div class="col-md-3"><input type="text" class="form-control txtplus" placeholder="Enter Other sub categories" style="margin-top:10px" name="name[]"></div><div class="col-md-7 col-sm-7" style="float:right;clear:both"></div>');
+            newTextBoxDiv.appendTo("#add-sub");
+        });
+
+    $('#chk-related').on('change', function(){ // on change of state
+        if(this.checked) // if changed state is "CHECKED"
+        {
+
+            $('#chk-related').attr('checked', true);
+            $('#chk-related').attr('value', 1);
+
+
+        }else{
+
+            $('#chk-related').attr('value', 0);
+            $('#chk-related').attr('checked',false);
+        }
+    })
+
+
+</script>
+<?php echo $__env->yieldContent('scripts'); ?>
+</body>
+</html>

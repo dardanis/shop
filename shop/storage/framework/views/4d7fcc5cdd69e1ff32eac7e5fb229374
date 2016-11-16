@@ -1,0 +1,5 @@
+<div class="col-lg-6 col-sm-6 ">
+    <div class="ad468x60">
+        <img src="<?php echo asset($ad->image); ?>">
+    </div>
+</div>

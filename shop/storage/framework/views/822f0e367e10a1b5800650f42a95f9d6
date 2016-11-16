@@ -1,0 +1,150 @@
+<?php $user = App\User::find(Auth::user()->id);
+$user_role = $user['role']['name']; ?>
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-3">
+                <?php echo $__env->make('common/menucategory', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+            <div class="col-md-9">
+                <div class="panel">
+                    <header class="panel-heading">
+                        <?php echo e(trans('shop.product_attributes')); ?>
+
+                    </header>
+                    <div class="panel-body">
+                        <?php echo Form::open(['url' => route("attributes",array($category->slug,$category->id)), 'class' => 'form-horizontal', 'files'=>true, 'id'=>'real-dropzone']); ?>
+
+
+                        <?php echo $__env->make('errors/form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+                        <div class="form-group">
+                            <?php echo Form::label('name', trans('shop.attribute_name') . ' *', ['class' => 'col-sm-2 col-sm-2 control-label' ]); ?>
+
+                            <div class="col-sm-10">
+                                <?php echo Form::text('name', '', array('class' => 'form-control', 'placeholder' => 'Please insert Name...')); ?>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <?php echo Form::label('group_id', Lang::get('app.Form Name') . ' *', ['class' => 'col-sm-2 col-sm-2 control-label' ]); ?>
+
+                            <div class="col-lg-10">
+                                <?php echo Form::select('group_id',[null=>'Form Name']+$group_name, '', array(
+                        'class'                         => 'form-control',
+                        'placeholder'                   => '',
+
+                        )); ?>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('sub_category_id', trans('shop.sub_category_id') . ' *', ['class' => 'col-sm-2 col-sm-2 control-label' ]); ?>
+
+                            <div class="col-lg-10">
+                                <?php echo Form::select('sub_category_id',[null=>'Please Select one category']+$subcategories, '', array(
+                        'class'                         => 'form-control',
+                        'placeholder'                   => '',
+                        'required',
+                        'id'                            => 'first',
+                        'data-parsley-required-message' => 'Category Name is required',
+                        'data-parsley-trigger'          => 'change focusout',
+
+                        )); ?>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('data_type', trans('shop.input_data_type') . ' *', ['class' => 'col-sm-2 col-sm-2 control-label' ]); ?>
+
+                            <div class="col-sm-10">
+                                <?php echo Form::select('data_type',[null=>'Please Select Data Type']+array( 'list'=>'list','integer' => 'integer', 'string' => 'string','datetime' => 'datetime'),'' ,array('class' => 'form-control','id'=>'data-type')); ?>
+
+                            </div>
+                        </div>
+                        <?php $count_item=0; ?>
+                        <div class="form-group">
+                            <div id="list-attributes" style="display:none">
+                                <div class="col-sm-2 col-md-2"></div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="Enter values" name="attribute_item[]"/>
+                                </div>
+                                <div id="add-dynamic-items">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="button" value="+" id="btn-list-attributes" class="btn btn-default"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <?php echo Form::label('gui_type', trans('shop.gui_type') . ' *', ['class' => 'col-sm-2 col-sm-2 control-label' ]); ?>
+
+                            <div class="col-sm-10">
+                                <?php echo Form::select('gui_type',[null=>'Please Select GUI Type']+array( 'textbox' => 'textbox', 'checkbox' => 'checkbox','radio' => 'radio','dropdown'=>'dropdown'),'' ,array('class' => 'form-control','id'=>'gui-type')); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-6">
+                                <input type="hidden" id="token" value="<?php echo e(csrf_token()); ?>">
+                                <div class="col-md-2">
+                                    <input type="checkbox" name="related" id="chk-related" value="0"/>Related
+                                </div>
+                                <div class="col-md-3">
+
+                                    <?php echo Form::submit("Save", array('class' => 'btn btn-success')); ?>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <?php echo link_to_route('categoriesindex', trans('shop.cancel'), array(), array('class' => 'btn btn-danger admin')); ?>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <?php echo Form::close(); ?>
+
+
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<style>
+    .div-attribute {
+        border: 1px solid gray;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+    .otheroptions{
+        clear:left;
+    }
+</style>
+
+<?php $__env->startSection('scripts'); ?>
+    <script>
+    $(document).ready(function(){
+
+    })
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($user_role=='admin' ? 'new' : 'new_template.client.layouts.user_backend', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

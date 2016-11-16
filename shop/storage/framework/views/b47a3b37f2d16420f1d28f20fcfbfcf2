@@ -1,0 +1,150 @@
+<?php $__env->startSection('content'); ?>
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12"><div class="inner">
+        <ul>
+          <li class="home"> <a title="Go to Home Page" href="<?php echo e(url('/')); ?>">Home</a><span>&mdash;&rsaquo;</span></li>
+          <li class=""> <a  href="<?php echo e(URL::route('user_products',array($user->username))); ?>"><?php echo e($user->name); ?> - Products</a></li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumbs End -->
+
+<section class="main-container">
+  <div class=" container">
+    <div class="row">
+      <div class="col-main col-sm-9 col-sm-push-3">
+        <article class="col-main">
+          <div class="page-title">
+            <h2>Shop</h2>
+          </div>
+          <div class="toolbar">
+            <div class="sorter">
+              <div class="view-mode"> <span title="Grid" class="button button-active button-grid first">Grid</span><a href="list.html" title="List" class="button button-list last">List</a> </div>
+            </div>
+            <div id="sort-by">
+              <ul>
+                <label class="left">Sort By: </label>
+                <li><a href="#">Position<span class="right-arrow"></span></a>
+                  <ul>
+                    <li><a href="#">Name</a></li>
+                    <li><a href="#">Price</a></li>
+                    <li><a href="#">Position</a></li>
+                  </ul>
+                </li>
+              </ul> 
+              </div>
+            <div class="pager">
+              <div id="limiter">
+                <ul>
+                  <label>View: </label>
+                  <li><a href="#">15<span class="right-arrow"></span></a>
+                    <ul>
+                      <li><a href="#">20</a></li>
+                      <li><a href="#">30</a></li>
+                      <li><a href="#">35</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+          <div class="category-products">
+          <?php foreach($user->products->chunk(3) as $row): ?>
+            <ul class="products-grid">
+              <?php foreach($row as $product): ?>
+              <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                <div class="item-inner">
+                  <div class="product-block">
+                    <div class="product-image"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>">
+                      <figure class="product-display">
+                        <img src="<?php echo e(asset($product->thumbnail)); ?>" class="lazyOwl product-mainpic" alt="" style="display: block;"> <img class="product-secondpic" alt="" src="<?php echo e(asset($product->thumbnail_back)); ?>"> </figure>
+                      </a> </div>
+                    <div class="product-meta">
+                      <div class="product-action">
+                         <?php echo Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')); ?>
+
+                            <a class="addcart"> <button type="submit" id="cartBtn">&nbsp;<i class="icon-shopping-cart"> </i> Add to cart</button> </a>
+                          <?php echo Form::close(); ?>
+
+                          <?php echo Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')); ?>
+
+                          <a class="wishlist" ><button type="submit" id="cartBtn">&nbsp;<i class="icon-heart">&nbsp;</i> </button></a>
+                          <?php echo Form::close(); ?>
+
+                          <a class="quickview" href="#"> <i class="icon-zoom">&nbsp;</i> </a>  
+                       </div>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>" title="Sample Product"><?php echo e($product->title); ?></a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box"> <span class="regular-price"> <span class="price">CHF <?php echo e($product->price); ?></span> </span> </div>
+                        </div>
+                        <div class="rating">
+                          <div class="ratings">
+                            <div class="rating-box">
+                              <div class="rating" style="width:<?php echo e($product->rating_cache*20); ?>%"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+            <?php endforeach; ?>
+            
+          </div>
+        </article>
+      </div>
+      <!--	///*///======    End Col Main  ========= //*/// -->
+      <div class="col-sm-3 col-xs-12 col-sm-pull-9">
+        <aside class="col-left sidebar">
+         <?php echo $__env->make('new_template.client.includes.sideCategories', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+          
+          <br>
+          <div class="block block-cart">
+            <div class="block-title ">My Cart</div>
+            <div class="block-content">
+            <?php if(count(Cart::getContent())>0): ?>
+              <div class="summary">
+                <p class="amount">There are <a href="#"><?php echo e(Cart::getContent()->count()); ?> items</a> in your cart.</p>
+                <p class="subtotal"> <span class="label">Cart Subtotal:</span> <span class="price">CHF <?php echo e(Cart::getTotal()); ?></span> </p>
+              </div>
+              <div class="ajax-checkout">
+                <button class="button button-checkout" title="Submit" type="submit"><span>Checkout</span></button>
+              </div>
+              <p class="block-subtitle">Recently added item(s) </p>
+              <ul>
+                <?php foreach(Cart::getContent() as $product): ?>
+                <li class="item"> <a href="<?php echo e(URL::route('product_show',array($product->attributes->user,$product->attributes->slug))); ?>" class="product-image"><img width="60" src="<?php echo e(asset($product->attributes->image)); ?>" ></a>
+                  <div class="product_details">
+                    <div class="access"> <a href="#" title="Remove This Item" class="btn-remove1"> <span class="icon"></span> Remove </a> </div>
+                    <p class="product-name"> <a href="<?php echo e(URL::route('product_show',array($product->attributes->user,$product->attributes->slug))); ?>"><?php echo e($product->name); ?></a> </p>
+                    <strong><?php echo e($product->quantity); ?></strong> x <span class="price">CHF <?php echo e($product->price); ?></span> </div>
+                </li>
+                <?php endforeach; ?>
+              </ul>
+            <?php else: ?>
+            No Products in Cart
+            <?php endif; ?>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <!--	///*///======    End Main Container  ========= //*/// --> 
+    </div>
+  </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

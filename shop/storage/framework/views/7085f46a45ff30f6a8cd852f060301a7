@@ -1,0 +1,55 @@
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="page-content">
+
+
+    <!--Blog Sidebar Left-->
+    <section class="blog">
+        <div class="container">
+            <div class="row">
+
+                <!--Sidebar-->
+                <div class="col-lg-3 col-md-3">
+                    <!--Search Widget-->
+                    <h3>Search for <?php echo $alias;?></h3>
+                    <form class="sidebar-search">
+                        <input type="text" class="form-control" name="search-blog" placeholder="Search">
+                        <button type="submit"></button>
+                    </form>
+                    <!--Tags-->
+
+                </div>
+
+
+                <?php foreach($categories as $t){?>
+                            <?php $type_id=$t->type_id;?>
+                <?php }?>
+
+                <?php $products=\App\Product::whereHas('translations', function($q) use ($type_id)
+                {
+                    $q->where('type_id', 'like', '%'.$type_id.'%');
+                    $q->where('status','=',1);
+
+                })->get()?>
+                        <!--Left Column-->
+
+                <div class="col-lg-9 col-md-9">
+                    <h2 class="title">Magazine Posts</h2>
+                    <!--Post-->
+                    <?php foreach($products as $p){?>
+                    <div class="post">
+                        <h3 class="title"><a href="blog-single.html"><?php echo $p->title;?></a></h3>
+                        <img src="<?php echo e(asset($p->thumbnail)); ?>" class="img-responsive">
+                        <p class="p-style3"><?php echo $p->teaser;?></p>
+                        <footer>
+
+                        </footer>
+                    </div>
+                    <?php } ?>
+
+                </div>
+            </div>
+        </div>
+    </section><!--Blog Sidebar Left Close-->
+
+
+</div>

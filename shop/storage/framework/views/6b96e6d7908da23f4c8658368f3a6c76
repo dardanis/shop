@@ -1,0 +1,227 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+    <!-- search and user menu -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+    </div>
+
+
+        <div class="row" style="padding-top: 10px;">
+            <div class="container">
+                <div class="main-content">
+                    <div class="language" style="">
+
+                        <div class="lang">
+
+                            <form action="<?php echo e(URL::route('language-chooser')); ?>" method="post">
+
+                                <ul class="langlist">
+                                    <li><input type="submit" value="en" name="locale"  class="btn-lang en-lng"/></li>
+                                    <li><input type="submit" value="de" name="locale" class="btn-lang de-lng"/></li>
+                                    <li><input type="submit" value="fr" name="locale" class="btn-lang fr-lng"/></li>
+                                </ul>
+                                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="under-lang">
+            <div class="col-md-2 logo-div">
+                <h2 class="logo">
+                    <a class="logo" href="<?php echo e(url('/')); ?>" id="logo">LOGO HERE</a>
+                </h2>
+            </div>
+            <!-- search by category -->
+            <form action="/" method="get">
+                <div class="col-md-4  col-sm-12 col-xs-12 search-div">
+                    <div class="col-md-12 searchcategory">
+                        <div class="form-group">
+                            <span class="bold-11">Keyword</span><br>
+                            <input type="text" class="form-control seach-keyword" placeholder="keyword">
+
+                            <select class="form-control seach-category">
+                                <option selected="">Auto</option>
+                                <option>Technology</option>
+                                <option>Clothes</option>
+                            </select>
+
+                            <button type="button" class="btn btn-default btn-search">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end of search by category -->
+                <div class="col-md-3 col-sm-12 col-xs-12 searchdistance">
+                    <div class="col-md-12 searchcategory">
+                        <div class="form-group">
+                            <span class="bold-11">Distance and location</span><br>
+                            <input type="text" class="form-control seach-location">
+
+                            <select class="form-control seach-distance">
+                                <option selected="">10km</option>
+                                <option>20km</option>
+                                <option>30km</option>
+                            </select>
+
+                            <button type="button" class="btn btn-default btn-location">
+                                <span class="glyphicon glyphicon-map-marker"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <?php if (Auth::guest()){?>
+            <div class="col-md-3 col-sm-12 col-xs-12 usernav">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>
+                    <a class="bold-11" href='<?php echo e(URL::to("/newsfeed")); ?>'><span><?php echo e(Lang::get('app.Newsfeed')); ?></span></a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 ">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
+                    <a class="bold-11" href="<?php echo e(url('wishlist')); ?>"><span><?php echo e(Lang::get("app.Wishlist")); ?></span></a>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <a class="bold-11" href="<?php echo e(url('login')); ?>" style="margin-top: 0px;" >
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
+                     <span><?php echo e(Lang::get("app.Login")); ?></span></a>
+
+                </div>
+            </div>
+            <?php } else if(Auth::user()->role_id==1){?>
+
+
+            <div class="col-md-3 col-sm-12 col-xs-12 usernav">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>
+                    <a class="bold-11" href='<?php echo e(URL::to("/newsfeed")); ?>'><span><?php echo e(Lang::get('app.Newsfeed')); ?></span></a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 ">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
+                    <a class="bold-11" href="<?php echo e(url('wishlist')); ?>"><span><?php echo e(Lang::get("app.Wishlist")); ?></span></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#"  style="padding: 0px;"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" style="color:#E28D33"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a style="" href="<?php echo e(route('myprofile')); ?>"><?php echo e(Lang::get('app.My Account')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(url('viewprofile')); ?>"><?php echo e(Lang::get('app.My Profile')); ?></a></li>
+                            <li><a  style="" href="<?php echo e(url('admin/dashboard')); ?>"><?php echo e(Lang::get('app.Dashboard')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(route('myoders')); ?>"><?php echo e(Lang::get('app.My Orders')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(url('logout')); ?>"><?php echo e(trans('app.logout')); ?></a></li>
+
+                        </ul>
+                        <a class="bold-11" href="#" style="margin: 0px;color: black;padding: 0px;"><span style="    font-size: 12px;"><?php echo e(Auth::user()->username); ?></span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <?php } else if(Auth::user()->role_id!=1){?>
+            <div class="col-md-3 col-sm-12 col-xs-12 usernav">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <a class="bold-11" href='<?php echo e(URL::to("/newsfeed")); ?>'>
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>
+                   <span><?php echo e(Lang::get('app.Newsfeed')); ?></span></a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 ">
+                    <a class="bold-11" href="<?php echo e(url('wishlist')); ?>">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
+                    <span><?php echo e(Lang::get("app.Wishlist")); ?></span></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#"  style="padding: 0px;"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" style="color:#E28D33"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a style="" href="<?php echo e(route('myprofile')); ?>"><?php echo e(Lang::get('app.My Account')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(url('viewprofile')); ?>"><?php echo e(Lang::get('app.My Profile')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(route('mydashboard')); ?>"><?php echo e(Lang::get('app.Dashboard')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(route('myoders')); ?>"><?php echo e(Lang::get('app.My Orders')); ?></a></li>
+                            <li> <a style="" href="<?php echo e(url('logout')); ?>"><?php echo e(trans('app.logout')); ?></a></li>
+
+                        </ul>
+                        <a class="bold-11" href="#" style="margin: 0px;color: black;padding: 0px;"><span style="    font-size: 12px;"><?php echo e(Auth::user()->username); ?></span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <?php }?>
+                        </div>
+                </div>
+                </div>
+        </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+
+                <ul class="nav navbar-nav">
+                    <?php $type = \Illuminate\Support\Facades\DB::table('product_types')
+                            ->orderBy('sort_order', 'asc')
+                            ->get();?>
+                    <?php foreach($type as $t){?>
+                    <?php
+                    $type_id=$t->id;
+                    $cat=\App\Category::whereHas('translations', function($q) use ($type_id)
+                    {
+                        $q->where('type_id','=',$type_id);
+
+                    })->get();?>
+
+                    <?php if(sizeof($cat)>0){?>
+                    <?php if($t->alias=="Shop"){?>
+                        <li id="<?php echo e(Active::pattern($t->name, 'current-page')); ?>"><a href="<?php echo e(route('shophome')); ?>"><span><?php echo e(Lang::get("app.$t->name")); ?></span> </a> </li>
+                        <?php } ?>
+                        <?php if($t->alias=="Events"){?>
+                        <li id="<?php echo e(Active::pattern($t->name, 'current-page')); ?>"><a href="<?php echo e(route('eventshome')); ?>"><span><?php echo e(Lang::get("app.$t->name")); ?></span> </a> </li>
+                        <?php } ?>
+                        <?php if($t->alias=="Travel"){?>
+                        <li id="<?php echo e(Active::pattern($t->name, 'current-page')); ?>"><a href="<?php echo e(route('travelhome')); ?>"><span><?php echo e(Lang::get("app.$t->name")); ?></span> </a> </li>
+                        <?php } ?>
+                        <?php } else {?>
+                    <li  id="<?php echo e(Active::pattern($t->name, 'current-page')); ?>"><a href="#"><span><?php echo e(Lang::get("app.$t->name")); ?></span> </a></li>
+                    <?php } ?>
+
+                    <?php  }?>
+                </ul>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<?php if(Lang::locale()==='de'){?>
+<style>
+    .de-lng{
+        color:#E28D33;
+    }
+</style>
+<?php }?>
+<?php if(Lang::locale()==='en'){?>
+<style>
+    .en-lng{
+        color:#E28D33;
+    }
+</style>
+<?php }?>
+<?php if(Lang::locale()==='fr'){?>
+<style>
+    .fr-lng{
+        color:#E28D33;
+    }
+</style>
+<?php }?>

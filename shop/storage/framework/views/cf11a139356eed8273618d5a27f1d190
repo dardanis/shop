@@ -1,0 +1,59 @@
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <?php echo e($subname); ?> <?php echo link_to_route('subsubcat', trans('shop.add_subsubcategory'), array($category,$subid), array('class' => 'btn btn-success btn-xs')); ?>
+
+                </header>
+                <div class="panel-body">
+                    <?php echo $__env->make('errors_messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <div class="adv-table">
+                        <table  class="display table table-bordered table-striped" id="example">
+                            <thead>
+                            <th><?php echo e(trans('shop.id')); ?></th>
+                            <th><?php echo e(trans('shop.subcategory_name')); ?></th>
+                            <th><?php echo e(trans('shop.created_at')); ?></th>
+                            <th><?php echo e(trans('shop.edit')); ?></th>
+                            <th><?php echo e(trans('shop.delete')); ?></th>
+                            </thead>
+                            <tbody>
+
+                                    <?php foreach($sub as $s): ?>
+                                        <tr >
+                                            <td><?php echo e($s->id); ?></td>
+                                            <td><?php echo e($s->name); ?></td>
+                                            <td><span class="label label-info"><?php echo e(Carbon::createFromTimestamp(strtotime($s->created_at))->diffForHumans()); ?></span></td>
+                                            <td><?php echo link_to_route('edit_sub', trans('shop.edit'), array($s->slug,$s->id), array('class' => 'btn btn-warning btn-xs')); ?></td>
+                                            <td>
+                                                <?php echo Form::open(array('method' => 'DELETE', 'route' => array('deleteSubSubcategory', $s->id))); ?>
+
+                                                <?php echo Form::submit(trans('shop.delete'), array('class' => 'btn btn-danger btn-xs')); ?>
+
+                                                <?php echo Form::close(); ?>
+
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('/js/jquery.dataTables.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/DT_bootstrap.js')); ?>"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').dataTable( {
+                "iDisplayLength": 500,
+            } );
+        } );
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

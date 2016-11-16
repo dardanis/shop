@@ -1,0 +1,193 @@
+<?php $__env->startSection('content'); ?>
+<section class="main-container">
+  <article class="main-container-inner container">
+    <div class="cart row">    
+    <?php if(count(Cart::getContent())>0): ?>
+    <div class="page-title">
+      <h2>Shopping Cart</h2>
+    </div>    
+    <div class="table-responsive">
+      <table class="data-table cart-table hidden-desktop" id="shopping-cart-table">
+        <colgroup>
+        <col width="1">
+        <col>
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        </colgroup>
+        <thead>
+          <tr class="first last">
+            <th class="hidden-table" rowspan="1">&nbsp;</th>
+            <th rowspan="1"><span class="nobr">Product Name</span></th>
+            <th colspan="1" class="a-left hidden-table"><span class="nobr">Unit Price</span></th>
+            <th class="a-left" rowspan="1">Qty</th>
+            <th colspan="1" class="a-left">Subtotal</th>
+            <th class="a-left" rowspan="1">&nbsp;</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr class="first last">
+            <td class="a-right last" colspan="50"><a href="/"><button onClick="setLocation('/')" class="button btn-continue" title="Continue Shopping" type="button"><span><span>Continue Shopping</span></span></button></a>
+              <a href="<?php echo e(URL::route('clear_cart')); ?>"><button id="empty_cart_button" class="button btn-empty" title="Clear Cart" value="empty_cart" name="update_cart_action" type="submit"><span><span>Clear Cart</span></span></button></a></td>
+          </tr>
+        </tfoot>
+        <tbody>        
+        <?php foreach(Cart::getContent() as $product): ?>
+          <tr>
+            <td class="hidden-table"><a class="product-image" href="#"><img width="75" alt="Proin lectus ipsum" src="<?php echo asset($product->attributes->image); ?>"></a></td>
+            <td><h2 class="product-name"> <a href="#ma_optima/index.php/quisque-in-arcu-1884.html"><?php echo $product->name; ?></a> </h2></td>
+            <td class="a-left hidden-table"><span class="cart-price"> <span class="price">CHF <?php echo $product->price; ?></span> </span></td>
+            <?php echo Form::open(array('method' => 'POST', 'route' => array('cart.update', $product->id),'id'=>'qty-form')); ?>
+
+            <td class="a-left" width="20%">
+	            <button class="button" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+	            <input min="1" max="40" class="input-text qty" title="Qty" size="4" value="<?php echo $product->quantity; ?>" name="quantity">
+            	<button class="button" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+        	</td>
+            <?php echo Form::close(); ?>
+
+            <td class="a-left"><span class="cart-price"> <span class="price">CHF <?php echo $product->price * $product->quantity; ?></span> </span></td>
+            <?php echo Form::open(array('method' => 'DELETE', 'route' => array('cart.delete', $product->id))); ?>
+
+            <td class="a-left last"><button class="delBtn"><a class="remove-item" title="Clear Cart"><span>Remove item</span></a></button></td>
+            <?php echo Form::close(); ?>
+
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <table class="data-table cart-table" id="shopping-cart-table">
+        <colgroup>
+        <col width="1">
+        <col>
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        </colgroup>
+        <thead>
+          <tr class="first last">
+            <th class="hidden-phone" rowspan="1">&nbsp;</th>
+            <th rowspan="1"><span class="nobr">Product Name</span></th>
+            <th colspan="1" class="a-left"><span class="nobr">Unit Price</span></th>
+            <th class="a-left" rowspan="1" colspan="1">Qty</th>
+            <th colspan="1" class="a-left">Subtotal</th>
+            <th class="a-left" rowspan="1">&nbsp;</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr class="first last">
+            <td class="a-right last" colspan="50"><a href="/"><button onClick="setLocation('/')" class="button btn-continue" title="Continue Shopping" type="button"><span><span>Continue Shopping</span></span></button></a>
+              <a href="<?php echo e(URL::route('clear_cart')); ?>"><button id="empty_cart_button" class="button btn-empty" title="Clear Cart" value="empty_cart" name="update_cart_action" type="submit"><span><span>Clear Cart</span></span></button></a></td>
+          </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach(Cart::getContent() as $product): ?>
+          <tr>
+            <td class="hidden-phone"><a class="product-image" href="#"><img width="75" alt="Proin lectus ipsum" src="<?php echo asset($product->attributes->image); ?>"></a></td>
+            <td><h2 class="product-name"> <a href="product_detail.html"><?php echo $product->name; ?></a> </h2></td>
+            <td class="a-left"><span class="cart-price"> <span class="price">CHF <?php echo $product->price; ?></span> </span></td>
+
+			<?php echo Form::open(array('method' => 'POST', 'route' => array('cart.update', $product->id),'id'=>'qty-form')); ?>
+
+            <td class="a-left" style="width:165px;">
+	            <button class="button" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+	            <input min="1" max="40" class="input-text qty" title="Qty" size="4" value="<?php echo $product->quantity; ?>" name="quantity">
+            	<button class="button" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+        	</td>
+            <?php echo Form::close(); ?>
+
+
+            <td class="a-left"><span class="cart-price"> <span class="price">CHF <?php echo $product->price * $product->quantity; ?></span> </span></td>
+            <?php echo Form::open(array('method' => 'DELETE', 'route' => array('cart.delete', $product->id))); ?>
+
+            <td class="a-left last"><button class="delBtn"><a class="remove-item" title="Clear Cart"><span>Remove item</span></a></button></td>
+            <?php echo Form::close(); ?>
+
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <div class="cart-collaterals">
+        <div class="totals col-2">
+          <h3>Shopping Cart Total</h3>
+          <div class="inner">
+            <table id="shopping-cart-totals-table">
+              <col>
+              <col width="1">
+              <tfoot>
+                <tr>
+                  <td style="" class="a-left" colspan="1"><strong>Grand Total</strong></td>
+                  <td style="" class="a-right"><strong><span class="price">CHF <?php echo Cart::getSubTotal(); ?></span></strong></td>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr>
+                  <td style="" class="a-left" colspan="1"> Subtotal </td>
+                  <td style="" class="a-right"><span class="price">CHF <?php echo Cart::getSubTotal(); ?></span></td>
+                </tr>
+              </tbody>
+            </table>
+            <ul class="checkout">
+              <li>
+                <a href="#"><button type="button" class="button btn-proceed-checkout" onClick=""><span>Proceed to Checkout</span></button></a>
+              </li>
+              <br>
+            </ul>
+          </div>
+        </div>
+        <div class="col2-set col-1">
+          <div class="shipping">
+          </div>
+          <div class="discount">
+          </div>
+        </div>        
+		<?php else: ?>
+	    <div class="page-title">
+	      <h2>No Products in cart</h2>
+	    </div>    
+	    <?php endif; ?>
+      </div>
+    </div>
+  </article>
+</section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+	<script type="text/javascript">
+		$(function() {
+    var action;
+    $(".number-spinner button").mousedown(function () {
+        btn = $(this);
+        input = btn.closest('.number-spinner').find('input');
+        btn.closest('.number-spinner').find('button').prop("disabled", false);
+
+    	if (btn.attr('data-dir') == 'up') {
+            action = setInterval(function(){
+                if ( input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max')) ) {
+                    input.val(parseInt(input.val())+1);
+                }else{
+                    btn.prop("disabled", true);
+                    clearInterval(action);
+                }
+            }, 50);
+    	} else {
+            action = setInterval(function(){
+                if ( input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min')) ) {
+                    input.val(parseInt(input.val())-1);
+                }else{
+                    btn.prop("disabled", true);
+                    clearInterval(action);
+                }
+            }, 50);
+    	}
+    }).mouseup(function(){
+        clearInterval(action);
+    });
+});
+	</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

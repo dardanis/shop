@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="nav-inner"> 
+      <!-- mobile-menu -->
+      <div class="hidden-desktop" id="menu">
+        <ul class="navmenu">
+          <li>
+            <div class="menutop">
+              <div class="toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></div>
+              <!--<h2>Menu</h2>--> 
+            </div>
+            <ul style="display:none;" class="submenu">
+              <li>
+                <ul class="topnav">
+                  <li class="level0 nav-6 level-top first"><a href="<?php echo e(url('/')); ?>"><span><?php echo e(trans('header.home')); ?></span></a></li>
+                  <li class="level0 nav-6 level-top"><a href="<?php echo e(url('shop')); ?>"><span><?php echo e(trans('header.shop')); ?></span></a></li>
+                  <li class="level0 nav-6 level-top"><a href="<?php echo e(url('echange')); ?>"><span><?php echo e(trans('header.exchange')); ?></span></a></li>
+                  <li class="level0 nav-6 level-top"><a href="<?php echo e(url('auction')); ?>"><span><?php echo e(trans('header.auction')); ?></span></a></li>
+                  <li class="level0 nav-6 level-top"><a href="<?php echo e(url('travel')); ?>"><span><?php echo e(trans('header.travel')); ?></span></a></li>
+                  <li class="level0 nav-6 level-top"><a href="<?php echo e(url('eveniment')); ?>"><span><?php echo e(trans('header.eveniment')); ?></span></a></li>
+                  <li class="level0 nav-6 level-top"><a href="<?php echo e(url('contact')); ?>"><span><?php echo e(trans('header.contact')); ?></span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!--navmenu--> 
+      </div>
+      <!--End mobile-menu -->
+      <ul id="nav" class="hidden-xs">
+        <li class="level0"  id="<?php echo e(Active::pattern('/', 'current-page')); ?>"><a href="<?php echo e(url('/')); ?>"><span><?php echo e(trans('header.home')); ?></span> </a></li>        
+        <li class="level0" id="<?php echo e(Active::pattern('shop', 'current-page')); ?>"><a href="<?php echo e(url('shop')); ?>"><span><?php echo e(trans('header.shop')); ?></span> </a></li>
+        <li class="level0" id="<?php echo e(Active::pattern('echange', 'current-page')); ?>"><a href="<?php echo e(url('echange')); ?>"><span><?php echo e(trans('header.exchange')); ?></span></a></li>
+        <li class="level0" id="<?php echo e(Active::pattern('auction', 'current-page')); ?>"><a href="<?php echo e(url('auction')); ?>"><span><?php echo e(trans('header.auction')); ?></span></a></li>
+        <li class="level0" id="<?php echo e(Active::pattern('travel', 'current-page')); ?>"><a href="<?php echo e(url('travel')); ?>"><span><?php echo e(trans('header.travel')); ?></span></a></li>
+        <li class="level0" id="<?php echo e(Active::pattern('eveniment', 'current-page')); ?>"><a href="<?php echo e(url('eveniment')); ?>"><span><?php echo e(trans('header.eveniment')); ?></span></a></li>
+        <li class="level0" id="<?php echo e(Active::pattern('contact', 'current-page')); ?>"><a href="<?php echo e(url('contact')); ?>"><span><?php echo e(trans('header.contact')); ?></span></a></li>
+      </ul>
+      <!-- Search-col -->
+      <div class="search-box">
+        <form action="/" method="get" id="search_mini_form" role="search">
+          <input type="text" placeholder="<?php echo e(trans('header.search')); ?> ..." value="" name="search" id="search">
+          <button id="submit-button" class="button-common search-btn-bg"><span class="searchIconNew"></span></button>
+        </form>
+      </div>
+      <!-- End Search-col --> 
+    </div>
+  </div>
+</div>

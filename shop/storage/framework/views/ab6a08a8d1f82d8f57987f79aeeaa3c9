@@ -1,0 +1,184 @@
+<?php $__env->startSection('content'); ?>
+
+<section class="main-col">
+  <div class="container">
+  <div class="best-seller-pro">
+      <div class="slider-items-products">
+        <div class="new_title center">
+          <h2><?php echo e(trans('shop.featured_products')); ?></h2>
+        </div>
+        <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6"> 
+            <?php foreach($featured_products as $product): ?>
+            <!-- Item -->
+            <div class="item">
+              <div class="col-item">
+                <div class="item-inner">
+                  <div class="product-block">
+                    <div class="product-image"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>">
+                      <figure class="product-display">
+                        <img src="<?php echo e(asset($product->thumbnail)); ?>" class="product-mainpic" alt="" style="display: block;"> <img class="product-secondpic" alt="" src="<?php echo e(asset($product->thumbnail_back)); ?>"> </figure>
+                      </a> </div>
+                    <div class="product-meta">
+                      <div class="product-action"> 
+                      <?php echo Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="addcart"> <button type="submit" id="cartBtn">&nbsp;<i class="icon-shopping-cart"> </i><?php echo e(trans('shop.add_to_cart')); ?></button> </a>
+                      <?php echo Form::close(); ?>
+
+                      <?php echo Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')); ?>
+
+                      <a class="wishlist" ><button type="submit" id="cartBtn">&nbsp;<i class="icon-heart">&nbsp;</i> </button></a>
+                      <?php echo Form::close(); ?>
+
+                        <a class="quickview" href="#"> <i class="icon-zoom">&nbsp;</i> </a> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>" title="Sample Product"><?php echo e($product->title); ?></a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box"> <span class="regular-price"> <span class="price">CHF <?php echo e($product->price); ?></span> </span> </div>
+                        </div>
+                        <div class="rating">
+                          <div class="ratings">
+                            <div class="rating-box">
+                              <div class="rating" style="width:<?php echo e($product->rating_cache*20); ?>%"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Item --> 
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="featured-pro">
+      <div class="slider-items-products">
+        <div class="new_title center">
+          <h2><?php echo e(trans('shop.most_viewed')); ?></h2>
+        </div>
+        <div id="featured-product-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6"> 
+            <?php foreach($most_viewed_products as $product): ?>
+            <div class="item">
+              <div class="col-item">
+                <div class="item-inner">
+                  <div class="product-block">
+                    <div class="product-image"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>">
+                      <figure class="product-display">
+                        <img src="<?php echo e(asset($product->thumbnail)); ?>" class="product-mainpic" alt="" style="display: block;"> <img class="product-secondpic" alt="" src="<?php echo e(asset($product->thumbnail_back)); ?>"> </figure>
+                      </a> </div>
+                    <div class="product-meta">
+                      <div class="product-action">
+                       <?php echo Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="addcart"> <button type="submit" id="cartBtn">&nbsp;<i class="icon-shopping-cart"> </i><?php echo e(trans('shop.add_to_cart')); ?></button> </a>
+                        <?php echo Form::close(); ?>
+
+                        <?php echo Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="wishlist" ><button type="submit" id="cartBtn">&nbsp;<i class="icon-heart">&nbsp;</i> </button></a>
+                        <?php echo Form::close(); ?>
+
+                        <a class="quickview" href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>"> <i class="icon-zoom">&nbsp;</i> </a> </div>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>" title="Sample Product"><?php echo e($product->title); ?></a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box"> <span class="regular-price"> <span class="price">CHF <?php echo e($product->price); ?></span> </span> </div>
+                        </div>
+                        <div class="rating">
+                          <div class="ratings">
+                            <div class="rating-box">
+                            
+                              <div class="rating" style="width:<?php echo e($product->rating_cache*20); ?>%"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endforeach; ?>
+            <!-- End Item -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="featured-pro">
+      <div class="slider-items-products">
+        <div class="new_title center">
+          <h2><?php echo e(trans('shop.newproducts')); ?></h2>
+        </div>
+        <div id="featured-product-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6"> 
+            <?php foreach($products as $product): ?>
+            <div class="item">
+              <div class="col-item">
+                <div class="item-inner">
+                  <div class="product-block">
+                    <div class="product-image"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>">
+                      <figure class="product-display">
+                        <img src="<?php echo e(asset($product->thumbnail)); ?>" class="product-mainpic" alt="" style="display: block;"> <img class="product-secondpic" alt="" src="<?php echo e(asset($product->thumbnail_back)); ?>"> </figure>
+                      </a> </div>
+                    <div class="product-meta">
+                      <div class="product-action">
+              			   <?php echo Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="addcart"> <button type="submit" id="cartBtn">&nbsp;<i class="icon-shopping-cart"> </i><?php echo e(trans('shop.add_to_cart')); ?></button> </a>
+                        <?php echo Form::close(); ?>
+
+                        <?php echo Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="wishlist" ><button type="submit" id="cartBtn">&nbsp;<i class="icon-heart">&nbsp;</i> </button></a>
+                        <?php echo Form::close(); ?>
+
+                        <a class="quickview" href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>"> <i class="icon-zoom">&nbsp;</i> </a> </div>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>" title="Sample Product"><?php echo e($product->title); ?></a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box"> <span class="regular-price"> <span class="price">CHF <?php echo e($product->price); ?></span> </span> </div>
+                        </div>
+                        <div class="rating">
+                          <div class="ratings">
+                            <div class="rating-box">
+                            
+                              <div class="rating" style="width:<?php echo e($product->rating_cache*20); ?>%"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endforeach; ?>
+            <!-- End Item -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,75 @@
+<?php $__env->startSection('style'); ?>
+    <link href="<?php echo e(asset('/css/demo_page.css')); ?>" />
+    <link href="<?php echo e(asset('/css/demo_table.css')); ?>" />
+    <link href="<?php echo e(asset('/css/DT_bootstrap.css')); ?>" />
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="page-content" style="margin-top:0px;overflow: auto;">
+        <div class=" col-main col-lg-12">
+
+
+                <header class="panel-heading" style="padding-left: 0px;">
+                 <span style="padding-right: 10px;"><?php echo e(Lang::get('app.Adresess')); ?></span>  <?php echo link_to_route('add_useradress', Lang::get('app.Add Adress'), array(), array('class' => 'btn btn-primary btn-xs')); ?>
+
+                </header><br/><br/>
+            <?php if( Session::has( 'success' )): ?>
+                <div class="alert alert-success"><?php echo e(Session::get( 'success' )); ?></div>
+                <?php elseif( Session::has( 'warning' )): ?>
+                <?php echo e(Session::get( 'warning' )); ?> <!-- here to 'withWarning()' -->
+            <?php endif; ?>
+                    <div class="adv-table">
+                        <table  class="display table table-bordered table-striped" id="example">
+                            <thead>
+                            <tr>
+                                <th><?php echo e(Lang::get('app.Adress Name')); ?></th>
+                                <th><?php echo e(Lang::get('app.Tel')); ?></th>
+                                <th><?php echo e(Lang::get('app.Mobile')); ?></th>
+                                <th><?php echo e(Lang::get('app.Email')); ?></th>
+                                <th><?php echo e(Lang::get('app.Web')); ?></th>
+                                <th><?php echo e(Lang::get('app.Adressline')); ?></th>
+                                <th><?php echo e(Lang::get('app.Created at')); ?></th>
+                                <th><?php echo e(Lang::get('app.Make Default adress')); ?></th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($adress as $a): ?>
+                                <tr>
+                                    <td ><?php echo e($a->name); ?></td>
+                                    <td ><?php echo e($a->tel); ?></td>
+                                    <td ><?php echo e($a->mobile); ?></td>
+                                    <td ><?php echo e($a->email); ?></td>
+                                    <td ><?php echo e($a->web); ?></td>
+                                    <td ><?php echo e($a->adress_line); ?></td>
+                                    <td><span class="label label-info"><?php echo e(Carbon::createFromTimestamp(strtotime($a->created_at))->diffForHumans()); ?></span></td>
+                                    <td>  <?php echo Form::open(array('method' => 'POST', 'route' => array('defaultadress', $a->id))); ?>
+
+                                        <?php echo Form::submit(Lang::get('app.Default Adress'), array('class' => 'btn btn-success btn-xs')); ?>
+
+                                        <?php echo Form::close(); ?></td>
+                                    <td><?php echo link_to_route('edit_adress', 'Edit', array($a->id), array('class' => 'btn btn-warning btn-xs')); ?></td>
+                                    <td>
+                                        <?php echo Form::open(array('method' => 'DELETE', 'route' => array('adressdelete', $a->id))); ?>
+
+                                        <?php echo Form::submit('Delete', array('class' => 'btn btn-danger btn-xs')); ?>
+
+                                        <?php echo Form::close(); ?>
+
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+        </div>
+            </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('new_template.client.layouts.usernav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

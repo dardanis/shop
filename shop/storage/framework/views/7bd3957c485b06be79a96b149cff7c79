@@ -1,0 +1,118 @@
+<?php $__env->startSection('content'); ?>
+<section class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">
+      <div class="col-main col-sm-12">
+        <div class="multiple_addresses">
+          <div class="page-title_multi">
+            <h2>Add new ad</h2>
+          </div>
+
+           <div class="addresses">
+           <?php echo $__env->make('errors_messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+           	<div id="checkout-step-billing" class="step a-item">
+              <form class="form-horizontal" role="form" method="POST" files="true" action="<?php echo e(url('client/ads')); ?>" enctype="multipart/form-data">
+              <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                <fieldset class="group-select">
+                  <ul>
+                    <li id="billing-new-address-form">
+                      <fieldset>
+                        <ul>
+                          <li>
+                            <div class="customer-name">
+                              <div class="input-box name-firstname">
+                                <label>Name<span class="required">*</span></label>
+                                <br />
+                                <input type="text" id="billing:firstname" name="name" value="<?php echo e(old('name')); ?>" title="First Name" class="input-text" />
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="customer-name">
+                              <div class="input-box name-firstname">
+                                <label>Advertisment Type<span class="required">*</span></label>
+                                <br />
+                                <?php echo Form::select('types', $adtypes, null, ['id' => 'ship_0_43_address']); ?>
+
+                              </div>
+                            </div>
+                          </li>
+                          <li style="display:none;" id="position">
+                            <div class="customer-name">
+                              <div class="input-box name-firstname">
+                                <label>Advertisment Position<span class="required">*</span></label>
+                                <br />
+                                <?php echo Form::select('position', $adpositions, null, ['id' => 'ship_0_43_address']); ?>
+
+                              </div>
+                            </div>
+                          </li>
+                          <li style="display:none;" id="product">
+                            <div class="customer-name">
+                              <div class="input-box name-firstname">
+                                <label>Product<span class="required">*</span></label>
+                                <br />
+                                <?php echo Form::select('product', $products, null, ['id' => 'ship_0_43_address']); ?>
+
+                              </div>
+                            </div>
+                          </li>
+                          <li style="display:none;" id="image">
+                            <div class="customer-name">
+                              <div class="input-box name-firstname">
+                                <label>Image(Please upload image to specified size : )<span class="required">*</span></label>
+                                <br />
+                                <?php echo Form::file('image'); ?>
+
+                              </div>
+                            </div>
+                          </li>
+                         
+                        </ul>
+                      </fieldset>
+                    </li>
+                  </ul>
+                  <p class="require"><em class="required">* </em><?php echo e(trans('shop.required')); ?></p>
+                  <button type="submit" class="button continue" ><span>Add ad</span></button>
+                </fieldset>
+              </form>
+            </div>
+           </div>
+        </div>
+      </div>
+     </div>
+   </div>
+</section>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+	<script type="text/javascript">
+		if ($('select[name="types"]').val()==2) {
+                $('#position').show();
+                $('#image').show();
+            }
+            $('select[name="types"]').change(function(){
+                if($(this).val()==2){
+                    $('#position').show();
+                    $('#image').show();
+                }else{
+                    $('#position').hide();
+                    $('#image').hide();
+                }
+            });
+
+		if ($('select[name="types"]').val()==1) {
+                $('#product').show();
+            }
+            $('select[name="types"]').change(function(){
+                if($(this).val()==1){
+                    $('#product').show();
+
+                }else{
+                    $('#product').hide();
+                }
+        });
+	</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

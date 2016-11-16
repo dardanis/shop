@@ -1,0 +1,54 @@
+<?php $__env->startSection('content'); ?>
+<section class="main-container col1-layout">
+  <div class="main container">
+    <div class="account-login">
+      <div class="page-title">
+        <h2>Login or Create an Account</h2>
+      </div>
+      <fieldset class="col2-set">
+        <legend>Login or Create an Account</legend>
+        <div class="col-1 new-users"><strong>New Customers</strong>
+          <div class="content">
+            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+            <div class="buttons-set">
+              <a href="<?php echo e(url('register')); ?>"><button class="button create-account"><span>Register as Client</span></button></a>
+              <a href="<?php echo e(url('business/register')); ?>"><button class="button create-account"><span>Register as Bussines</span></button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 registered-users"><strong>Registered Customers</strong>
+          <div class="content">
+            <p>If you have an account with us, please log in.</p>
+            <ul class="form-list">
+            <form class="form-signin" role="form" method="POST" action="login">
+            <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+              <li>
+                <label for="email">Email Address <span class="required">*</span></label>
+                <br>
+                <input type="text" title="Email Address" class="input-text" id="email" name="email" value="<?php echo e(old('email')); ?>" autofocus>
+              </li>
+              <li>
+                <label for="pass">Password <span class="required">*</span></label>
+                <br>
+                <input type="password" title="Password" id="pass" class="input-text" name="password">
+              </li>
+            </ul>
+            <p class="required">* Required Fields</p>
+            <div class="buttons-set">
+              <button id="send2" name="send" type="submit" class="button login"><span>Login</span></button><br>              
+              <input type="checkbox"  name="remember"> Remember me
+              <a class="forgot-word" href="#">Forgot Your Password?</a> </div>
+          </div>
+          </form>
+        </div>
+      </fieldset>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

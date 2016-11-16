@@ -1,0 +1,31 @@
+<?php $__env->startSection('content'); ?>
+    <div class="row" style="margin-top: 100px">
+        <div class="col-lg-12">
+            <div class="col-md-3">
+                <?php echo $__env->make('common/menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+            <div class="col-md-9">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <?php echo e(trans('shop.edit_product')); ?>
+
+                    </header>
+                    <div class="panel-body">
+                        <?php echo Form::model($product, array('class'=>'form-horizontal tasi-form','method' => 'PATCH','files'=>true ,'route' => array('admin_product_put', $product->id))); ?>
+
+                        <?php echo $__env->make('errors/form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <?php echo $__env->make('common/producteditform',['SubmitbuttonText'=>trans('shop.save')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                        <?php echo Form::close(); ?>
+
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('new', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

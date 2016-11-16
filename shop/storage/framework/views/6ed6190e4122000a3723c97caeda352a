@@ -1,0 +1,59 @@
+<?php $user = App\User::find(Auth::user()->id);
+$user_role = $user['role']['name']; ?>
+
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+       <?php echo $__env->make('common/breadcrumbs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+    <div class="col-md-3 profile-left">
+        <?php echo $__env->make('common.left_myaccount', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+    <div class="col-md-9">
+        <div class="row" style="margin-bottom:20px;">
+            <ul class="progressbar">
+
+                <li class="completed"><a href="/edit/<?php echo $slug;?>/<?php echo $id;?>" style="color:#E28D33 !important;"><?php echo e(Lang::get('app.Basic Info')); ?></a></li>
+                <li class="completed"><a href="/product/product_attributes/<?php echo $slug;?>/<?php echo $id;?>"><?php echo e(Lang::get('app.Extra Info')); ?></a></li>
+                <li class="completed"><a href="/product/images/<?php echo $slug;?>/<?php echo $id;?>"><?php echo e(Lang::get('app.Gallery')); ?></a></li>
+                <li class="completed"><a href="/product/create/adress/<?php echo $slug;?>/<?php echo $id;?>"><?php echo e(Lang::get('app.Adress')); ?></a></li>
+            </ul>
+
+        </div>
+        <div class="row profile-products">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title"> <?php echo e(Lang::get("app.Edit Product")); ?></div>
+                    </div>
+                <div class="panel-body" >
+                    <?php if( Session::has( 'success' )): ?>
+                        <div class="alert alert-success"><?php echo e(Session::get( 'success' )); ?></div>
+                        <?php elseif( Session::has( 'warning' )): ?>
+                        <?php echo e(Session::get( 'warning' )); ?> <!-- here to 'withWarning()' -->
+                    <?php endif; ?>
+
+                        <?php echo Form::model($product, array('class'=>'form-horizontal tasi-form','method' => 'PATCH','files'=>true ,'route' => array('product_put',$product->slug, $product->id))); ?>
+
+                        <?php echo $__env->make('errors/form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <?php echo $__env->make('common/producteditform',['SubmitbuttonText'=>Lang::get('app.Save')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <?php echo Form::close(); ?>
+
+                    </div>
+</div>
+
+    </div>
+
+
+
+    </div>
+</div>
+    <?php $__env->stopSection(); ?>
+<style>
+    .usernav .glyphicon{
+        padding-top: 0px !important;
+    }
+</style>
+
+<?php echo $__env->make($user_role=='admin' ? 'new' : 'new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,158 @@
+<?php    $user = App\User::find(Auth::user()->id);?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <?php echo $__env->make('common/breadcrumbs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+        <div class="col-md-3 profile-left">
+            <?php echo $__env->make('common.left_myaccount', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+
+        <div class="col-md-9">
+        <div class="row profile-products">
+            <div class="panel panel-default">
+                <div class="panel-heading">Change profile</div>
+                <div class="panel-body">
+
+                    <?php if(session()->has('success')): ?>
+                        <div class="alert alert-success alert-block fade in">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <h4>
+                                <strong>Success.</strong>
+                            </h4>
+
+                            <p><?php echo session('success'); ?></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if(session()->has('error')): ?>
+                        <div class="alert alert-block alert-danger fade in">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <h4>
+                                Error
+                            </h4>
+
+                            <p><?php echo session('error'); ?></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if($errors->any()): ?>
+                        <div class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <ul>
+                                <?php foreach($errors->all() as $error): ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                    <div class="panel-body bio-graph-info">
+                        <?php echo Form::model($user, array('class'=>'form-horizontal tasi-form','method' => 'PATCH', 'files'=>'true','route' => array('edit_profile'))); ?>
+
+                        <div class="form-group <?php if($errors->has('avatar')): ?> has-error <?php endif; ?>">
+                            <label class="col-sm-2 col-sm-2 control-label">Avatar</label>
+                            <div class="col-sm-10">
+                                <div class="fileupload-new thumbnail" style="width: 200px; height: 200px;">
+                                    <img src="/<?php echo e($user->profile); ?>" alt="" id="preview_profile" src="#" style="max-height:190px;max-width:180px;" />
+                                </div>
+                                <input id="profile" name="profile" type="file" onchange="profilechange(this)"; />
+                            </div>
+                        </div>
+                        <div class="form-group <?php if($errors->has('name')): ?> has-error <?php endif; ?>">
+                            <label class="col-sm-2 col-sm-2 control-label">First Name</label>
+                            <div class="col-sm-6">
+                                <?php echo Form::text('name', $user->name, array('class' => 'form-control')); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group <?php if($errors->has('lastname')): ?> has-error <?php endif; ?>">
+                            <label class="col-sm-2 col-sm-2 control-label">Last name</label>
+                            <div class="col-sm-6">
+                                <?php echo Form::text('lastname', $user->lastname, array('class' => 'form-control')); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group <?php if($errors->has('email')): ?> has-error <?php endif; ?>">
+                            <label class="col-sm-2 col-sm-2 control-label">Email</label>
+                            <div class="col-sm-6">
+                                <?php echo Form::text('email', $user->email, array('class' => 'form-control')); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group <?php if($errors->has('username')): ?> has-error <?php endif; ?>">
+                            <label class="col-sm-2 col-sm-2 control-label">Username</label>
+                            <div class="col-sm-6">
+                                <?php echo Form::text('username', $user->username, array('class' => 'form-control')); ?>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-offset-6 col-md-6">
+                            <div class="form-group">
+
+                                    <div class="col-md-6">
+                                        <a href="/profile" class="btn btn-default btn-default-links"><?php echo e(Lang::get('app.Cancel')); ?></a>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success"><?php echo e(Lang::get('app.Save')); ?></button>
+                                    </div>
+                            </div>
+                        </div>
+                        <?php echo Form::close(); ?>
+
+                    </div>
+                </div></div>
+
+            </div>
+            <div class="row profile-products">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Change password</div>
+                        <div class="panel-body">
+
+                            <?php echo Form::model($user, array('class'=>'form-horizontal tasi-form','method' => 'PATCH','route' => array('change_password'))); ?>
+
+                            <div class="form-group <?php if($errors->has('old_password')): ?> has-error <?php endif; ?>">
+                                <label class="col-sm-2 col-sm-2 control-label">Old password</label>
+                                <div class="col-sm-6">
+                                    <input type="password"  class="form-control" name="old_password" >
+                                </div>
+                            </div>
+                            <div class="form-group <?php if($errors->has('password')): ?> has-error <?php endif; ?>">
+                                <label class="col-sm-2 col-sm-2 control-label">New password</label>
+                                <div class="col-sm-6">
+                                    <input type="password"  class="form-control" name="password">
+                                </div>
+                            </div>
+                            <div class="form-group <?php if($errors->has('password_again')): ?> has-error <?php endif; ?>">
+                                <label class="col-sm-2 col-sm-2 control-label">Confirm password</label>
+                                <div class="col-sm-6">
+                                    <input type="password"  class="form-control" name="password_again" >
+                                </div>
+                            </div>
+                            <div class="col-md-offset-6 col-md-6">
+                                <div class="form-group">
+                                        <div class="col-md-6">
+                                            <a href="/profile" class="btn btn-default btn-default-links"><?php echo e(Lang::get('app.Cancel')); ?></a>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                          <button type="submit" class="btn btn-success"><?php echo e(Lang::get('app.Save')); ?></button>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <?php echo Form::close(); ?>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+<?php $__env->stopSection(); ?>
+    <style>
+        .profile-tab a{
+            color:#E28D33 !important;
+        }
+    </style>
+
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

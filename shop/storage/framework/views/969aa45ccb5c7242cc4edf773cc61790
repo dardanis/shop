@@ -1,0 +1,66 @@
+<?php    $user = App\User::find(Auth::user()->id);?>
+
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <?php echo $__env->make('common/breadcrumbs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 user-profile-top">
+        <?php echo $__env->make('hisprofile/topuserprofile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 user-profile-top">
+            <?php echo $__env->make('hisprofile/top_links', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+    <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+
+        <div class="user-profile-top h2-custom">
+
+            <?php $addressinfo=\App\ContactInfo::where('user_id','=',$_GET['user_id'])->where('in_products','=',0)->get();?>
+
+            <h2 style="padding-top:20px;text-align: center;"><?php echo e(Lang::get('app.Informations')); ?></h2>
+            <p style="margin-left: 10px;"><?php echo e(Lang::get('app.Adresse')); ?>: </p>
+            <div class="profile-informations" style="margin-left: 20px;">
+                <?php foreach($addressinfo as $ai){?>
+                <p style="font-weight:bold;"><?php echo $ai->street;?> <br/>
+                    <?php echo $ai->zip;?><br/>
+                    <?php echo $ai->location;?><br/>
+                    <?php echo $ai->payment;?>
+
+
+                </p>
+                <?php } ?>
+
+            </div>
+            <p  style="margin-left: 10px;"> <?php echo e(Lang::get('app.Contact')); ?>:</p>
+            <div class="profile-informations"  style="margin-left: 20px;">
+                <?php foreach($addressinfo as $ai){?>
+                <p style="font-weight:bold;"><?php echo $ai->name; ?> <?php echo $ai->last_name;?> <br/>
+                    <?php echo $ai->profession;?><br/>
+                    <?php echo $ai->email;?><br/>
+
+                </p>
+                <?php } ?>
+
+            </div>
+        </div>
+        <div class="user-profile-top h2-custom">
+          <?php echo $__env->make('hisprofile/products_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+
+        <?php echo $__env->make('hisprofile/listoffers', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+    </div>
+    <?php $__env->stopSection(); ?>
+<style>
+    .basic-top-link{
+        color:#E28D33 !important;
+    }
+</style>
+
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

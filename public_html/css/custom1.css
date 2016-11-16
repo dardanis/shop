@@ -1,0 +1,508 @@
+/* Custom Css goes here */
+header{
+    height: 77px;
+}
+.catalog .has-submenu .submenu + .submenu{
+    left: 225px;
+    border-left: none;
+}
+.catalog .has-submenu .submenu + .submenu + .submenu{
+    left: 450px;
+}
+@media (max-width: 978px){
+    .catalog .submenu{
+        left: 0 !important;
+    }
+}
+.inner-page-cat .row{
+    margin: 0 !important;
+}
+.inner-page-cat .row section label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 8px;
+    position: relative;
+}
+.inner-page-cat .row section label .icheckbox{
+    display: block;
+    width: 100%;
+    height: 28px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    white-space: nowrap;
+}
+.inner-page-cat .row section label:hover .icheckbox{
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(255,170,0,0.8);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(255,170,0,0.8);
+    box-shadow: 0px 0px 4px 1px rgba(255,170,0,0.8);
+}
+.inner-page-cat .row section label .icheckbox.checked{
+    border-color: rgba(255,170,0,0.8);
+}
+.toolbar .cart-btn > .btn{
+    padding: 33px 0 0 0;
+}
+header .search-form button[type=submit]{
+    position: absolute;
+    right: 70px;
+    top: 48px;
+    padding: 10px 10px 5px;
+}
+header .search-form .close-search{
+    top: 58px;
+}
+header .search-form.open{
+    padding-bottom: 24px;
+}
+.small-header .search-form button[type=submit]{
+    top: 15px;
+}
+.toolbar .search-btn{
+    padding: 11px 0 0 0;
+}
+header .search-form .container{
+    padding-right: 120px;
+}
+
+.magazine{
+
+}
+.menu .catalog li .submenu{
+    width: inherit;
+}
+
+.magazine .post {
+    margin-bottom: 48px;
+}
+.magazine .post .title a {
+    -webkit-transition: border 0.3s ease;
+    -moz-transition: border 0.3s ease;
+    transition: border 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+.magazine .post .title:hover a {
+    text-decoration: none;
+    border-bottom: 1px solid #ffaa00;
+}
+.magazine .post img {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 24px;
+}
+@media only screen and (max-width: 768px) {
+    .magazine .post p {
+        font-size: 0.875em;
+    }
+}
+.magazine .post footer .btn {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+@media only screen and (max-width: 768px) {
+    .magazine .post footer .btn {
+        float: none;
+    }
+}
+.magazine .post footer .share {
+    display: block;
+    float: left;
+    padding-top: 5px;
+}
+@media only screen and (max-width: 768px) {
+    .magazine .post footer .share {
+        float: none;
+    }
+}
+.magazine .post footer .share a {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+.magazine .post footer .share a:hover {
+    color: #1f89b4;
+}
+.magazine .post footer .meta {
+    display: block;
+    padding: 15px 0 0 0;
+    list-style: none;
+    float: right;
+    text-align: right;
+    font-weight: 500;
+}
+@media only screen and (max-width: 768px) {
+    .magazine .post footer .meta {
+        float: none;
+        text-align: left;
+    }
+}
+.magazine .post footer .meta li {
+    display: inline-block;
+    margin-left: 15px;
+}
+@media only screen and (max-width: 768px) {
+    .magazine .post footer .meta li {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+}
+.magazine .post footer .meta li i {
+    margin-right: 5px;
+}
+.magazine .post footer:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+.magazine .comments-block {
+    margin-bottom: 48px;
+}
+.footer p{
+    line-height: 1.5;
+}
+.catalog-grid .tile > a {
+    display: block;
+    overflow: hidden;
+    height: 285px;
+}
+.menu {
+    background: #2f343b;
+}
+.small-header .right-bg,
+header .right-bg,
+header .search-form,
+.toolbar {
+    background: #ffaa00;
+    height:160px;
+    padding:0px;
+}
+.toolbar .middle-btns a,
+.toolbar .middle-btns button,
+.toolbar .middle-btns div{
+    height: 31px;
+    padding: 16px 10px 0 13px;
+    text-align: center;
+    width: inherit;
+    margin-left: 12px;
+    margin-bottom: 10px;
+}
+.toolbar .middle-btns div{
+    margin-bottom: 12px;
+    font-weight: 300;
+    font-size: 1em;
+    padding: 5px 0 0;
+    position: relative;
+    z-index: 9;
+}
+.toolbar .middle-btns div:hover span{
+    color: #2ba8db !important
+}
+.toolbar .middle-btns div div{
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 27px;
+    height: 128px !important;
+    margin: 0;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #fff;
+    display: none;
+}
+
+.toolbar .middle-btns div:hover div{
+    display: block;
+}
+.toolbar .middle-btns div div a{
+    margin: 0;
+}
+.toolbar .middle-btns div a:hover{
+    color: #2ba8db !important;
+}
+@media screen and (max-width: 640px){
+    header .toolbar a {
+        width: 70px !important;
+        height: 30px !important;
+        padding: 16px 0 0 !important;
+    }
+    header .toolbar a span{
+        display: block;
+    }
+}
+.menu .catalog li .submenu li,
+.menu .main, .menu .catalog{
+    border-color: #ffaa00;
+}
+.menu .main li a{
+    color: #ffaa00;
+}
+.menu .catalog li:hover,
+.menu .catalog li .submenu li:hover,
+.menu .catalog li.has-submenu:hover{
+    background-color: #ffaa00;
+
+}
+.small-header .toolbar .middle-btns a,
+.small-header .toolbar .middle-btns button,
+.small-header .toolbar .middle-btns div{
+    display: none;
+}
+.category section label{
+    position: relative;
+}
+.category section label input{
+    position: absolute;
+    opacity: 0;
+    display: block;
+    width: 100%;
+    height: 30px;
+    top: 0;
+    z-index: 2;
+    left: 0;
+    cursor: pointer;
+}
+.category section label span{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
+.category section label:hover span{
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(255,170,0,1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(255,170,0,1);
+    box-shadow: 0px 0px 6px 0px rgba(255,170,0,1);
+}
+.category section label input[type=checkbox]:checked + span{
+    border-color: #ffaa00;
+}
+
+
+header .left-bg{
+    background:#F3F2F2;
+    height: 160px;
+}
+.menu{
+    background:#F3F2F2;
+    height:160px;
+}
+.menu .catalog li a{
+    color:#2ba8db
+}
+.menu .main li a{
+    color:#2ba8db
+}
+
+.small-header .right-bg, header .right-bg, header .search-form, .toolbar {
+    background: #D2D8DB;
+}
+.menu .main li:hover a, .menu .catalog li:hover a {
+    text-decoration: none;
+    color: #818F97;
+}
+.menu .catalog li:hover, .menu .catalog li .submenu li:hover, .menu .catalog li.has-submenu:hover {
+    background-color: #D2D8DB;
+}
+.menu .catalog li .submenu{
+    background: #D2D8DB;
+    border:1px solid #D2D8DB;
+}
+.menu .catalog li .submenu li, .menu .main, .menu .catalog{
+    border-color:#2ba8db;
+}
+.menu .catalog li:hover, .menu .catalog li .submenu li:hover, .menu .catalog li.has-submenu:hover {
+    background-color: #F3F2F2;
+}
+.switchers option{
+    background:black;
+    color:white;
+}
+option{
+    background:white;
+    color:black;
+}
+a.forward {
+    text-decoration: none;
+    padding: 0;
+}
+
+.btn:hover{
+    text-decoration:none;
+}
+a:hover, a:focus{
+    text-decoration:none;
+}
+.btn span{
+    font-weight:normal;
+}
+.login-wrap label{
+    margin-left:27px;
+}
+.form-control{
+    border:1px solid  #ABAEB2;
+}
+input[type=checkbox]
+{
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    padding: 10px;
+}
+.group-select ul li{
+    list-style:none;
+}
+.user-dashboard{
+    padding-top:0px;
+}
+.user-img{
+    max-height: 190px;
+    max-width: 180px;
+    min-height: 190px;
+    min-width: 267px;
+}
+.btn-delete{
+    background:none;border:none;padding-top:5px;margin-right: 10px;background-color:none !important;
+}
+.icon-delete{
+    font-size:1em !important;color:#2ba8db !important;
+}
+.stripe-button-el span{
+    top:0px;
+    background: #8ab03a !important;
+    width:100%;
+
+}
+.stripe-button-el{
+    background:#8AB040 !important;
+    padding: 0px !important;
+}
+.rating-box .rating {
+    float: left;
+    height: 15px;
+    background: url(../img/bkg_rating.png) 0 100% repeat-x;
+
+}
+.rating{
+    width:50%;
+    padding-top: 15px;
+}
+.ratings .rating-box {
+    margin-right: 8px;
+    display: inline-block;
+}
+.rating-box {
+    width: 76px;
+
+    height: 16px;
+    font-size: 0;
+    line-height: 0;
+    background: url(../img/bkg_rating.png) 0 0 repeat-x;
+    text-indent: -999em;
+    overflow: hidden;
+}
+input[type=checkbox] {
+    width: 30px
+height: 30px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 27px;
+}
+
+
+input[type=checkbox]:before {
+
+    background-color: white;
+    border:1px solid gray;
+    display: inline-block;
+    visibility: visible;
+}
+
+div.user-follow span{
+    float:left !important;
+}
+div.user-follow span.fa-plus{
+    padding-top: 4px;
+    padding-left: 5px;
+}
+div.user-follow a span:hover{
+    color:#ffaa00 !important;
+}
+.href-follow{
+    padding: 5px;
+    padding-top:2px;
+    padding-bottom: 2px;
+    font-family: inherit;
+    text-transform: none;
+    font-weight:300 !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    color:white !important;
+
+}
+.ms-view{
+    background: white !important;
+}
+.ms-container{
+    margin-top:-22px !important;
+}
+.loged_dropdown{
+    width: 100%;
+    margin-top: 12px;
+}
+.loged_dropdown a{
+    z-index: 3;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+.loged_dropdown ul li,
+.loged_dropdown ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.toolbar .loged_dropdown:hover > a,
+.toolbar .loged_dropdown > a:hover {
+    color: #2ba8db !important;
+    background: #fff;
+}
+.loged_dropdown ul{
+    max-width: 142px;
+    width: 100%;
+    display: none;
+    padding-top: 25px;
+    margin-top: -15px;
+
+    background: #fff;
+    float: right;
+    padding-bottom: 10px;
+    border-radius: 0 0 5px 5px;
+
+    border-top: 0;
+}
+.loged_dropdown ul a{
+    margin: 0;
+}
+.loged_dropdown:hover ul{
+    display: block;
+}
+.loged_dropdown ul li a:hover{
+    color: #2f343b !important;
+}

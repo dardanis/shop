@@ -1,0 +1,120 @@
+<div class="top-links">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-7"> 
+          <!-- Header Language -->
+          <form action="<?php echo e(URL::route('language-chooser')); ?>" method="post"> 
+           <!-- <div class="dropdown language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle language-switcher" href="#"> <img src="/img/english.png" alt="language"> English <span class="caret"></span> </a>
+            <ul class="dropdown-menu" role="menu">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="/img/english.png" alt="language"> English </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="/img/francais.png" alt="language"> French </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="/img/german.png" alt="language"> German </a></li>
+            </ul>
+          </div>  -->
+          <select id="locale" name="locale">
+                <option value="en">English</option>
+                <option value="de" <?php echo e(Lang::locale()==='de'? ' selected':''); ?>>German</option>
+                <option value="fr" <?php echo e(Lang::locale()==='fr'? ' selected':''); ?>>French</option>
+          </select>
+          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+          </form>
+          <!-- End Header Language --> 
+
+        </div>
+        <div class="col-lg-8 col-sm-8 col-xs-5">
+          <div class="toplinks">
+            <div class="links">
+              
+              <div class="wishlist">
+                <a title="My Wishlist" href="<?php echo e(url('wishlist')); ?>"><span class="hidden-xs"><?php echo e(trans('header.wishlist')); ?> (<?php echo e(Wishlist::getContent()->count()); ?>) </span></a>
+              </div>
+              <?php if(Auth::guest()): ?>
+                <div class="myaccount">
+                	<a href="<?php echo e(url('signup')); ?>"><span class="hidden-xs"><?php echo e(trans('header.signup')); ?></span></a>
+                </div>
+                <div class="login">
+                	<a href="<?php echo e(url('login')); ?>"><span class="hidden-xs"><?php echo e(trans('header.login')); ?></span></a>
+                </div>
+              <?php else: ?>
+                <?php if(Auth::user()->role_id==1): ?>
+                <div class="myaccount">
+                  <a title="My Account" href="<?php echo e(url('admin/dashboard')); ?>"><span class="hidden-xs"><?php echo e(trans('header.dashboard')); ?></span></a>
+                </div>
+                <?php else: ?>
+                <div class="myaccount">
+                  <a title="My Account" href="<?php echo e(url('client/dashboard')); ?>"><span class="hidden-xs"><?php echo e(trans('header.myaccount')); ?></span></a>
+                </div>
+                <?php endif; ?>
+                <div class="dropdown company hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle click-nav" href="#"> <?php echo e(Auth::user()->name); ?> <span class="caret"></span> </a>
+                <ul class="dropdown-menu" role="menu">
+                  <?php if(Auth::user()->role_id!=1): ?>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(route('myprofile')); ?>"><?php echo e(trans('header.myprofile')); ?></a></li>
+                  <?php else: ?>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(route('admin_profile')); ?>"><?php echo e(trans('header.myprofile')); ?></a></li>
+                  <?php endif; ?> 
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(url('logout')); ?>"><?php echo e(trans('header.logout')); ?></a></li>
+                </ul>
+              </div>
+              <?php endif; ?>
+            </div>
+            <!-- links --> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-12"> 
+          <!-- Header Logo -->
+          <div class="logo">
+           <a href="<?php echo e(url('/')); ?>" id="logo">LOGO Here</a>
+          </div>
+          <!-- End Header Logo --> 
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+          <div class="top-cart-contain">
+            <div class="mini-cart">
+              <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="shopping_cart.html"><span><?php echo e(trans('header.cart')); ?> (<?php echo e(Cart::getContent()->count()); ?>)</span></a></div>
+              <div>
+                <div style="display: none;" class="top-cart-content arrow_box">				
+        				<?php if(count(Cart::getContent())>0): ?>
+        					<div class="block-subtitle"><?php echo e(trans('header.recentlyadded')); ?></div>
+        					<ul id="cart-sidebar" style="margin:0;" class="mini-products-list">
+        					<?php foreach(Cart::getContent() as $product): ?>
+        					<li class="item odd">
+        						<a href="#" class="product-image"><img src="<?php echo e(asset($product->attributes->image)); ?>" width="55"></a>
+        						<div class="product_details">
+        						<?php echo Form::open(array('method' => 'DELETE', 'route' => array('cart.delete', $product->id))); ?>
+
+                    <a > <button type="submit" class="btn-remove1" ></button></a>
+        						<?php echo Form::close(); ?>
+
+        					    <p class="product-name"><?php echo e($product->name); ?></p>
+        					    <strong><?php echo e($product->quantity); ?></strong> x <span class="price">CHF <?php echo e($product->price); ?></span> </div>
+        					</li>					
+        					<?php endforeach; ?>
+        					</ul>
+        	         <div class="top-subtotal"><?php echo e(trans('header.subtotal')); ?>: <span class="price">CHF  <?php echo e(Cart::getTotal()); ?></span></div>
+        	          <div class="actions">
+                      <button class="btn-checkout" type="button"><span><?php echo e(trans('header.checkout')); ?></span></button>
+        	            <a href="<?php echo e(url('/cart')); ?>" class="view-cart" type="button"><span><?php echo e(trans('header.viewcart')); ?></span></a>
+        	        	</div>
+                		<?php else: ?>
+                			<div class="block-subtitle"><?php echo e(trans('header.noproducts')); ?></div>
+            			<?php endif; ?>
+                </div>
+              </div>
+            </div>
+            <div id="ajaxconfig_info" style="display:none"> <a href="#/"></a>
+              <input value="" type="hidden">
+              <input id="enable_module" value="1" type="hidden">
+              <input class="effect_to_cart" value="1" type="hidden">
+              <input class="title_shopping_cart" value="Go to shopping cart" type="hidden">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

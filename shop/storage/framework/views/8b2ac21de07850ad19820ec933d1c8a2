@@ -1,0 +1,172 @@
+<?php $__env->startSection('content'); ?>
+<div class="slider-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-3 col-xs-12">
+      <?php echo $__env->make('new_template.client.includes.sideCategories', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+      <div class="col-lg-9 col-sm-9 col-xs-12">
+        <div class="the-slideshow slideshow-wrapper">
+          <ul style="overflow: hidden;" class="slideshow">
+            <li class="slide">
+              <p><a href="#"> <img src="/img/banner-img.jpg" alt=""></a></p>
+              <div class="caption light1 top-right">
+                <div class="caption-inner">
+                  <p class="heading">Women Collection 2014</p>
+                  <div class="badge"><em>up to</em> <br>
+                    70% <span>OFF</span></div>
+                  <p class="heading1">Lorem Ipsum is simply dummy text of the printing and typesetting industry  it has been the industry's standard dummy</p>
+                  <p class="intro-btn"><a  href="#" title="Click to see all features">Shop Now</a> </p>
+                </div>
+              </div>
+            </li>
+            <li class="slide">
+              <p><a href="#"> <img src="/img/banner-img1.jpg" alt=""></a></p>
+              <div class="caption light top-left">
+                <div class="caption-inner">
+                  <p class="normal-text">Collection 2014</p>
+                  <h2 class="heading permanent">You like this theme</h2>
+                  <p class="normal-text1">tristique senectus </p>
+                  <p class="intro-btn"><a  href="#" title="Click to see all features">Buy Now</a> </p>
+                </div>
+              </div>
+            </li>
+            <li class="slide">
+              <p><a title="#" href="#"> <img src="/img/banner-img2.jpg" alt=""> </a></p>
+              <div class="caption light2 top-right">
+                <div class="caption-inner">
+                  <p class="heading">Responsive Layout</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <a href="#" id="home-slides-prev" class="backward browse-button">previous</a> <a href="#" id="home-slides-next" class="forward browse-button">next</a>
+          <div id="home-slides-pager" class="tab-pager tab-pager-img tab-pager-ring-lgray"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="main-col">
+  <div class="container">
+  <div class="best-seller-pro">
+      <div class="slider-items-products">
+        <div class="new_title center">
+          <h2>Featured Products</h2>
+        </div>
+        <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6"> 
+            <?php foreach($featured_products as $product): ?>
+            <!-- Item -->
+            <div class="item">
+              <div class="col-item">
+                <div class="item-inner">
+                  <div class="product-block">
+                    <div class="product-image"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>">
+                      <figure class="product-display">
+                        <img src="<?php echo e(asset($product->thumbnail)); ?>" class="product-mainpic" alt="" style="display: block;"> <img class="product-secondpic" alt="" src="<?php echo e(asset($product->thumbnail_back)); ?>"> </figure>
+                      </a> </div>
+                    <div class="product-meta">
+                      <div class="product-action"> 
+                      <?php echo Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="addcart"> <button type="submit" id="cartBtn">&nbsp;<i class="icon-shopping-cart"> </i> Add to cart</button> </a>
+                      <?php echo Form::close(); ?>
+
+                      <?php echo Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')); ?>
+
+                      <a class="wishlist" ><button type="submit" id="cartBtn">&nbsp;<i class="icon-heart">&nbsp;</i> </button></a>
+                      <?php echo Form::close(); ?>
+
+                        <a class="quickview" href="#"> <i class="icon-zoom">&nbsp;</i> </a> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>" title="Sample Product"><?php echo e($product->title); ?></a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box"> <span class="regular-price"> <span class="price">CHF <?php echo e($product->price); ?></span> </span> </div>
+                        </div>
+                        <div class="rating">
+                          <div class="ratings">
+                            <div class="rating-box">
+                              <div class="rating" style="width:<?php echo e($product->rating_cache*20); ?>%"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Item --> 
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="featured-pro">
+      <div class="slider-items-products">
+        <div class="new_title center">
+          <h2><?php echo e(trans('main.newproducts')); ?></h2>
+        </div>
+        <div id="featured-product-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6"> 
+            <?php foreach($products as $product): ?>
+            <div class="item">
+              <div class="col-item">
+                <div class="item-inner">
+                  <div class="product-block">
+                    <div class="product-image"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>">
+                      <figure class="product-display">
+                        <img src="<?php echo e(asset($product->thumbnail)); ?>" class="product-mainpic" alt="" style="display: block;"> <img class="product-secondpic" alt="" src="<?php echo e(asset($product->thumbnail_back)); ?>"> </figure>
+                      </a> </div>
+                    <div class="product-meta">
+                      <div class="product-action">
+              			   <?php echo Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="addcart"> <button type="submit" id="cartBtn">&nbsp;<i class="icon-shopping-cart"> </i> Add to cart</button> </a>
+                        <?php echo Form::close(); ?>
+
+                        <?php echo Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')); ?>
+
+                        <a class="wishlist" ><button type="submit" id="cartBtn">&nbsp;<i class="icon-heart">&nbsp;</i> </button></a>
+                        <?php echo Form::close(); ?>
+
+                        <a class="quickview" href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>"> <i class="icon-zoom">&nbsp;</i> </a> </div>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a href="<?php echo e(URL::route('product_show',array($product->user->username,$product->slug))); ?>" title="Sample Product"><?php echo e($product->title); ?></a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box"> <span class="regular-price"> <span class="price">CHF <?php echo e($product->price); ?></span> </span> </div>
+                        </div>
+                        <div class="rating">
+                          <div class="ratings">
+                            <div class="rating-box">
+                            
+                              <div class="rating" style="width:<?php echo e($product->rating_cache*20); ?>%"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endforeach; ?>
+            <!-- End Item -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_template.client.layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
