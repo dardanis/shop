@@ -32,13 +32,14 @@ class ProfileController extends Controller {
 	}
 
 	public function newsfeed(){
-		$user=User::where('id','=',Auth::user()->id)->get()->first();
-		$following=UserFollow::where('follower_user_id','=',Auth::user()->id)->get();
+		$user=User::where('id','=',4)->get()->first();
+		$following=UserFollow::where('follower_user_id','=',4)->get();
+		$product = [];
 		$sort="desc";
 		foreach($following as $f){
 			$product = Product::orderBy('created_at', $sort)->where('user_id', '=', $f->follow_user_id)->get();
 		}
-		return view('newsfeed.index')->with('user',$user)->with('following',$following)->with('product',$product);
+		return view('newsfeed.index')->with('user',$user)->with('following',$following)->with('product', $product);
 	}
 
 	/**
