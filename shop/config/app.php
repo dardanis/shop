@@ -161,6 +161,7 @@ return [
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 		Barryvdh\Debugbar\ServiceProvider::class,
+		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 	],
 

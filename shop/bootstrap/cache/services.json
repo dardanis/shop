@@ -43,7 +43,8 @@
         "Alexpechkarev\\GoogleGeocoder\\GoogleGeocoderServiceProvider",
         "Torann\\GeoIP\\GeoIPServiceProvider",
         "DaveJamesMiller\\Breadcrumbs\\ServiceProvider",
-        "Barryvdh\\Debugbar\\ServiceProvider"
+        "Barryvdh\\Debugbar\\ServiceProvider",
+        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -163,7 +164,9 @@
         "Collective\\Html\\HtmlBuilder": "Collective\\Html\\HtmlServiceProvider",
         "Collective\\Html\\FormBuilder": "Collective\\Html\\HtmlServiceProvider",
         "browser-detect.parser": "hisorange\\BrowserDetect\\Provider\\BrowserDetectService",
-        "browser-detect.result": "hisorange\\BrowserDetect\\Provider\\BrowserDetectService"
+        "browser-detect.result": "hisorange\\BrowserDetect\\Provider\\BrowserDetectService",
+        "command.ide-helper.generate": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider",
+        "command.ide-helper.models": "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
@@ -178,6 +181,7 @@
         "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider": [],
         "Illuminate\\Translation\\TranslationServiceProvider": [],
         "Collective\\Html\\HtmlServiceProvider": [],
-        "hisorange\\BrowserDetect\\Provider\\BrowserDetectService": []
+        "hisorange\\BrowserDetect\\Provider\\BrowserDetectService": [],
+        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider": []
     }
 }
