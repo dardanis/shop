@@ -80,7 +80,7 @@
                                       <span class="arrow-alt"></span>
                                       <span class="timeline-icon green"></span>
                                       <span class="timeline-date">{{ Carbon::createFromTimestamp(strtotime($a->created_at))->diffForHumans() }}</span>
-                                      <p><a href="#">{{$a->user->name}}</a> {{$a->text}}</p>
+                                      <p><a href="#">{{$a->user['name']}}</a> {{$a->text}}</p>
                                   </div>
                               </div>
                           </div>
@@ -93,7 +93,7 @@
                                       <span class="arrow-alt"></span>
                                       <span class="timeline-icon red"></span>
                                       <span class="timeline-date">{{ Carbon::createFromTimestamp(strtotime($a->created_at))->diffForHumans() }}</span>
-                                      <p><a href="#">{{$a->user->name}}</a> {{$a->text}}</p>
+                                      <p><a href="#">{{$a->user['name']}}</a> {{$a->text}}</p>
                                   </div>
                               </div>
                           </div>

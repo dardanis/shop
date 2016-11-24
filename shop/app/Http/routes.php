@@ -45,7 +45,7 @@ Route::get('products/{slug}/{id}', ['as' => 'product_show', 'uses' => 'HomeContr
 Route::get('{username}/products', ['as' => 'user_products', 'uses' => 'HomeController@user_products']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 Route::post('contact', ['as' => 'contact_post', 'uses' => 'HomeController@store_contact']);
-Route::get('shop', ['as' => 'shop', 'uses' => 'HomeController@shop']);
+Route::get('shopaction', ['as' => 'shopaction', 'uses' => 'HomeController@shopaction']);
 
     Route::get('searchblog/{slug}', ['as' => 'searchblog', 'uses' => 'ProductsController@searchblog']);
     Route::get('searchotherblog/{slug}', ['as' => 'searchotherblog', 'uses' => 'ProductsController@searchotherblog']);
@@ -133,6 +133,11 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
         Route::get('/', ['as' => 'myshop', 'uses' => 'ProfileController@myshop']);
 
     });
+
+    Route::get('video', 'VideoController@index');
+
+    Route::post('video' , 'VideoController@store');
+
     Route::group(['prefix' => 'filterpricehome'], function () {
         Route::get('/', ['as' => 'filterpricehome', 'uses' => 'ProfileController@filterpricehome']);
 

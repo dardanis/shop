@@ -183,7 +183,7 @@
                     })->get();?>
 
                     <?php if(sizeof($cat)>0){?>
-                    <li   class="has-submenu" id="{{Active::pattern($t->name, 'current-page')}}"><a href="#"><span>{{ Lang::get("app.$t->name")}}</span> </a>
+                    <li   class="has-submenu" id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ $t->alias }}"><span>{{ Lang::get("app.$t->name")}}</span> </a>
                         <ul class="submenu">
                             <?php foreach($cat as $ct){?>
                             <?php $cat_id=$ct->id;?>
@@ -199,7 +199,7 @@
                         </ul>
                     </li>
                     <?php } else {?>
-                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="#"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
+                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ $t->alias }}"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
                     <?php } ?>
 
                     <?php  }?>

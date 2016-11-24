@@ -253,7 +253,7 @@ class HomeController extends Controller {
   			return \Redirect::route('contact')->with('message', 'Thanks for contacting us!');
 		}
 	}
-	public function shop(Request $request){
+	public function shopaction(Request $request){
 
 		$categories=Category::with('translations')->whereHas('products', function($q){
 			$q->where('status','!=',0);
@@ -265,7 +265,7 @@ class HomeController extends Controller {
 		if($perpage>30){
 			$perpage=6;
 		}
-		
+
 		$products=Product::orderBy('created_at',$sort)->where('status','!=',0)->paginate($perpage);
 
 		if($request->has('sort')){
@@ -273,7 +273,7 @@ class HomeController extends Controller {
 		}else if($request->has('sale')){
 			$products=Product::orderBy('price',$request->get('sale'))->where('status','!=',0)->paginate($perpage);
 		}
-		
+
 		return view('new_template.client.pages.shop')->with('products',$products)->with('categories',$categories);
 	}
 	public function echange(){
@@ -331,46 +331,68 @@ class HomeController extends Controller {
 
 
 	public function pagetype($alias){
+//		$type_id="";
+//		$category_id="";
+//		$type_alias="";
+//		$sub=array();
+//		foreach(Lang::get("app") as $label){
+//			$translation= \Illuminate\Support\Facades\DB::table('translations')->where('label', '!=',$label)->get();
+//		}
+//
+//			$categories = Category::whereHas('translations', function ($q) use ($alias) {
+//				$q->where('slug', 'like', '%' . $alias . '%');
+//
+//			})->get();
+//			foreach($categories as $c){
+//				$type_id=$c->type_id;
+//				$category_id=$c->category_id;
+//			}
+//			$product_type=$images = \Illuminate\Support\Facades\DB::table('product_types')->where('id', '=',$type_id)->get();
+//		foreach($product_type as $pt){
+//			$type_alias=$pt->alias;
+//		}
+//
+//			$sort = "desc";
+//
+//			foreach ($categories as $tn) {
+//				$tname = $tn->name;
+//				$category_id = $tn->id;
+//
+//				$sub = Subcategory::whereHas('translations', function ($q) use ($category_id) {
+//					$q->where('category_id', 'like', '%' . $category_id . '%');
+//
+//				})->get();
+//
+//			}
+//
+//			$products = Product::orderBy('created_at', $sort)->where('category_id', '=', $category_id)->paginate(6);
 
-		foreach(Lang::get("app") as $label){
-			$translation= \Illuminate\Support\Facades\DB::table('translations')->where('label', '!=',$label)->get();
-		}
+		$productType = product_type::where('alias', $alias)->first();
 
-			$categories = Category::whereHas('translations', function ($q) use ($alias) {
-				$q->where('slug', 'like', '%' . $alias . '%');
+		$product = Product::where('type_id', $productType->id)->get();
+//		dd($product);
 
-			})->get();
-			foreach($categories as $c){
-				$type_id=$c->type_id;
-				$category_id=$c->category_id;
-			}
-			$product_type=$images = \Illuminate\Support\Facades\DB::table('product_types')->where('id', '=',$type_id)->get();
-		foreach($product_type as $pt){
-			$type_alias=$pt->alias;
-		}
 
-			$sort = "desc";
-
-			foreach ($categories as $tn) {
-				$tname = $tn->name;
-				$category_id = $tn->id;
-
-				$sub = Subcategory::whereHas('translations', function ($q) use ($category_id) {
-					$q->where('category_id', 'like', '%' . $category_id . '%');
-
-				})->get();
-
-			}
-
-			$products = Product::orderBy('created_at', $sort)->where('category_id', '=', $category_id)->paginate(6);
-
-		if($type_alias=="magazine" ||$type_alias=="travel" || $type_alias=="event"){
+		if($alias == "magazine"){
 			return view('new_template.client.pages.magazine',compact('alias','categories','category_id'));
 		}
-		else{
-			$products1 = Product::orderBy('created_at', $sort)->where('category_id', '=', $category_id)->get();
-			return view('new_template.client.pages.pagetype',compact('alias','products1','sub','tname','partition'));
+		elseif($alias == 'event'){
+			return view('new_template.client.pages.event',[
+				'product' => $product,
+				'alias' => $alias
+			]);
 		}
+		elseif($alias == 'travel'){
+			return view('new_template.client.pages.travel',compact('alias','categories','category_id'));
+		}
+		elseif($alias == 'shop'){
+			return view('new_template.client.pages.shop',compact('alias','categories','category_id'));
+		}
+
+//		else{
+//			$products1 = Product::orderBy('created_at', $sort)->where('category_id', '=', $category_id)->get();
+//			return view('new_template.client.pages.pagetype',compact('alias','products1','sub','tname','partition'));
+//		}
 
 	}
 

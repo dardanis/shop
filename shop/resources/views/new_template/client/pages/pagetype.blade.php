@@ -10,15 +10,15 @@
                 <?php $count=0;?>
                 <div class="filters col-md-12" style="padding:0px">
                     <ul id="categories1" style="list-style:none; padding: 0px" class="col-md-12">
-                        @foreach ($sub->chunk(3) as $chunk)
-                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                                @foreach ($chunk as $product)
-                                    <?php  $count++;?>
-                                    <input type="checkbox" value="<?php echo $product->id;?>" id="<?php echo $count;?>"  />
-                                    {{$product->name}}<br/>
-                                @endforeach
-                            </li>
-                        @endforeach
+                        {{--@foreach ($sub->chunk(3) as $chunk)--}}
+                            {{--<li class="col-lg-4 col-md-4 col-sm-4 col-xs-6">--}}
+                                {{--@foreach ($chunk as $product)--}}
+                                    {{--<?php  $count++;?>--}}
+                                    {{--<input type="checkbox" value="<?php echo $product->id;?>" id="<?php echo $count;?>"  />--}}
+                                    {{--{{$product->name}}<br/>--}}
+                                {{--@endforeach--}}
+                            {{--</li>--}}
+                        {{--@endforeach--}}
                     </ul>
                 </div>
             </section>

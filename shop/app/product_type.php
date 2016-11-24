@@ -4,6 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class product_type extends Model {
 
+    /**
+     * Table product_type
+     */
+    protected  $table = 'product_types';
+
     public static $rules=array(
 
         'name'=>'required|min:3',
