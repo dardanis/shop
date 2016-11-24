@@ -11,13 +11,15 @@
     <li><a href="{{action('VideoController@index')}}">Videos</a></li>
 
 </ul>
-<p class="text-green-15 right"><a href="#">Ajouter un titre</a></p><?php
-/**
- * Created by PhpStorm.
- * User: Lenovo
- * Date: 08/31/16
- * Time: 12:47 PM
- */
+<p class="text-green-15 right" style="">
+    <a href="#" class="text-green-15 right" style="padding-left: 10px;text-decoration:none;" id="show-offer-create">
+        {{ Lang::get('app.Ajouter un titre') }} +
+    </a>
+
+</p>
+
+<?php
+
 ?>
 
 

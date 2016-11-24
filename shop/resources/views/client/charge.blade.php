@@ -1,4 +1,4 @@
-@extends('new_template.client.layouts.user_settings')
+{{--@extends('new_template.client.layouts.user_settings')--}}
 
 @include('stripescripts')
 @section('content')

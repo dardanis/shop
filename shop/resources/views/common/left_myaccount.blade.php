@@ -47,10 +47,11 @@
         <?php foreach($categories as $c){?>
         <?php  $category_found=$c->id;?>
         <li class="add-product-cat">
-            <a href='{{ url("/all?cat_id=$category_found") }}'>
-
-                  <?php echo $c->name;?>
-            </a>
+            <?php if($category_found==$category_id){?>
+            <a href='{{ url("/all?cat_id=$category_found") }}' style="color:#E28D33"><?php echo $c->name;?></a>
+                <?php }else { ?>
+                <a href='{{ url("/all?cat_id=$category_found") }}'><?php echo $c->name;?></a>
+                <?php }?>
             <a href="{{ url('client/add/product') }}?cat_id=<?php echo $c->id;?>" title="Add Product">
                 <?php if($category_found==$category_id){?>
                 <span class="glyphicon glyphicon-plus plus-red" aria-hidden="true" style="float:right;margin-right:20px;"></span>

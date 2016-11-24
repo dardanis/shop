@@ -69,8 +69,8 @@
                         <?php if(sizeof($adress)>0){?>
                             <div class="col-md-2 col-sm-2"></div>
                             <div class="form-group">
-                                <input type="radio" name="gender" value="male" style="margin-bottom: 3px;" <?php if($gender="male"){ echo "checked";}?>/><span style="margin-right:20px;" >{{ Lang::get('app.Male') }}</span>
-                                <input type="radio" name="gender" value="female" style="margin-bottom: 3px;" <?php if($gender="female"){ echo "checked";}?> /><span>{{ Lang::get('app.Female') }}</span>
+                                <input type="radio" name="gender" value="male"  <?php if($gender="male"){ echo "checked";}?>/><span style="margin-right:20px;" >{{ Lang::get('app.Male') }}</span>
+                                <input type="radio" name="gender" value="female" <?php if($gender="female"){ echo "checked";}?> /><span>{{ Lang::get('app.Female') }}</span>
                             </div>
                             <div class="form-group">
                                 <div class="control-label col-md-2 col-sm-2">{{ Lang::get('app.Name') }}</div>
@@ -259,17 +259,18 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <div class="form-group">
-
                                 <input type="hidden" id="token" value="{{ csrf_token() }}">
-                            <div class="col-md-3">
-                                {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-secondary')) !!}
-                            </div>
-                                <div class="col-md-3" style="float:right">
-                                    {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-success')) !!}
-                                </div>
+                                <div class="col-md-offset-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                               <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
+                                            </div>
+                                                <div class="col-md-6" >
+                                                    {!! Form::submit(Lang::get('app.Save'), array('class' => 'btn btn-success')) !!}
+                                                </div>
 
-                            </div>
+                                        </div>
+                                </div>
                         </div>
 
                         {!! Form::close() !!}

@@ -64,7 +64,7 @@
 
             <div class="col-sm-1 col-md-1 control-label"><?php echo $a->name; ?></div>
             <div class="col-sm-3">
-                {!! Form::text('name', $value_text, array('class' => 'form-control', 'placeholder' => 'Please insert Name...','name'=>"text_attribute[$a->id]")) !!}<br/>
+                {!! Form::text('name', $value_text, array('class' => 'form-control', 'placeholder' => "Please insert $a->name",'name'=>"text_attribute[$a->id]")) !!}<br/>
             </div>
 
         <?php } ?>
@@ -249,32 +249,35 @@
                         <?php }?>
 
     </div>
-    <?php $categoryattribute=\Illuminate\Support\Facades\DB::table('attributes')->where('category_id', '=',$product->category_id)->get();?>
 
-    <?php if(sizeof($categoryattribute)>0){?>
-    <div class="form-group" style="margin-top:20px;">
-        <div class="col-sm-offset-8">
-            <div class="col-md-6">
 
-                <button type="submit" class="btn btn-success">
-                    {{ Lang::get('app.Save') }}
-                </button>
 
-            </div>
 
-        </div>
-    </div>
-
-    <?php } else{?>
-    <h2>{{ Lang::get("app.There are no extra fields available")}}!!!</h2>
-    <?php } ?>
 </div>
 
 
 
 <?php } ?>
+            <?php $categoryattribute=array();?>
+            <?php $categoryattribute=\Illuminate\Support\Facades\DB::table('attributes')->where('category_id', '=',$product->category_id)->get();?>
 
+        <?php if(sizeof($categoryattribute)==0){?>
+                <p>{{ Lang::get('app.There are no attributes to fill up') }}</p>
+            <?php }?>
         </div>
+    <br/>
+    <div class="col-md-offset-6 col-md-6">
+        <div class="form-group">
+            <div class="col-md-6">
+                <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success">
+                    {{ Lang::get('app.Next') }}
+                </button>
+            </div>
+        </div>
+    </div>
 
 {!! Form::close() !!}
 @stop

@@ -183,23 +183,17 @@
                     })->get();?>
 
                     <?php if(sizeof($cat)>0){?>
-                    <li   class="has-submenu" id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ $t->alias }}"><span>{{ Lang::get("app.$t->name")}}</span> </a>
-                        <ul class="submenu">
-                            <?php foreach($cat as $ct){?>
-                            <?php $cat_id=$ct->id;?>
-                            <?php  $produ=\App\Product::whereHas('translations', function($q) use ($cat_id)
-                            {
-                                $q->where('category_id', '=', $cat_id);
-
-                            })->get();?>
-                            <?php if(sizeof($produ)>0){?>
-                            <!-- <li  id="{{Active::pattern($ct->name, 'current-page')}}"><a href="{{url("$ct->slug")}}"><span>{{ Lang::get("app.$ct->name")}}</span> </a> -->
-                            <?php } ?>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                    <?php } else {?>
-                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ $t->alias }}"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
+                    <?php if($t->alias=="Shop"){?>
+                        <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('shophome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
+                        <?php } ?>
+                        <?php if($t->alias=="Events"){?>
+                        <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('eventshome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
+                        <?php } ?>
+                        <?php if($t->alias=="Travel"){?>
+                        <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('travelhome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
+                        <?php } ?>
+                        <?php } else {?>
+                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="#"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
                     <?php } ?>
 
                     <?php  }?>
