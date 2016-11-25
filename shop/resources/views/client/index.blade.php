@@ -1,4 +1,4 @@
-@extends('new_template.client.layouts.user_settings')
+{{--@extends('new_template.client.layouts.user_settings')--}}
 @section('style')
     <link href="{{ asset('/css/demo_page.css') }}" />
     <link href="{{ asset('/css/demo_table.css') }}" />

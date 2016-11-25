@@ -157,8 +157,11 @@ return [
 		Laravel\Cashier\CashierServiceProvider::class,
 		'Chencha\Share\ShareServiceProvider',
 		'Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider',
-
+		'Torann\GeoIP\GeoIPServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+
+		Barryvdh\Debugbar\ServiceProvider::class,
+		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 	],
 
@@ -220,6 +223,7 @@ return [
 		'Share' => 'Chencha\Share\ShareFacade',
 		'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
 		'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+		'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	],
 
 ];

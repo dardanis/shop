@@ -1,7 +1,0 @@
-
-    <ul class="progressbar">
-        <li class="active"><?php echo e(Lang::get('app.Basic Info')); ?></li>
-        <li><?php echo e(Lang::get('app.Extra Info')); ?></li>
-        <li><?php echo e(Lang::get('app.Gallery')); ?></li>
-        <li><?php echo e(Lang::get('app.View Item')); ?></li>
-    </ul>
