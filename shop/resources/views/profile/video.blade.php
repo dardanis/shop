@@ -37,7 +37,7 @@
         <div class="row profile-products products-div">
             <div id="loading"></div>
 
-            @include('profile/videolist')
+            @include('profile/newvideo')
 
         </div>
     </div>

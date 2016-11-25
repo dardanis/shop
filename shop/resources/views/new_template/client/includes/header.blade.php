@@ -193,7 +193,7 @@
                         <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('travelhome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
                         <?php } ?>
                         <?php } else {?>
-                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="#"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
+                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{$t->alias}}"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
                     <?php } ?>
 
                     <?php  }?>

@@ -19,7 +19,7 @@ class VideoController extends Controller
     {
         $video = Video::all();
 
-        return view('profile.video', [
+        return view('profile.newvideo', [
             'video' => $video
         ]);
     }

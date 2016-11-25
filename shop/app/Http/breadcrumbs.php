@@ -54,6 +54,9 @@ Breadcrumbs::register('add_adress', function($breadcrumbs) {
     $breadcrumbs->parent('myshop');
     $breadcrumbs->push('Product Adress', route('add_adress'));
 });
+Breadcrumbs::register('my_wishlist', function($breadcrumbs) {
+
+});
 
 
 
