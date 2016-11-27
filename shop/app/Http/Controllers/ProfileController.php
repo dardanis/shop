@@ -20,26 +20,33 @@ class ProfileController extends Controller {
 	 */
 	public function index()
 	{
-		$user=User::where('id','=',Auth::user()->id)->get()->first();
-		$product=Product::where('user_id','=',Auth::user()->id)->get();
-		return view('profile.index')->with('user',$user)->with('product',$product);
+		if(isset($_GET['user_id'])){
+
+			$product=Product::where('user_id','=',$_GET['user_id'])->get();
+			return view('hisprofile.index')->with('user',$_GET['user_id'])->with('product',$product);
+		}else{
+			$user=User::where('id','=',Auth::user()->id)->get()->first();
+			$product=Product::where('user_id','=',Auth::user()->id)->get();
+			return view('profile.index')->with('user',$user)->with('product',$product);
+		}
+
 	}
-	public function followingprofile($userid)
+	public function followingprofile()
 	{
+		$userid=$_GET['user_id'];
 		$product=Product::where('user_id','=',$userid)->get();
 		$user=User::where('id','=',$userid)->get()->first();
 		return view('profile.followingprofile')->with('product',$product)->with('user',$user);
 	}
 
 	public function newsfeed(){
-		$user=User::where('id','=',4)->get()->first();
-		$following=UserFollow::where('follower_user_id','=',4)->get();
-		$product = [];
+		$user=User::where('id','=',Auth::user()->id)->get()->first();
+		$following=UserFollow::where('follower_user_id','=',Auth::user()->id)->get();
 		$sort="desc";
 		foreach($following as $f){
 			$product = Product::orderBy('created_at', $sort)->where('user_id', '=', $f->follow_user_id)->get();
 		}
-		return view('newsfeed.index')->with('user',$user)->with('following',$following)->with('product', $product);
+		return view('newsfeed.index')->with('user',$user)->with('following',$following)->with('product',$product);
 	}
 
 	/**
@@ -121,20 +128,29 @@ class ProfileController extends Controller {
 	public function myshop(){
 
 		$id=Auth::user()->id;
-		$category=Category::with('translations','subcategories')->whereHas('products', function($q){
-			$q->where('user_id','=',Auth::user()->id);
-		})->get();
 
-           $user=\App\User::find(Auth::user()->id);
-                $user_id=$user['id'];
+		$user_id="";
+		$category=array();
+			if(isset($_GET['user_id'])){
+				$user_id=$_GET['user_id'];
+				$category=Category::with('translations','subcategories')->whereHas('products', function($q) use($user_id){
+					$q->where('user_id','=',$user_id);
+				})->get();
+			}else{
+				$user=\App\User::find(Auth::user()->id);
+				$user_id=$user['id'];
+				$category=Category::with('translations','subcategories')->whereHas('products', function($q){
+					$q->where('user_id','=',Auth::user()->id);
+				})->get();
+			}
+
+
+
             $typesshop=\App\product_type::where('alias','=',"Shop")->get();
                 if(sizeof($typesshop)>0){
-
 					foreach($typesshop as $tsh){
 						$type_id=$tsh->id;
-
 					}
-
 			  }
 		$toprice="";
 		$fromprice="";
@@ -145,8 +161,6 @@ class ProfileController extends Controller {
 			$toprice = $_GET['toprice'];
 		}
 		if(isset($_GET['fromprice']) || isset($_GET['toprice'])){
-
-
 				$product = \App\Product::whereHas('translations', function ($q) use ($type_id,$fromprice,$toprice) {
 					$q->where('type_id', '=', $type_id);
 					if($fromprice!="" && $toprice!="") {
@@ -161,26 +175,32 @@ class ProfileController extends Controller {
 
 				})->get();
 				return view('profile.productlist')->with('category',$category)->with('product',$product);
-
-
 		}else{
 			$product = \App\Product::whereHas('translations', function ($q) use ($type_id,$user_id) {
 				$q->where('type_id', '=', $type_id);
 			})->get();
-			return view('profile.shop')->with('category',$category)->with('product',$product);
+			if(isset($_GET['user_id'])) {
+				return view('hisprofile.shop')->with('category', $category)->with('product', $product);
+			}else{
+				return view('profile.shop')->with('category', $category)->with('product', $product);
+			}
 		}
-
-
 
 	}
 
-	public function productscategory(){
-
-
-		$category=Category::with('translations','subcategories')->whereHas('products', function($q){
-			$q->where('user_id','=',Auth::user()->id);
-		})->get();
-
+	public function productscategory()
+	{
+		$category=array();
+		if(isset($_GET['user_id'])){
+			$user_id=$_GET['user_id'];
+			$category=Category::with('translations','subcategories')->whereHas('products', function($q) use($user_id){
+				$q->where('user_id','=',$user_id);
+			})->get();
+		}else{
+			$category=Category::with('translations','subcategories')->whereHas('products', function($q){
+				$q->where('user_id','=',Auth::user()->id);
+			})->get();
+		}
 
 		$category_id=$_GET['cat_id'];
 		$subcategory="";
@@ -197,7 +217,12 @@ class ProfileController extends Controller {
 					$q->where('category_id', '=', $category_id);
 				})->get();
 			}
-		return view('profile.products_category')->with('category',$category)->with('product',$product);
+		if(isset($_GET['user_id'])){
+			return view('hisprofile.products_category')->with('category',$category)->with('product',$product);
+		}else{
+			return view('profile.products_category')->with('category',$category)->with('product',$product);
+		}
+
 		}
 
 
