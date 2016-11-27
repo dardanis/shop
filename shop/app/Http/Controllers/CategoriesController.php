@@ -24,13 +24,10 @@ class CategoriesController extends Controller {
 		foreach ($types as $t) {
 			$type[$t->id] = $t->name;
 		}
-
-
 		return view('admin.categories.add')->with('type',$type);;
 	}
 	public function store(){
 		$locale=Lang::locale();
-
 		$languages=$this->languages();
 
 		foreach($languages as $key=>$l){

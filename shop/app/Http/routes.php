@@ -5,8 +5,15 @@ Route::controllers([
 ]);
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');
+// type name meny //
+Route::get('shophome',['as'=>'shophome','uses'=>'HomeController@shophome']);
+Route::get('travelhome',['as'=>'travelhome','uses'=>'HomeController@travelhome']);
+Route::get('eventshome',['as'=>'eventshome','uses'=>'HomeController@eventshome']);
+// end of type name meny //
+
+
 Route::get('viewprofile',['as'=>'viewprofile','uses'=>'ProfileController@index']);
-Route::get('followingprofile/{userid}',['as'=>'followingprofile','uses'=>'ProfileController@followingprofile']);
+Route::get('followingprofile',['as'=>'followingprofile','uses'=>'ProfileController@followingprofile']);
 Route::get('newsfeed', 'ProfileController@newsfeed');
 Route::post('follow/{userid}',['as'=>'follow','uses'=>'ProfileController@follow']);
 Route::patch('/makeadmin/{id}',['as'=>'isadmin','uses'=>'AdminController@makeadmin','roles'=>'admin']);
@@ -45,7 +52,10 @@ Route::get('products/{slug}/{id}', ['as' => 'product_show', 'uses' => 'HomeContr
 Route::get('{username}/products', ['as' => 'user_products', 'uses' => 'HomeController@user_products']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 Route::post('contact', ['as' => 'contact_post', 'uses' => 'HomeController@store_contact']);
-Route::get('shopaction', ['as' => 'shopaction', 'uses' => 'HomeController@shopaction']);
+Route::get('shop', ['as' => 'shop', 'uses' => 'HomeController@shop']);
+
+Route::get('video', 'VideoController@index');
+Route::post('video' , 'VideoController@store');
 
     Route::get('searchblog/{slug}', ['as' => 'searchblog', 'uses' => 'ProductsController@searchblog']);
     Route::get('searchotherblog/{slug}', ['as' => 'searchotherblog', 'uses' => 'ProductsController@searchotherblog']);
@@ -55,7 +65,7 @@ Route::get('auction', ['as' => 'encheres', 'uses' => 'HomeController@encheres'])
 
 Route::get('/resendEmail', 'Auth\AuthController@resendEmail');
 Route::get('/activate/{code}', 'Auth\AuthController@activateAccount');
-Route::get('/all','ClientController@category_products');
+Route::get('/all',['as'=>'categoryproducts','uses'=>'ClientController@category_products']);
 Route::group(['middleware' => ['auth', 'roles']], function () {
 
     //--- ROUTES FOR CART//
@@ -133,11 +143,6 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
         Route::get('/', ['as' => 'myshop', 'uses' => 'ProfileController@myshop']);
 
     });
-
-    Route::get('video', 'VideoController@index');
-
-    Route::post('video' , 'VideoController@store');
-
     Route::group(['prefix' => 'filterpricehome'], function () {
         Route::get('/', ['as' => 'filterpricehome', 'uses' => 'ProfileController@filterpricehome']);
 
@@ -154,6 +159,20 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
     Route::group(['prefix' => 'searchbyprice'], function () {
         Route::get('/', ['as' => 'searchbyprice', 'uses' => 'ProfileController@searchbyprice']);
 
+    });
+
+    Route::group(['prefix' => 'offers'], function () {
+
+
+        Route::get('/', ['as' => 'addoffer', 'uses' => 'OffersController@add','roles' => ['client', 'business','admin']]);
+        Route::post('/storeoffer', ['as' => 'storeoffer', 'uses' => 'OffersController@store','roles' => ['client', 'business','admin']]);
+        Route::get('editoffer/{id}', ['as' => 'editoffer', 'uses' => 'OffersController@edit','roles' => ['client', 'business','admin']]);
+        Route::patch('/updateoffer', ['as'=>'updateoffer', 'uses' => 'OffersController@update', 'roles' => ['client', 'business','admin']]);
+
+    });
+    Route::group(['prefix' => 'comments'], function () {
+        Route::get('/', ['as' => 'addcomments', 'uses' => 'CommentsController@add','roles' => ['client', 'business','admin']]);
+        Route::post('/storecomments', ['as' => 'storecomments', 'uses' => 'CommentsController@store','roles' => ['client', 'business','admin']]);
     });
 
 });

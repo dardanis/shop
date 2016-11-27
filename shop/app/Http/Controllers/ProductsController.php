@@ -143,10 +143,15 @@ class ProductsController extends Controller
             }
         }
 
-        $category_id = Input::get('category_id');
+         $category_id = Input::get('category_id');
+        $type_id="";
+        $category = Category::find($category_id)->get();
+
+        foreach($category as $c){
+            $type_id=$c->type_id;
+        }
         $subcategory_id = Input::get('subcategory_id');
         $sub_sub_category_id= Input::get('sub_sub_category_id');
-        $type_id = Input::get('type_id');
         $input = Input::all();
         $v = Validator::make($input, Product::$rules);
         if(Input::get('price')==""){
@@ -376,8 +381,8 @@ class ProductsController extends Controller
             if ($product) {
                 $product->title = Input::get('title');
                 $product->slug = Str::slug(Input::get('title'));
-                $product->category_id = Input::get('category_id');
                 $product->type_id = Input::get('type_id');
+                $product->sub_sub_category_id = Input::get('sub_sub_category_id');
                 $product->subcategory_id = Input::get('subcategory_id');
                 $product->description = Input::get('description');
                 $product->search_keywords = Input::get('search_keywords');
@@ -405,7 +410,8 @@ class ProductsController extends Controller
 
                 $product->save();
                 $this->add_activity(Auth::user()->id, 'edited product', 'edit');
-                return Redirect::route('product_edit',array($slug, $id))->withSuccess('The Item is saved successfully','The Item is saved successfully');
+                return redirect()->back()->withSuccess('The Item is saved successfully','The Item is saved successfully');
+
         }
 
     }

@@ -17,9 +17,12 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $video = Video::all();
+        $video = Video::paginate(6);
+
+        $myVideos = Video::where('user_id', auth()->user()->id)->get();
 
         return view('profile.newvideo', [
+            'myVideos' => $myVideos,
             'video' => $video
         ]);
     }

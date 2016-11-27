@@ -90,8 +90,9 @@ class ClientController extends Controller {
 			$user->email=Input::get('email');
 			$user->username=$username;
 			$user->save();
-			return Redirect::route('myprofile')
-                ->with('success', 'Profile updated successfully.');
+			return redirect()->back()->with('success', 'Profile updated successfully.');
+
+
 		}
 		
     }
