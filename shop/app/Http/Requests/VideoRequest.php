@@ -23,10 +23,22 @@ class VideoRequest extends Request
      */
     public function rules()
     {
-        return [
-            'title' => 'required|max:50',
-            'url' => 'required',
-            'description' => "required|max:100",
+
+        $rules = [
+            'offer-title' => 'required|max:50',
+            'offer-description' => "required|max:100",
         ];
+
+        if($this->get('order-video-upload') != ""){
+            $rules['order-video-upload'] = 'required';
+        }
+
+        if($this->get('order-photos') != ""){
+            $rules['order-photos'] = 'required';
+        }
+
+
+
+        return $rules;
     }
 }

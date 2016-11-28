@@ -5,6 +5,9 @@ Route::controllers([
 ]);
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');
+Route::get('video', ['as'=>'video','uses'=>'ProfileController@showVideo']);
+Route::get('image', ['as'=>'image','uses'=>'ProfileController@showImage']);
+
 // type name meny //
 Route::get('shophome',['as'=>'shophome','uses'=>'HomeController@shophome']);
 Route::get('travelhome',['as'=>'travelhome','uses'=>'HomeController@travelhome']);
@@ -54,8 +57,6 @@ Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 Route::post('contact', ['as' => 'contact_post', 'uses' => 'HomeController@store_contact']);
 Route::get('shop', ['as' => 'shop', 'uses' => 'HomeController@shop']);
 
-Route::get('video', 'VideoController@index');
-Route::post('video' , 'VideoController@store');
 
     Route::get('searchblog/{slug}', ['as' => 'searchblog', 'uses' => 'ProductsController@searchblog']);
     Route::get('searchotherblog/{slug}', ['as' => 'searchotherblog', 'uses' => 'ProductsController@searchotherblog']);

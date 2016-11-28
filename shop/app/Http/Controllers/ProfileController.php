@@ -4,9 +4,11 @@ use App\Category;
 use App\FollowUser;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Offers;
 use App\User;
 use App\Product;
 use App\UserFollow;
+use App\Video;
 use Auth;
 use Illuminate\Http\Request;
 use Input;
@@ -43,12 +45,36 @@ class ProfileController extends Controller {
 		$user=User::where('id','=',Auth::user()->id)->get()->first();
 		$following=UserFollow::where('follower_user_id','=',Auth::user()->id)->get();
 		$sort="desc";
+		$product= [];
 		foreach($following as $f){
 			$product = Product::orderBy('created_at', $sort)->where('user_id', '=', $f->follow_user_id)->get();
 		}
 		return view('newsfeed.index')->with('user',$user)->with('following',$following)->with('product',$product);
 	}
 
+
+	public function showVideo()
+	{
+		$video = Offers::where('video', '!=', "")->paginate(6);
+
+		$myVideos = Offers::where('user_id', auth()->user()->id)->where('video', '!=', "")->get();
+
+		$lastVideo = Offers::where('user_id', auth()->user()->id)->where('video', '!=', "")->orderBy('updated_at', 'desc')->first();
+
+		return view('profile.video', [
+				'myVideos' => $myVideos,
+				'video' => $video,
+				'last' => $lastVideo
+		]);
+	}
+
+	public function showImage()
+	{
+		$image = Offers::where('image_path', '!=', "")->where('video', '=', '')->where('user_id', auth()->user()->id)->paginate(20);
+		return view('profile.image', [
+				'image' => $image,
+		]);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
