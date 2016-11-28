@@ -71,10 +71,15 @@ Breadcrumbs::register('shophome', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Shop', route('shophome'));
 });
+Breadcrumbs::register('magazinehome', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Magazine', route('magazinehome'));
+});
 Breadcrumbs::register('eventshome', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Events', route('eventshome'));
 });
+
 
 Breadcrumbs::register('my_wishlist', function($breadcrumbs) {
     $breadcrumbs->parent('home');

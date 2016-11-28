@@ -9,6 +9,8 @@ Route::get('viewprofile', 'ProfileController@index');
 Route::get('shophome',['as'=>'shophome','uses'=>'HomeController@shophome']);
 Route::get('travelhome',['as'=>'travelhome','uses'=>'HomeController@travelhome']);
 Route::get('eventshome',['as'=>'eventshome','uses'=>'HomeController@eventshome']);
+Route::get('magazinehome',['as'=>'magazinehome','uses'=>'HomeController@magazinehome']);
+
 // end of type name meny //
 
 
