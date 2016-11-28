@@ -40,10 +40,6 @@
                 </div>
             </div>
 
-
-        </div>
-
-
         <div class="col-md-offset-6 col-md-6 margin-top-20">
             <div class="col-md-6">
                 <a href="/profile" class="btn btn-default btn-default-links">{{ Lang::get('app.Cancel') }}</a>
@@ -55,6 +51,10 @@
             </div>
             {!! Form::close() !!}
         </div>
+        </div>
+
+
+
     </div>
 
 @stop

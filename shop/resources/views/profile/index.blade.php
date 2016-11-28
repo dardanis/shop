@@ -18,7 +18,7 @@
 
         <div class="user-profile-top h2-custom">
 
-            <?php $addressinfo=\App\ContactInfo::where('user_id','=',$user->id)->where('in_products','=',0)->get();?>
+            <?php $addressinfo=\App\ContactInfo::where('user_id','=',$user->id)->get();?>
 
             <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.Informations')}}</h2>
             <p style="margin-left: 10px;">{{ Lang::get('app.Adresse') }}: </p>

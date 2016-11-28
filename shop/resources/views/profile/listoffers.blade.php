@@ -10,14 +10,17 @@
     <?php if($o->image_path!=NULL){?>
     <div class="col-md-6">
         <div class="col-md-12">
-            <img src="{{ asset($o->image_path) }}" class="img-responsive"/>
+            <img src="{{ asset($o->image_path) }}" class="img-responsive" style="max-height:200px"/>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-left:20px;margin-top:20px;">
             <div class="row">
-                <img src="{{$o->user->profile}}" alt="" id="preview_profile" src="#" style="width:50px;height:50px;float:left" /><?php echo $user['name'];?> <?php echo $user['lastname'];?>
+                <img src="{{$o->user->profile}}" alt="" id="preview_profile" src="#" style="width:50px;max-height:2000px;float:left" />
+                <span style="padding-left:20px;"><?php echo $user['name'];?> <?php echo $user['lastname'];?></span>
 
             </div>
-            <div>Description here</div>
+              <div class="row" style="margin-top:20px;">
+                 <span>Description here</span>
+             </div>
         </div>
     </div>
 

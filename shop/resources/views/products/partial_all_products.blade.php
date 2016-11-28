@@ -13,10 +13,12 @@ $user_id=$user_id['id'];
     <?php foreach($product as $p){?>
     <div class="col-md-3 col-sm-12">
         <div class="items">
-            <a href="{{"/edit/$p->slug/$p->id"}}" style="float:left;margin-right: 20px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-            {!! Form::open(array('method' => 'DELETE', 'route' => array('client_product_delete', $p->id))) !!}
-            {!! Form::submit('Delete', array('class' => 'btn btn-danger btn-xs')) !!}
-            {!! Form::close() !!}
+            <a href="{{"/edit/$p->slug/$p->id"}}" style="float:left;margin-right: 20px;padding:20px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            <div style="padding:20px;">
+                {!! Form::open(array('method' => 'DELETE', 'route' => array('client_product_delete', $p->id))) !!}
+                {!! Form::submit('Delete', array('class' => 'btn btn-danger btn-xs','style'=>'padding-bottom: 10px;')) !!}
+                {!! Form::close() !!}
+             </div>
             <a href="{{ URL::route('product_show',array($p->slug,$p->id)) }}"><img
                         src="{{ asset($p->thumbnail) }}" class="img-responsive" style="margin-right: 10px;"></a>
             <?php if($p->user_id==$user_id){?>
