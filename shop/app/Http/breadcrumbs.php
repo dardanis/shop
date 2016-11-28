@@ -19,6 +19,17 @@ Breadcrumbs::register('viewprofile', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Profile', route('viewprofile'));
 });
+
+Breadcrumbs::register('video', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Video', route('video'));
+});
+
+Breadcrumbs::register('image', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Image', route('image'));
+});
+
 Breadcrumbs::register('basicdata', function($breadcrumbs) {
     $breadcrumbs->parent('myprofile');
     $breadcrumbs->push('Settings Account', route('basicdata'));

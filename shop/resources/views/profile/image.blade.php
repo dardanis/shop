@@ -53,7 +53,7 @@
     </div>
     <div class="col-md-9">
         @include('offers/create')
-        @include('profile/videolist')
+        @include('profile/imagelist')
     </div>
     </div>
 @stop

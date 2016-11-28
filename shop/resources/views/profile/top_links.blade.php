@@ -7,8 +7,8 @@
 <ul class="toplinks">
     <li><a href="/viewprofile" class="basic-top-link">Accueil</a></li>
     <li><a href="/myshop" class="myshop">Shop</a></li>
-    <li><a href="#">Photos</a></li>
-    <li><a href="{{action('VideoController@index')}}">Videos</a></li>
+    <li><a href="{{action('ProfileController@showImage')}}">Photos</a></li>
+    <li><a href="{{action('ProfileController@showVideo')}}">Videos</a></li>
 
 </ul>
 <p class="text-green-15 right" style="">
