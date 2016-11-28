@@ -36,7 +36,7 @@ $secondList = $product_attributes->slice($rowCount, $totalCount);?>
 
     }?>
 </table>
-</div>
+
 <div class="col-sm-6">
     <table>
         <?php foreach($secondList as $pa)
@@ -67,3 +67,5 @@ $secondList = $product_attributes->slice($rowCount, $totalCount);?>
     <?php } else {?>
     <h2>No Specifications yet!!!</h2>
 <?php } ?>
+
+</div>

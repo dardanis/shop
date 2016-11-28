@@ -43,7 +43,6 @@
         "Alexpechkarev\\GoogleGeocoder\\GoogleGeocoderServiceProvider",
         "Torann\\GeoIP\\GeoIPServiceProvider",
         "DaveJamesMiller\\Breadcrumbs\\ServiceProvider",
-        "Barryvdh\\Debugbar\\ServiceProvider",
         "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
     ],
     "eager": [
@@ -76,8 +75,7 @@
         "Chencha\\Share\\ShareServiceProvider",
         "Alexpechkarev\\GoogleGeocoder\\GoogleGeocoderServiceProvider",
         "Torann\\GeoIP\\GeoIPServiceProvider",
-        "DaveJamesMiller\\Breadcrumbs\\ServiceProvider",
-        "Barryvdh\\Debugbar\\ServiceProvider"
+        "DaveJamesMiller\\Breadcrumbs\\ServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

@@ -49,7 +49,7 @@
                                     {!! Form::open(array('method' => 'DELETE', 'route' => array('image_delete',$slug,$id,$img->id))) !!}
                                     <button class="btn-delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                     {!! Form::close() !!}
-                                    <img src="{{ asset($img->image) }}" width="200"  border="0" class="avatar img-responsive"/>
+                                    <img src="{{ asset($img->image) }}" width="200"  border="0" class="avatar img-responsive" style="max-height:200px;"/>
 
 
                                     <div class="clear"></div>
@@ -135,7 +135,7 @@
                                     <a href="/profile" class="btn btn-default btn-default-links">{{Lang::get('app.Cancel')}}</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href='{{ url("product/create/adress/$product->slug/$product->id") }}'
+                                    <a style="padding-top:10px;" href='{{ url("product/create/adress/$product->slug/$product->id") }}'
                                        class="btn btn-success">{{ Lang::get('app.Save') }}</a>
                                 </div>
 

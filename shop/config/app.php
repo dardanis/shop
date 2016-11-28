@@ -160,7 +160,7 @@ return [
 		'Torann\GeoIP\GeoIPServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
-		Barryvdh\Debugbar\ServiceProvider::class,
+		
 		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 	],

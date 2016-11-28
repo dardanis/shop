@@ -37,14 +37,16 @@ class OffersController extends Controller {
      */
     public function store()
     {
+       
         $user_id=\App\User::find(Auth::user()->id);
+        
         $input=Input::all();
         $locale = Lang::locale();
 
         $languages = $this->languages();
 
-        if (Input::file('order-photo-upload')) {
-
+        if (Input::hasFile('order-photo-upload')) {
+                echo "SDfdsf";
             $offer=new Offers();
             $offer->user_id=$user_id['id'];
 
@@ -66,6 +68,7 @@ class OffersController extends Controller {
                             'title' => Input::get('offer-title'),
                             'description' => Input::get('offer-description'),
                             'offers_id' => $offer->id,
+                             'user_id' => $user_id->id,
                             'locale_id' => $langid,
                             'created_at' => \Carbon\Carbon::now(),
                             'updated_at' => \Carbon\Carbon::now()
@@ -87,6 +90,7 @@ class OffersController extends Controller {
                     DB::table('offers_translations')->insert(array(
                         array(
                             'title' => Input::get('offer-title'),
+                             'user_id' => $user_id->id,
                             'description' => Input::get('offer-description'),
                             'offers_id' => $offer->id,
                             'locale_id' => $langid,

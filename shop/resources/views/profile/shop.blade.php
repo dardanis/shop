@@ -40,7 +40,7 @@
 
     </div>
     <div class="col-md-9">
-        @include('common/default_filterhome1')
+        @include('common/default_filter')
         <div class="row profile-products products-div">
             <div id="loading"></div>
 
