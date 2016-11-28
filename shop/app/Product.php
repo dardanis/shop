@@ -10,7 +10,7 @@ class Product extends Model implements TranslatableContract {
 	use Translatable;
 	use SearchableTrait;
 
-	protected $fillable = ['category_id','subcategory_id','title','slug','description','search_keywords','teaser','price','availability','status','image','thumbnail','address'];
+	protected $fillable = ['category_id','title','slug','description','search_keywords','teaser','price','availability','status','image','thumbnail','address'];
     protected $hidden = ['created_at', 'updated_at'];
 
     protected $translator = 'App\ProductTranslation';

@@ -52,7 +52,18 @@
                 <?php }else { ?>
                 <a href='{{ url("/all?cat_id=$category_found") }}'><?php echo $c->name;?></a>
                 <?php }?>
-            <a href="{{ url('client/add/product') }}?cat_id=<?php echo $c->id;?>" title="Add Product">
+                <?php if($t->alias=="shop"){?>
+                 <a href="{{ url('client/add/product') }}?cat_id=<?php echo $c->id;?>" title="Add Product">
+                <?php }?>
+                <?php if($t->alias=="event"){?>
+                 <a href="{{ url('client/add/event') }}?cat_id=<?php echo $c->id;?>" title="Add Product">
+                <?php }?>
+                   <?php if($t->alias=="magazine"){?>
+                 <a href="{{ url('client/add/event') }}?cat_id=<?php echo $c->id;?>" title="Add Product">
+                <?php }?>
+                   <?php if($t->alias=="travel"){?>
+                 <a href="{{ url('client/add/event') }}?cat_id=<?php echo $c->id;?>" title="Add Product">
+                <?php }?>
                 <?php if($category_found==$category_id){?>
                 <span class="glyphicon glyphicon-plus plus-red" aria-hidden="true" style="float:right;margin-right:20px;"></span>
                     <?php  } else {?>

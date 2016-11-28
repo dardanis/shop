@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Product;
+use App\EventFields;
 use App\User;
 use Input;
 use Session;
@@ -57,6 +58,41 @@ class ProductsController extends Controller
         return view('products.add')->with('category', $category)->with('type',$type)->with(compact('url'))->with('categories',$categories)->with('type_name1',$type_name)->with('sub_category',$sub_category);
     }
 
+    public function event(){
+
+        $category_get=$_GET['cat_id'];
+        $type_category = Category::where('id', '=', $category_get)->get();
+       foreach($type_category as $tc){
+           $type_name = App\product_type::where('id', '=', $tc->type_id)->get();
+
+       }
+        foreach($type_name as $tn){
+            $type_name= $tn->name;
+        }
+
+        $url = config('medias.url');
+        $category = array();
+        $sub_category = array();
+        $subcat = Subcategory::where('category_id', '=', $category_get)->where('parent_sub_category_id','=',NULL)->get();
+        foreach($subcat as $sc){
+            $sub_category[$sc->id] = $sc->name;
+        }
+        $cat = Category::all();
+        foreach ($cat as $c) {
+            $category[$c->id] = $c->name;
+        }
+
+        $type = array();
+        $types = App\product_type::all();
+        foreach ($types as $t) {
+            $type[$t->id] = $t->name;
+        }
+
+        $categories=Category::with('translations')->whereHas('products', function($q){
+            $q->where('status','!=',0);
+        })->get();
+        return view('products.event')->with('category', $category)->with('type',$type)->with(compact('url'))->with('categories',$categories)->with('type_name1',$type_name)->with('sub_category',$sub_category);
+    }
     public function shopfields( $slug,$id)
     {
 
@@ -234,6 +270,124 @@ class ProductsController extends Controller
 
         return Redirect::back()->withErrors($v)->withInput(Input::flash());
     }
+public function storeevent()
+    {
+
+        $locale = Lang::locale();
+        $languages = $this->languages();
+        foreach ($languages as $key => $l) {
+            if ($l['lang'] === $locale) {
+                unset($languages[$key]);
+            }
+        }
+
+         $category_id = Input::get('category_id');
+        $type_id="";
+        $category = Category::find($category_id)->get();
+
+        foreach($category as $c){
+            $type_id=$c->type_id;
+        }
+        $subcategory_id = Input::get('subcategory_id');
+        $sub_sub_category_id= Input::get('sub_sub_category_id');
+        $input = Input::all();
+        $v = Validator::make($input, Product::$rules);
+        if(Input::get('price')==""){
+            $input_price=0.00;
+        }else {
+            $input_price=Input::get('price');
+        }
+
+        if ($v->passes()) {
+            $user = User::find(Auth::user()->id);
+            $product = new Product;
+            $product->title = Input::get('title');
+            $product->teaser = Input::get('teaser');
+            $product->price = $input_price;
+            $randomnumber = mt_rand(1, 1000);
+            $slug = Str::slug(Input::get('title')) . '-' . $randomnumber;
+            $product->slug = $slug;
+            $product->category_id = $category_id;
+            $product->subcategory_id = $subcategory_id;
+            $product->sub_sub_category_id=$sub_sub_category_id;
+
+            $product->type_id = $type_id;
+            $product->description = Input::get('description');
+            $product->search_keywords = Input::get('search_keywords');
+            //$product->price = Input::get('price');
+            $product->user_id = $user->id;
+            $image = Input::file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('img/products/' . $filename);
+            Image::make($image->getRealPath())->save($path);
+            $product->thumbnail = 'img/products/' . $filename;
+            if ($user->subscribed()) {
+                $product->sponsored = 1;
+            }
+            $thumbnail = Input::file('thumbnail');
+            //$thumbnail_back = time() . '.thumbnail_back.' . $thumbnail->getClientOriginalExtension();
+            //$path_thumbnail = public_path('img/products/' . $thumbnail_back);
+           //Image::make($thumbnail->getRealPath())->save($path_thumbnail);
+            //$product->thumbnail_back = 'img/products/' . $thumbnail_back;
+
+            $product->lat = Input::get('lat');
+            $product->lng = Input::get('lng');
+            $product->address = Input::get('address');
+            $product->save();
+
+            $eventfield=new EventFields;
+             if(isset($_POST['event_date'])){
+                  $date =$_POST['event_date'];
+                $eventfield->date_event=date('Y-m-d', strtotime(str_replace('-','/', $date)));
+    
+                $eventfield->time_from=$_POST['time_from'];
+                $eventfield->time_to=$_POST['time_to'];
+
+              $eventfield->event_id=$product->id;
+                $eventfield->save();
+
+             }
+       
+            foreach ($languages as $l) {
+                $langid = $l['id'] + 1;
+                DB::table('product_translations')->insert(array(
+                    array(
+                        'title' => Input::get('title'),
+                        'teaser' => Input::get('teaser'),
+                        'slug' => $slug,
+                        'description' => Input::get('description'),
+                        'product_id' => $product->id,
+                        'locale_id' => $langid,
+                        'created_at' => \Carbon\Carbon::now(),
+                        'updated_at' => \Carbon\Carbon::now()
+                    )
+                ));
+            }
+
+            if (Input::hasFile('pics')) {
+                $pics = Input::file('pics');
+                foreach ($pics as $pic) {
+
+                    $filename2 = $pic->getClientOriginalName();
+                    $path2 = public_path('img/products/' . $filename2);
+                    Image::make($pic->getRealPath())->save($path2);
+                    $picture = new Picture;
+                    $picture->image = 'img/products/' . $filename2;
+                    $picture->product_id=$product->id;
+                    $picture->save();
+
+                }
+            }
+            $this->add_activity(Auth::user()->id, 'added new product', 'add');
+
+            return Redirect("all?cat_id=2");
+
+        }
+
+        return Redirect::back()->withErrors($v)->withInput(Input::flash());
+    }
+
+
 
     public function step2($product, $step)
     {

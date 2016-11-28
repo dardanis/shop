@@ -37,9 +37,9 @@
 {!! Form::open(['url' => route("add_p",array($slug,$id)), 'class' => 'form-horizontal', 'files'=>true, 'id'=>'real-dropzone']) !!}
 
 <input type="hidden" id="token" value="{{ csrf_token() }}">
-   <div class="row profile-products" style="margin-top:20px;">
+
 <?php foreach($groupformname as $gfn){?>
- 
+    <div class="row profile-products" style="margin-top:20px;">
 
     <h3><?php echo $gfn->group_name;?></h3><br/>
     <?php $group_id=$gfn->id;?>
