@@ -68,6 +68,7 @@ Route::get('auction', ['as' => 'encheres', 'uses' => 'HomeController@encheres'])
 Route::get('/resendEmail', 'Auth\AuthController@resendEmail');
 Route::get('/activate/{code}', 'Auth\AuthController@activateAccount');
 Route::get('/all',['as'=>'categoryproducts','uses'=>'ClientController@category_products']);
+Route::get('/all/events',['as'=>'categoryproducts','uses'=>'ClientController@events_tiles']);
 Route::group(['middleware' => ['auth', 'roles']], function () {
 
     //--- ROUTES FOR CART//
@@ -107,9 +108,11 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
         Route::get('dashboard', ['as' => 'myaccount', 'uses' => 'ClientController@index', 'roles' => ['client', 'business']]);
         Route::get('c_products', ['as' => 'client_products', 'uses' => 'ClientController@client_products', 'roles' => ['client', 'business']]);
         Route::get('add/product', ['as' => 'products_add', 'uses' => 'ProductsController@add', 'roles' => ['client', 'business','admin']]);
+        Route::get('add/event', ['as' => 'products_add', 'uses' => 'ProductsController@event', 'roles' => ['client', 'business','admin']]);
         Route::get('basic/profile', ['as' => 'basicdata', 'uses' => 'ClientController@basicdata', 'roles' => ['client', 'business','admin']]);
 
         Route::post('c_products', ['as' => 'add_product', 'uses' => 'ProductsController@store', 'roles' => ['client', 'business','admin']]);
+         Route::post('e_products', ['as' => 'add_event', 'uses' => 'ProductsController@storeevent', 'roles' => ['client', 'business','admin']]);
         Route::get('add/product/{product}/step/{step}', ['as' => 'product_add_step2', 'uses' => 'ProductsController@step2', 'roles' => ['client', 'business']]);
         Route::post('c_products_step2', ['as' => 'add_product_step2', 'uses' => 'ProductsController@store_images', 'roles' => ['client', 'business']]);
         Route::delete('delete/product/{id}', ['as' => 'client_product_delete', 'uses' => 'ProductsController@delete_product', 'roles' => ['client', 'business']]);

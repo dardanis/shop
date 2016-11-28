@@ -18,31 +18,31 @@
 
         <div class="user-profile-top h2-custom">
 
-            <?php $addressinfo=\App\ContactInfo::where('user_id','=',$user->id)->get();?>
+            <?php $addressinfo=\App\ContactInfo::where('user_id','=',$user->id)->first();?>
 
             <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.Informations')}}</h2>
             <p style="margin-left: 10px;">{{ Lang::get('app.Adresse') }}: </p>
             <div class="profile-informations" style="margin-left: 20px;">
-                <?php foreach($addressinfo as $ai){?>
-                <p style="font-weight:bold;"><?php echo $ai->street;?> <br/>
-                    <?php echo $ai->zip;?><br/>
-                    <?php echo $ai->location;?><br/>
-                    <?php echo $ai->payment;?>
+               
+                <p style="font-weight:bold;"><?php echo $addressinfo->street;?> <br/>
+                    <?php echo $addressinfo->zip;?><br/>
+                    <?php echo $addressinfo->location;?><br/>
+                    <?php echo $addressinfo->payment;?>
 
 
                 </p>
-                <?php } ?>
+      
 
             </div>
             <p  style="margin-left: 10px;"> {{ Lang::get('app.Contact') }}:</p>
             <div class="profile-informations"  style="margin-left: 20px;">
-                <?php foreach($addressinfo as $ai){?>
-                <p style="font-weight:bold;"><?php echo $ai->name; ?> <?php echo $ai->last_name;?> <br/>
-                    <?php echo $ai->profession;?><br/>
-                    <?php echo $ai->email;?><br/>
+
+                <p style="font-weight:bold;"><?php echo $addressinfo->name; ?> <?php echo $addressinfo->last_name;?> <br/>
+                    <?php echo $addressinfo->profession;?><br/>
+                    <?php echo $addressinfo->email;?><br/>
 
                 </p>
-                <?php } ?>
+         
 
             </div>
         </div>
