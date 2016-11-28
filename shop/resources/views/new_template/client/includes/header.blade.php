@@ -1,4 +1,7 @@
-
+<script src="{{ asset('/js/libs/jquery-1.11.1.min.js') }}"></script>
+<script src="{{ asset('/js/libs/jquery-ui-1.10.4.custom.min.js') }}"></script>
+<script src="{{ asset('/js/libs/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
     <!-- search and user menu -->
@@ -161,8 +164,12 @@
                 </div>
                 </div>
         </div>
+        <style>
+        .orange{
+            color:orange;
+        }
+        </style>
         <!-- Brand and toggle get grouped for better mobile display -->
-
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -182,19 +189,20 @@
 
                     })->get();?>
 
-                    <?php if(sizeof($cat)>0){?>
-                    <?php if($t->alias=="Shop"){?>
-                        <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('shophome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
+                             
+                    <?php if($t->alias=="shop"){?>
+                        <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('shophome') }}" class="home-menu"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
                         <?php } ?>
-                        <?php if($t->alias=="Events"){?>
+                        <?php if($t->alias=="event"){?>
                         <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('eventshome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
                         <?php } ?>
-                        <?php if($t->alias=="Travel"){?>
+                        <?php if($t->alias=="travel"){?>
                         <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('travelhome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
                         <?php } ?>
-                        <?php } else {?>
-                    <li  id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{$t->alias}}"><span>{{ Lang::get("app.$t->name")}}</span> </a></li>
-                    <?php } ?>
+                          <?php if($t->alias=="magazine"){?>
+                        <li id="{{Active::pattern($t->name, 'current-page')}}"><a href="{{ route('magazinehome') }}"><span>{{ Lang::get("app.$t->name")}}</span> </a> </li>
+                        <?php } ?>
+                      
 
                     <?php  }?>
                 </ul>
@@ -225,3 +233,34 @@
     }
 </style>
 <?php }?>
+<style>
+.orange{
+    color:#E28D33 !important;
+}
+</style>
+ <script>
+$(document).ready(function(){
+  var checkUrlmenu = function () {
+
+         var found = false;
+        $(".navbar-collapse ul li a").each(function () {
+
+            var href = $(this).attr("href");
+
+            if (window.location.href.indexOf(href) > -1 && !found) {
+                console.log("found it");
+                $(this).addClass("orange");
+                //$(this).closest(".parent").addClass("active");
+                found = true;
+            }
+            else {//console.log("notFound")
+            }
+        })
+        if (found == false) {
+            $(".start").addClass("active");
+        }
+    }
+
+      checkUrlmenu();
+})
+</script>

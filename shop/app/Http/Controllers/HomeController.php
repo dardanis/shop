@@ -97,7 +97,7 @@ class HomeController extends Controller {
 	public function shophome(){
 
 		$sort="desc";
-		$typesshop=product_type::where('alias','=','Shop')->get()->first();
+		$typesshop=product_type::where('alias','=','shop')->get()->first();
 		$products=Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
 
 		return view('new_template.client.pages.shophome')->with('products',$products);
@@ -105,18 +105,26 @@ class HomeController extends Controller {
 
 	public function travelhome(){
 		$sort="desc";
-		$typesshop=product_type::where('alias','=','Travel')->get()->first();
+		$typesshop=product_type::where('alias','=','travel')->get()->first();
 		$products=Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
 
-		return view('new_template.client.pages.travelhome')->with('productstravel',$products);
+		return view('new_template.client.pages.travelhome')->with('products',$products);
 	}
 	public function eventshome(){
 
 		$sort="desc";
-		$typesshop=product_type::where('alias','=','Events')->get()->first();
+		$typesshop=product_type::where('alias','=','event')->get()->first();
 		$products=Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
 
-		return view('new_template.client.pages.eventshome')->with('productsevent',$products);
+		return view('new_template.client.pages.eventshome')->with('products',$products);
+	}
+	public function magazinehome(){
+
+		$sort="desc";
+		$typesshop=product_type::where('alias','=','magazine')->get()->first();
+		$products=Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
+
+		return view('new_template.client.pages.magazinehome')->with('products',$products);
 	}
 
 

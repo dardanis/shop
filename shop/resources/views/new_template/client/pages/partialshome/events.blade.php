@@ -1,4 +1,4 @@
-<?php foreach($productsevent as $product) {?>
+<?php foreach($products as $product) {?>
 
 
 <div class="col-md-3 col-sm-12">
