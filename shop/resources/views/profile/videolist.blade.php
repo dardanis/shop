@@ -34,7 +34,7 @@
         padding-bottom: 52%;
         padding-top: 30px;
         height: 0;
-        width: 70%;
+        width: 68%;
         float: left;
     }
 
@@ -65,6 +65,8 @@
         margin: 0;
         padding: 0;
         background: #222;
+        margin-bottom:20px;
+        padding: 20px;
     }
 
     ol#vid-list li {
@@ -113,7 +115,7 @@
 
     }
 </style>
-<div class="vid-main-wrapper clearfix">
+<div class="row search-profile">
 
     <!-- THE YOUTUBE PLAYER -->
     <div class="vid-container">
@@ -140,7 +142,7 @@
 
 </div>
 
-<div class="content">
+<div class="row search-profile">
     <div class="col-md-12">
 
         <div class="div-content-category">

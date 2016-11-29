@@ -4,18 +4,22 @@
         color:#E28D33;
     }
 </style>
-<?php if(isset($_GET['user_id'])){?>
-<?php $user_id=$_GET['user_id'];?>
-<?php }  else {?>
-<?php    $userprofile = App\User::find(Auth::user()->id);?>
-<?php $user_id=$user['id'];?>
-<?php }?>
 <ul class="toplinks">
-    <li><a href="/viewprofile?user_id=<?php echo $user_id;?>" class="basic-top-link">Accueil</a></li>
-    <li><a href="/myshop?user_id=<?php echo $user_id;?>" class="myshop">Shop</a></li>
-    <li><a href="#">Photos</a></li>
-    <li><a href="#">Videos</a></li>
+    <li><a href="/viewprofile" class="">Accueil</a></li>
+    <li><a href="/myshop" class="myshop">Shop</a></li>
+    <li><a href="{{action('ProfileController@showImage')}}">Photos</a></li>
+    <li><a href="{{action('ProfileController@showVideo')}}">Videos</a></li>
 
 </ul>
+<p class="text-green-15 right" style="">
+    <a href="#" class="text-green-15 right" style="padding-left: 10px;text-decoration:none;" id="show-offer-create">
+        {{ Lang::get('app.Ajouter un titre') }} +
+    </a>
+
+</p>
+
+<?php
+
+?>
 
 

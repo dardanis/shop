@@ -1,3 +1,9 @@
+<?php 
+    $sort="desc";
+    $typesshop=App\product_type::where('alias','=','event')->get()->first();
+        $products=App\Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
+?>
+
 <?php foreach($products as $product) {?>
 
 
@@ -11,9 +17,6 @@
                 <p class="title">{{$product->title}}</p>
             </a>
 
-            <p class="p-price"><span class="price">Price</span><span class="price-value"> <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-            <p class="p-price"><span class="discount">Discount</span><span class="discount-value">  <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-            <p class="p-price">  <span class="price">{{ Lang::get('app.Availability') }}: <?php echo $product->availability; ?></span></p>
             <?php if (Auth::guest()){?>
 
                         <?php } else { ?>
@@ -45,13 +48,7 @@
             </div>
 
             <?php } ?>
-            {!! Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart inline-form')) !!}
-            <button type="submit" class="wishlist-btn" id="cartBtn">
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <span class="hover-state">{{ Lang::get('app.Wishlist')}}</span>
-
-            </button>
-            {!! Form::close() !!}
+       
             <?php } ?>
             <?php  $url=URL::route('product_show',array($product->slug,$product->id));?>
     {{--        <div class="tools">

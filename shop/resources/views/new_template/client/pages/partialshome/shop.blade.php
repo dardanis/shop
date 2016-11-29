@@ -12,7 +12,6 @@
             </a>
 
             <p class="p-price"><span class="price">Price</span><span class="price-value"> <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-            <p class="p-price"><span class="discount">Discount</span><span class="discount-value">  <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
             <p class="p-price">  <span class="price">{{ Lang::get('app.Availability') }}: <?php echo $product->availability; ?></span></p>
             <?php if (Auth::guest()){?>
 
@@ -30,9 +29,9 @@
 
             </div>
             <?php } else {?>
-
+             <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span><br/>
             <div class="user-follow">
-                <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span><br/>
+   
                 {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart inline-form')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn-follow" id=""

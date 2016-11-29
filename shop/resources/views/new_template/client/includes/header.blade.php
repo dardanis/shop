@@ -261,6 +261,29 @@ $(document).ready(function(){
         }
     }
 
+      var checktoplinks = function () {
+
+         var found = false;
+        $(".user-profile-top ul li a").each(function () {
+
+            var href = $(this).attr("href");
+
+            if (window.location.href.indexOf(href) > -1 && !found) {
+                console.log("found it");
+                $(this).addClass("orange");
+                //$(this).closest(".parent").addClass("active");
+                found = true;
+            }
+            else {//console.log("notFound")
+            }
+        })
+        if (found == false) {
+            $(".start").addClass("active");
+        }
+    }
+
+    
+        checktoplinks();
       checkUrlmenu();
 })
 </script>

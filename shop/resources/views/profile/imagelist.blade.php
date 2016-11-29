@@ -1,4 +1,4 @@
-<div class="content">
+<div class="row search-profile">
     <div class="col-md-12">
 
         <div class="div-content-category">

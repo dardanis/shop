@@ -70,7 +70,7 @@ class ProfileController extends Controller {
 
 	public function showImage()
 	{
-		$image = Offers::where('image_path', '!=', "")->where('video', '=', '')->where('user_id', auth()->user()->id)->paginate(20);
+		$image = Offers::where('image_path', '!=', "")->where('video', '=', '')->where('user_id','=',auth()->user()->id)->paginate(20);
 		return view('profile.image', [
 				'image' => $image,
 		]);

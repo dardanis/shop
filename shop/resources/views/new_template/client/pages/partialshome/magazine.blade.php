@@ -1,3 +1,9 @@
+<?php 
+    $sort="desc";
+    $typesshop=App\product_type::where('alias','=','magazine')->get()->first();
+        $products=App\Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
+?>
+
 <?php foreach($products as $product) {?>
 
 <?php if($product->availability>0){?>
