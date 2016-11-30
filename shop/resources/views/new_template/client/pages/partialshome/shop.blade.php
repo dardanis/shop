@@ -29,13 +29,12 @@
 
             </div>
             <?php } else {?>
-             <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span><br/>
             <div class="user-follow">
-   
+                <span class="home-username" style="margin-left: 118px;">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span><br/>
                 {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart inline-form')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn-follow" id=""
-                        style="padding:10px;border:none;margin-left:0px;display:block">
+                        style="padding: 9px; border:none;display:block; float: right; margin-left: 127px;position: absolute;">
                     {{ Lang::get('app.Follow user')}}
                     <i class="fa fa-plus"></i>
                 </button>
