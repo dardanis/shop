@@ -16,6 +16,11 @@
             <a href="{{ URL::route('product_show',array($product->slug,$product->id)) }}">
                 <p class="title">{{$product->title}}</p>
             </a>
+            <div class="caption" style="overflow:hidden;">
+                <p>
+                    {{  $product->description }}
+                </p>
+            </div>
 
             <?php if (Auth::guest()){?>
 

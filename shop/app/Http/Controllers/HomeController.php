@@ -69,7 +69,7 @@ class HomeController extends Controller {
 		}
 
 		$sort="desc";
-		$typesshop=product_type::where('alias','=','Shop')->get()->first();
+		$typesshop=product_type::where('alias','=','shop')->get()->first();
 
 		$products=Product::with('user')->take(2)->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
 
@@ -77,7 +77,7 @@ class HomeController extends Controller {
 
 		$productsevent=Product::with('user')->take(2)->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesevent->id)->orderBy('created_at',$sort)->simplePaginate(4);
 
-		$typestravle=product_type::where('alias','=',"Travel")->first();
+		$typestravle=product_type::where('alias','=',"travel")->first();
 
 		$productstravel=Product::with('user')->take(2)->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typestravle->id)->orderBy('created_at',$sort)->simplePaginate(4);
 
