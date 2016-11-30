@@ -1,5 +1,5 @@
 
-<?php 
+<?php
     $sort="desc";
     $typesshop=App\product_type::where('alias','=','travel')->get()->first();
         $products=App\Product::with('user')->where('sponsored','!=',1)->where('availability','!=',0)->where('status','!=',0)->where('type_id','=',$typesshop->id)->orderBy('created_at',$sort)->simplePaginate(4);
@@ -16,10 +16,11 @@
             <a href="{{ URL::route('product_show',array($product->slug,$product->id)) }}">
                 <p class="title">{{$product->title}}</p>
             </a>
+            <div class="caption">
+                <p>{{ $product->description }}</p>
+            </div>
+            <span>Location: <span style="color:coral">Kosova</span><span>
 
-            <p class="p-price"><span class="price">Price</span><span class="price-value"> <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-            <p class="p-price"><span class="discount">Discount</span><span class="discount-value">  <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-            <p class="p-price">  <span class="price">{{ Lang::get('app.Availability') }}: <?php echo $product->availability; ?></span></p>
             <?php if (Auth::guest()){?>
 
                         <?php } else { ?>
@@ -27,7 +28,7 @@
             <?php if(sizeof($following)>0){?>
 
             <div class="user-follow">
-                <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
+                <span class="home-username" style="margin-left: 118px;">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
                 <a class="" style="color:#6ADAA2;border:none;margin-left:0px;display:block" href='{{ URL::to("/viewprofile?user_id=$product->user_id") }}'>
                     {{Lang::get('app.Following')}}
                     <i class="fa fa-plus"></i>
@@ -38,11 +39,11 @@
             <?php } else {?>
 
             <div class="user-follow">
-                <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span><br/>
+                <span class="home-username" style="margin-left: 118px;">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span><br/>
                 {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart inline-form')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn-follow" id=""
-                        style="padding:10px;border:none;margin-left:0px;display:block">
+                        style="padding: 7px;border:none;display:block;float: right;margin-left: 127px;position: absolute;">
                     {{ Lang::get('app.Follow user')}}
                     <i class="fa fa-plus"></i>
                 </button>
@@ -60,6 +61,7 @@
             {!! Form::close() !!}
             <?php } ?>
             <?php  $url=URL::route('product_show',array($product->slug,$product->id));?>
+                <button type="button" class="btn btn-success">3.666</button>
 {{--            <div class="tools">
 
                 <!--Add To Cart Button-->
