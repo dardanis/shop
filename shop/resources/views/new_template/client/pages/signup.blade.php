@@ -58,6 +58,13 @@
                                placeholder="Password"/><br/>
                         <input type="password" id="" name="password_confirmation" title="Confirm Password"
                                class="form-control" placeholder="Confirm password"/><br/>
+                        <div class="col-md-9 col-sm-offset-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">I accept <a href="#" data-toggle="modal" data-target="#myModal">terms</a>
+                                </label>
+                            </div>
+                        </div><br/><br><br/>
 
                         <button class="btn btn-success" type="submit">{{ Lang::get("app.Register")}}</button>
                         <br/><br/>
@@ -65,6 +72,26 @@
                     </div>
 
                 </form>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Terms</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Bla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla bla .</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
