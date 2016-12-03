@@ -5,6 +5,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ Lang::get("app.Sign in")}}</div>
                         <div class="panel-body">
+                            @if(Session::has('confirm_email'))
+                                <div class="alert alert-success">{{ Session::get('confirm_email') }}</div>
+                            @endif
                             <?php if($redirecturl!=""){?>
                                 <form class="form-signin" role="form" method="POST" action="login?redirecturl=<?php echo $redirecturl;?>">
                             <?php  } else {?>
