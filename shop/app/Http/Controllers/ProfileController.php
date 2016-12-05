@@ -42,7 +42,7 @@ class ProfileController extends Controller {
 	}
 
 	public function newsfeed(){
-		$user=User::where('id','=',Auth::user()->id)->get()->first();
+		$user=User::where('id','=',Auth::user()->id)->first();
 		$following=UserFollow::where('follower_user_id','=',Auth::user()->id)->get();
 		$sort="desc";
 		$product= [];
