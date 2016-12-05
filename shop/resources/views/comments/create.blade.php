@@ -10,7 +10,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <textarea name="comment" class="form-control"></textarea>
             
-                <input type="hidden" name="offer_id" value="<?php echo $o->id;?>"/>
+                <input type="hidden" name="offer_id" value=""/>
                 <div class="col-sm-6 col-sm-offset-6" style="margin-right:20px;margin-top: 20px;">
                     <button type="submit" class="btn btn-success">
                         {{ Lang::get('app.Comment') }}
