@@ -49,6 +49,7 @@ class ProfileController extends Controller {
 		foreach($following as $f){
 			$product = Product::orderBy('created_at', $sort)->where('user_id', '=', $f->follow_user_id)->get();
 		}
+
 		return view('newsfeed.index')->with('user',$user)->with('following',$following)->with('product',$product);
 	}
 

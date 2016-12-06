@@ -100,6 +100,10 @@ Breadcrumbs::register('product_show', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Product', route('product_show'));
 });
+Breadcrumbs::register('newsfeed', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('NewsFeed', route('newsfeed'));
+});
 
 
 
