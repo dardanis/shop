@@ -5,16 +5,17 @@
         @include('common/breadcrumbs')
     </div>
 
-    @foreach($product as $pro)
-        <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
-            <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
-                <div class="user-profile-top h2-custom">
-                    <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
-                </div>
+    <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+        <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
+            <div class="user-profile-top h2-custom">
+                <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
             </div>
-
         </div>
 
+    </div>
+    @foreach($product as $pro)
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+        </div>
         <div class="col-md-9">
             <div id="loading"></div>
             <div class="row profile-products" style="margin-top: 10px;">
@@ -33,7 +34,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    {{--                @include('comments/create')--}}
+                @include('comments/create')
                 </div>
                 <div class="row">
                     <div class="col-md-12">
