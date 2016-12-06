@@ -19,7 +19,7 @@ Route::get('magazinehome',['as'=>'magazinehome','uses'=>'HomeController@magazine
 
 Route::get('viewprofile',['as'=>'viewprofile','uses'=>'ProfileController@index']);
 Route::get('followingprofile',['as'=>'followingprofile','uses'=>'ProfileController@followingprofile']);
-Route::get('newsfeed', 'ProfileController@newsfeed');
+Route::get('newsfeed', ['as'=>'newsfeed','uses'=>'ProfileController@newsfeed']);
 Route::post('follow/{userid}',['as'=>'follow','uses'=>'ProfileController@follow']);
 Route::patch('/makeadmin/{id}',['as'=>'isadmin','uses'=>'AdminController@makeadmin','roles'=>'admin']);
 Route::patch('/removeadmin/{id}',['as'=>'removeadmin','uses'=>'AdminController@removeadmin','roles'=>'admin']);
