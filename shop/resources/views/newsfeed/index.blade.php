@@ -1,84 +1,84 @@
-@include('new_template.client.layouts.default')
+@extends('new_template.client.layouts.default')
+@section('content')
 
-    <div class="container">
-        <div class="div-content-other" style="overflow: auto;margin-bottom:30px;">
-        <h2>{{ Lang::get('app.Newsfeed') }}</h2>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @include('common/breadcrumbs')
+    </div>
 
-                        <?php foreach($product as $product){?>
+    <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+        <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
+            <div class="user-profile-top h2-custom">
+                <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
+            </div>
+        </div>
 
-                                <?php if($product->availability>0){?>            <!--Tile-->
-            <div class="col-md-3 col-sm-12" style="margin-bottom: 30px;">
-                <div class="items">
-                    <a href="{{ URL::route('product_show',array($product->slug,$product->id)) }}"><img
-                                src="{{ asset($product->thumbnail) }}" class="img-responsive"></a>
+    </div>
+    @foreach($product as $pro)
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+        </div>
+        <div class="col-md-9">
+            <div id="loading"></div>
+            <div class="row profile-products" style="margin-top: 10px;">
+                <div class="h2-custom">
+                    <h2>Car news</h2>
 
-                    <div class="item-content">
-                        <a href="{{ URL::route('product_show',array($product->slug,$product->id)) }}">
-                            <p class="title">{{$product->title}}</p>
-                        </a>
+                    <p>bla bla</p>
+                    <img src="{{$pro->thumbnail}}"
+                         class="img-thumbnail" alt="Cinque Terre" width="504" height="504">
+                </div>
+                <br>
 
-                        <p class="p-price"><span class="price">Price</span><span class="price-value"> <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-                        <p class="p-price"><span class="discount">Discount</span><span class="discount-value">  <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-                        <p class="p-price">  <span class="price">{{ Lang::get('app.Availability') }}: <?php echo $product->availability; ?></span></p>
-                        <?php if (Auth::guest()){?>
+                <div class="form-group" style="display: inline">
+                    <div class="col-md-6">
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                @include('comments/create')
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="comments-list" style="position: absolute; margin-left: 518px;margin-top: -451px;
+">
+                            <div class="media">
+                                <p class="pull-right">
+                                    <small>5 days ago</small>
+                                </p>
+                                <a class="media-left" href="#">
+                                    <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                                         width="55" height="55">
+                                </a>
 
-                        <?php } else { ?>
-                        <?php 	$following = \Illuminate\Support\Facades\DB::table('user_follows')->where('follow_user_id', '=',$product->user_id)->where('follower_user_id','=',Auth::user()->id)->get();?>
-                        <?php if(sizeof($following)>0){?>
+                                <div class="media-body">
+                                    <h4 class="media-heading user_name">Dardan Ismajli</h4>
+                                    Wow! this is really great.
+                                </div>
+                            </div>
+                            <div class="media" style="width: 432px;">
+                                <p class="pull-right">
+                                    <small>5 days ago</small>
+                                </p>
+                                <a class="media-left" href="#">
+                                    <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                                         width="55" height="55">
+                                </a>
 
-                        <div class="user-follow">
-                            <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
-                            <a class="" style="color:#6ADAA2;border:none;margin-left:0px;display:block" href='{{ URL::to("/followingprofile/$product->user_id") }}'>
-                                {{Lang::get('app.Following')}}
-                                <i class="fa fa-plus"></i>
-                            </a>
+                                <div class="media-body">
 
+                                    <h4 class="media-heading user_name">Feride</h4>
+                                    Wow! this is really great.
 
-                        </div>
-                        <?php } else {?>
-
-                        <div class="user-follow">
-                            <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
-                            {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart')) !!}
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <button type="submit" class="btn-follow" id=""
-                                    style="padding:10px;border:none;margin-left:0px;display:block">
-                                {{ Lang::get('app.Follow user')}}
-                                <i class="fa fa-plus"></i>
-                            </button>
-
-                            {!! Form::close() !!}
-                        </div>
-                        <?php } ?>
-                        <?php } ?>
-                        <?php  $url=URL::route('product_show',array($product->slug,$product->id));?>
-                        <div class="tools">
-
-
-                            <!--Add To Cart Button-->
-                            {!! Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')) !!}
-                            <button type="submit" class="add-cart-btn" style="">
-                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="padding-left: 10px">To cart</span></button>
-
-                            {!! Form::close() !!}
-                                    <!--Share Button-->
-
-                            <!--Add To Wishlist Button-->
-                            {!! Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')) !!}
-                            <button type="submit" class="wishlist-btn" id="cartBtn">
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="hover-state">{{ Lang::get('app.Wishlist')}}</span>
-
-                            </button>
-                            {!! Form::close() !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-                                <?php } ?>
-
-                        <?php }?>
-</div>
-</div>
-</div>
-    </div>
+        </div>
+    @endforeach
+@stop
+<style>
+    .myshop {
+        color: #E28D33 !important;
+    }
+</style>

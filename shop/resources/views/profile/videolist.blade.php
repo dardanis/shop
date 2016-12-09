@@ -119,12 +119,15 @@
 
     <!-- THE YOUTUBE PLAYER -->
     <div class="vid-container">
+        @if(!is_null($last))
         <iframe id="vid_frame" src="http://www.youtube.com/embed/{{$last->video}}?rel=0&showinfo=0&autohide=1"
                 frameborder="0" width="160" height="75"></iframe>
+         @endif
     </div>
 
     <!-- THE PLAYLIST -->
     <div class="vid-list-container">
+        @if(!is_null($myVideos))
         @foreach($myVideos as $vid)
             <ol id="vid-list">
                 <li>
@@ -137,6 +140,7 @@
                 </li>
             </ol>
         @endforeach
+        @endif
     </div>
 
 
@@ -147,6 +151,7 @@
 
         <div class="div-content-category">
             <h2 class="title-category">Other Video</h2>
+            @if(!is_null($video))
             @foreach($video as $vid)
                 @if($vid->user_id != auth()->user()->id)
                 <div class="items col-md-4 col-xs-6">
@@ -161,6 +166,7 @@
                 </div>
                 @endif
             @endforeach
+            @endif
             <div class="row col-xs-12 content text-right">
                 {!! $video->render() !!}
             </div>

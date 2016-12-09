@@ -23,7 +23,8 @@
             <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.Informations')}}</h2>
             <p style="margin-left: 10px;">{{ Lang::get('app.Adresse') }}: </p>
             <div class="profile-informations" style="margin-left: 20px;">
-          
+
+                @if(!is_null($addressinfo))
                 <p style="font-weight:bold;"><?php echo $addressinfo->street;?> <br/>
                     <?php echo $addressinfo->zip;?><br/>
                     <?php echo $addressinfo->location;?><br/>
@@ -31,17 +32,18 @@
 
 
                 </p>
-           
+                @endif
 
             </div>
             <p  style="margin-left: 10px;"> {{ Lang::get('app.Contact') }}:</p>
             <div class="profile-informations"  style="margin-left: 20px;">
-            
+                @if(!is_null($addressinfo))
                 <p style="font-weight:bold;"><?php echo $addressinfo->name; ?> <?php echo $addressinfo->last_name;?> <br/>
                     <?php echo $addressinfo->profession;?><br/>
                     <?php echo $addressinfo->email;?><br/>
 
                 </p>
+                    @endif
             
 
             </div>
