@@ -9,6 +9,7 @@
         <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
             <div class="user-profile-top h2-custom">
                 <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
+                <h4>Dardan Ismajli (4)</h4>
             </div>
         </div>
 
@@ -20,30 +21,55 @@
             <div id="loading"></div>
             <div class="row profile-products" style="margin-top: 10px;">
                 <div class="h2-custom">
-                    <h2>Car news</h2>
-
-                    <p>bla bla</p>
                     <img src="{{$pro->thumbnail}}"
                          class="img-thumbnail" alt="Cinque Terre" width="504" height="504">
                 </div>
                 <br>
 
-                <div class="form-group" style="display: inline">
-                    <div class="col-md-6">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                <div class="media" style="width: 432px; margin-top: -13px ">
+                    <small style="margin-left: 64px;margin-top: 25px;position: absolute;">5 days ago</small>
+                    <a class="media-left" href="#">
+                        <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                             width="55" height="55">
+                    </a>
+
+                    <div class="media-body">
+                        <h4 class="media-heading user_name">Feride</h4>
                     </div>
                 </div>
-                <div class="col-md-6">
-                @include('comments/create')
+                <br>
+
+                <div class="form-group" style="display: inline">
+                    <div class="col-md-6">
+                        <textarea class="form-control" rows="5" id="comment"
+                                  style="margin-right: -38.75px; margin-left: 0px; width: 494px;"></textarea>
+                    </div>
                 </div>
+                <div >
+                <span style="margin-top: 117px;margin-left: -473px;position: absolute;"> + Jaime 12`321 Vues 321`321 </span>
+                    <a class="bold-11" href='{{ URL::to("/partager") }}'><span style="color: blue; margin-top: 117px;margin-left: -26px;position: absolute;">Partager</span></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row" style="margin-left: 15px">
+                        <div class="col-md-12" style="margin-top: 86px">
+                            <textbox name="comment"></textbox>
+                            <a style="position: absolute;margin-top: -9px;" href="#">
+                                <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                                     width="55" height="55">
+                            </a>
+
+                            <input class="form-control input-lg" id="inputlg" type="text"
+                                   style="margin-left: 59px;width: 376px;">
+                            <button id="searchBDir"></button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="comments-list" style="position: absolute; margin-left: 518px;margin-top: -451px;
-">
-                            <div class="media">
-                                <p class="pull-right">
-                                    <small>5 days ago</small>
-                                </p>
+                    <div>
+                        <div class="comments-list pre-scrollable" style="position: absolute; margin-left: 523px;margin-top: -426px;">
+                            <div class="media" style="margin-top: 9px">
+                                <small style="margin-left: 64px;margin-top: 25px;position: absolute;">5 days ago</small>
                                 <a class="media-left" href="#">
                                     <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
                                          width="55" height="55">
@@ -51,13 +77,14 @@
 
                                 <div class="media-body">
                                     <h4 class="media-heading user_name">Dardan Ismajli</h4>
-                                    Wow! this is really great.
+
+                                    <p style="margin-top: 35px;margin-left: -62px;">
+                                        Wow! this is really great.
+                                    </p>
                                 </div>
                             </div>
                             <div class="media" style="width: 432px;">
-                                <p class="pull-right">
-                                    <small>5 days ago</small>
-                                </p>
+                                <small style="margin-left: 64px;margin-top: 25px;position: absolute;">5 days ago</small>
                                 <a class="media-left" href="#">
                                     <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
                                          width="55" height="55">
@@ -66,8 +93,10 @@
                                 <div class="media-body">
 
                                     <h4 class="media-heading user_name">Feride</h4>
-                                    Wow! this is really great.
 
+                                    <p style="margin-top: 35px;margin-left: -62px;">
+                                        Wow! this is really great.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -80,5 +109,35 @@
 <style>
     .myshop {
         color: #E28D33 !important;
+    }
+
+    .styledTB {
+        position: relative;
+        display: inline-block;
+        height: 40px; /* Arbitrary number */
+        width: 400px; /* Arbitrary number */
+    }
+
+    .styledTB input {
+        width: 85%; /* Arbitrary number */
+        height: 100%;
+        margin-left: 59px;
+        margin-top: -48px;
+        padding-right: 40px;
+        box-sizing: border-box;
+    }
+
+    #searchBDir {
+        height: 57%;
+        width: 30px; /* Or however long you'd like your button to be, matches padding-right above */
+        background-image: url(http://image.flaticon.com/icons/svg/260/260109.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%); /* OR margin-top: -20px (Half of the container's height) if you're supporting older browsers */
     }
 </style>

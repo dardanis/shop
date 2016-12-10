@@ -3,6 +3,13 @@
 Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
+
+/**
+ * Test Route
+ */
+Route::get('shopSearch', 'HomeController@shopSearch');
+Route::get('travelSearch', 'HomeController@travelSearch');
+
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');
 Route::get('video', ['as'=>'video','uses'=>'ProfileController@showVideo']);

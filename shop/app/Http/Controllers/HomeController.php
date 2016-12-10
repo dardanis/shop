@@ -22,6 +22,17 @@ use App\Events\ProductViewCount;
 use Event;
 class HomeController extends Controller {
 
+
+	public function shopSearch()
+	{
+		return view('new_template.client.pages.shopsearch');
+	}
+
+	public function travelSearch()
+	{
+		return view('new_template.client.pages.travelsearch');
+	}
+
 	public function index(Request $request)
 	{
 
