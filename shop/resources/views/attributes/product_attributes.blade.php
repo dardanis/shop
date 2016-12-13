@@ -31,14 +31,14 @@
                     </ul>
                 </div>
             <?php } ?>
-    <div class="row profile-products" style="margin-top:20px;">
+
 <?php $groupformname= \Illuminate\Support\Facades\DB::table('group_form_namings')->where('category_id', '=',$product->category_id)->get();?>
 
 {!! Form::open(['url' => route("add_p",array($slug,$id)), 'class' => 'form-horizontal', 'files'=>true, 'id'=>'real-dropzone']) !!}
 
 <input type="hidden" id="token" value="{{ csrf_token() }}">
 <?php foreach($groupformname as $gfn){?>
-
+    <div class="row profile-products" style="margin-top:20px;">
 
     <h3><?php echo $gfn->group_name;?></h3><br/>
     <?php $group_id=$gfn->id;?>
@@ -264,8 +264,7 @@
         <?php if(sizeof($categoryattribute)==0){?>
                 <p>{{ Lang::get('app.There are no attributes to fill up') }}</p>
             <?php }?>
-        </div>
-    <br/>
+                <br/>
     <div class="col-md-offset-6 col-md-6">
         <div class="form-group">
             <div class="col-md-6">
@@ -278,6 +277,8 @@
             </div>
         </div>
     </div>
+        </div>
+
 
 {!! Form::close() !!}
 @stop
