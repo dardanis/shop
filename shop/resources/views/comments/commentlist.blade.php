@@ -10,7 +10,7 @@
         <span class="comment-date"><?php echo $c->created_at; ?></span>
       </p>
         </div>
-<div class="col-md-12 user-comment">
+<div class="col-md-12 user-comment" style="margin-top:10px;margint-bottom:10px;">
   <span class="comment-p"><?php echo $c->comment;?></span>
 </div>
 <?php } ?>

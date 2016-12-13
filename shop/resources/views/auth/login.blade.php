@@ -4,7 +4,20 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ Lang::get("app.Sign in")}}</div>
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <strong>{{trans('shop.whoops')}}</strong> {{trans('shop.input_error')}}<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="panel-body">
+                            @if(Session::has('confirm_email'))
+                                <div class="alert alert-success">{{ Session::get('confirm_email') }}</div>
+                            @endif
                             <?php if($redirecturl!=""){?>
                                 <form class="form-signin" role="form" method="POST" action="login?redirecturl=<?php echo $redirecturl;?>">
                             <?php  } else {?>

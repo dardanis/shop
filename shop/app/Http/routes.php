@@ -3,11 +3,30 @@
 Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
+
+/**
+ * Test Route
+ */
+Route::get('shopSearch', 'HomeController@shopSearch');
+Route::get('travelSearch', 'HomeController@travelSearch');
+
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');
+Route::get('video', ['as'=>'video','uses'=>'ProfileController@showVideo']);
+Route::get('image', ['as'=>'image','uses'=>'ProfileController@showImage']);
+
+// type name meny //
+Route::get('shophome',['as'=>'shophome','uses'=>'HomeController@shophome']);
+Route::get('travelhome',['as'=>'travelhome','uses'=>'HomeController@travelhome']);
+Route::get('eventshome',['as'=>'eventshome','uses'=>'HomeController@eventshome']);
+Route::get('magazinehome',['as'=>'magazinehome','uses'=>'HomeController@magazinehome']);
+
+// end of type name meny //
+
+
 Route::get('viewprofile',['as'=>'viewprofile','uses'=>'ProfileController@index']);
-Route::get('followingprofile/{userid}',['as'=>'followingprofile','uses'=>'ProfileController@followingprofile']);
-Route::get('newsfeed', 'ProfileController@newsfeed');
+Route::get('followingprofile',['as'=>'followingprofile','uses'=>'ProfileController@followingprofile']);
+Route::get('newsfeed', ['as'=>'newsfeed','uses'=>'ProfileController@newsfeed']);
 Route::post('follow/{userid}',['as'=>'follow','uses'=>'ProfileController@follow']);
 Route::patch('/makeadmin/{id}',['as'=>'isadmin','uses'=>'AdminController@makeadmin','roles'=>'admin']);
 Route::patch('/removeadmin/{id}',['as'=>'removeadmin','uses'=>'AdminController@removeadmin','roles'=>'admin']);
@@ -45,7 +64,8 @@ Route::get('products/{slug}/{id}', ['as' => 'product_show', 'uses' => 'HomeContr
 Route::get('{username}/products', ['as' => 'user_products', 'uses' => 'HomeController@user_products']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 Route::post('contact', ['as' => 'contact_post', 'uses' => 'HomeController@store_contact']);
-Route::get('shopaction', ['as' => 'shopaction', 'uses' => 'HomeController@shopaction']);
+Route::get('shop', ['as' => 'shop', 'uses' => 'HomeController@shop']);
+
 
     Route::get('searchblog/{slug}', ['as' => 'searchblog', 'uses' => 'ProductsController@searchblog']);
     Route::get('searchotherblog/{slug}', ['as' => 'searchotherblog', 'uses' => 'ProductsController@searchotherblog']);
@@ -55,7 +75,8 @@ Route::get('auction', ['as' => 'encheres', 'uses' => 'HomeController@encheres'])
 
 Route::get('/resendEmail', 'Auth\AuthController@resendEmail');
 Route::get('/activate/{code}', 'Auth\AuthController@activateAccount');
-Route::get('/all','ClientController@category_products');
+Route::get('/all',['as'=>'categoryproducts','uses'=>'ClientController@category_products']);
+Route::get('/all/events',['as'=>'categoryproducts','uses'=>'ClientController@events_tiles']);
 Route::group(['middleware' => ['auth', 'roles']], function () {
 
     //--- ROUTES FOR CART//
@@ -95,9 +116,11 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
         Route::get('dashboard', ['as' => 'myaccount', 'uses' => 'ClientController@index', 'roles' => ['client', 'business']]);
         Route::get('c_products', ['as' => 'client_products', 'uses' => 'ClientController@client_products', 'roles' => ['client', 'business']]);
         Route::get('add/product', ['as' => 'products_add', 'uses' => 'ProductsController@add', 'roles' => ['client', 'business','admin']]);
+        Route::get('add/event', ['as' => 'products_add', 'uses' => 'ProductsController@event', 'roles' => ['client', 'business','admin']]);
         Route::get('basic/profile', ['as' => 'basicdata', 'uses' => 'ClientController@basicdata', 'roles' => ['client', 'business','admin']]);
 
         Route::post('c_products', ['as' => 'add_product', 'uses' => 'ProductsController@store', 'roles' => ['client', 'business','admin']]);
+         Route::post('e_products', ['as' => 'add_event', 'uses' => 'ProductsController@storeevent', 'roles' => ['client', 'business','admin']]);
         Route::get('add/product/{product}/step/{step}', ['as' => 'product_add_step2', 'uses' => 'ProductsController@step2', 'roles' => ['client', 'business']]);
         Route::post('c_products_step2', ['as' => 'add_product_step2', 'uses' => 'ProductsController@store_images', 'roles' => ['client', 'business']]);
         Route::delete('delete/product/{id}', ['as' => 'client_product_delete', 'uses' => 'ProductsController@delete_product', 'roles' => ['client', 'business']]);
@@ -133,11 +156,6 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
         Route::get('/', ['as' => 'myshop', 'uses' => 'ProfileController@myshop']);
 
     });
-
-    Route::get('video', 'VideoController@index');
-
-    Route::post('video' , 'VideoController@store');
-
     Route::group(['prefix' => 'filterpricehome'], function () {
         Route::get('/', ['as' => 'filterpricehome', 'uses' => 'ProfileController@filterpricehome']);
 
@@ -154,6 +172,20 @@ Route::group(['middleware' => ['auth', 'roles']], function () {
     Route::group(['prefix' => 'searchbyprice'], function () {
         Route::get('/', ['as' => 'searchbyprice', 'uses' => 'ProfileController@searchbyprice']);
 
+    });
+
+    Route::group(['prefix' => 'offers'], function () {
+
+
+        Route::get('/', ['as' => 'addoffer', 'uses' => 'OffersController@add','roles' => ['client', 'business','admin']]);
+        Route::post('/storeoffer', ['as' => 'storeoffer', 'uses' => 'OffersController@store','roles' => ['client', 'business','admin']]);
+        Route::get('editoffer/{id}', ['as' => 'editoffer', 'uses' => 'OffersController@edit','roles' => ['client', 'business','admin']]);
+        Route::patch('/updateoffer', ['as'=>'updateoffer', 'uses' => 'OffersController@update', 'roles' => ['client', 'business','admin']]);
+
+    });
+    Route::group(['prefix' => 'comments'], function () {
+        Route::get('/', ['as' => 'addcomments', 'uses' => 'CommentsController@add','roles' => ['client', 'business','admin']]);
+        Route::post('/storecomments', ['as' => 'storecomments', 'uses' => 'CommentsController@store','roles' => ['client', 'business','admin']]);
     });
 
 });

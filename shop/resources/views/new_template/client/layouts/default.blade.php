@@ -21,10 +21,7 @@
 
         <!-- include js files -->
 
-<script src="{{ asset('/js/libs/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ asset('/js/libs/jquery-ui-1.10.4.custom.min.js') }}"></script>
-<script src="{{ asset('/js/libs/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+
 
 <script src="{{ asset('/js/dropzone.js') }}"></script>
 <script src="{{ asset('/js/upload.js') }}"></script>
@@ -33,6 +30,7 @@
 
 </body>
 </html>
+
 <?php $detect = new Mobile_Detect;?>
 <?php if($detect->isMobile() || $detect->isTablet()){?>
 <style>
@@ -124,6 +122,19 @@
 
 
 <script>
+$(document).ready(function(){
+  var checkUrlmenu = function () {
+        var found = false;
+        $(".navbar-collaps ul li a").each(function () {
+
+            var href = $(this).attr("href");
+            alert(href);
+
+    })
+    }
+      checkUrlmenu();
+})
+  
     var checkUrl = function () {
         var found = false;
         $("ul li a").each(function () {

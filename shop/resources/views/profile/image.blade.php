@@ -24,7 +24,7 @@
             <p style="margin-left: 10px;">{{ Lang::get('app.Adresse') }}: </p>
             <div class="profile-informations" style="margin-left: 20px;">
 
-                @if(count($addressinfo) > 0)
+                @if(!is_null($addressinfo))
                 <p style="font-weight:bold;"><?php echo $addressinfo->street;?> <br/>
                     <?php echo $addressinfo->zip;?><br/>
                     <?php echo $addressinfo->location;?><br/>
@@ -37,13 +37,14 @@
             </div>
             <p  style="margin-left: 10px;"> {{ Lang::get('app.Contact') }}:</p>
             <div class="profile-informations"  style="margin-left: 20px;">
-                @if(count($addressinfo) > 0)
+                @if(!is_null($addressinfo))
                 <p style="font-weight:bold;"><?php echo $addressinfo->name; ?> <?php echo $addressinfo->last_name;?> <br/>
                     <?php echo $addressinfo->profession;?><br/>
                     <?php echo $addressinfo->email;?><br/>
 
                 </p>
-                @endif
+                    @endif
+            
 
             </div>
         </div>
@@ -54,7 +55,7 @@
     </div>
     <div class="col-md-9">
         @include('offers/create')
-        @include('profile/videolist')
+        @include('profile/imagelist')
     </div>
     </div>
 @stop

@@ -1,84 +1,143 @@
-@include('new_template.client.layouts.default')
+@extends('new_template.client.layouts.default')
+@section('content')
 
-    <div class="container">
-        <div class="div-content-other" style="overflow: auto;margin-bottom:30px;">
-        <h2>{{ Lang::get('app.Newsfeed') }}</h2>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @include('common/breadcrumbs')
+    </div>
 
-                        <?php foreach($product as $product){?>
+    <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+        <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
+            <div class="user-profile-top h2-custom">
+                <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
+                <h4>Dardan Ismajli (4)</h4>
+            </div>
+        </div>
 
-                                <?php if($product->availability>0){?>            <!--Tile-->
-            <div class="col-md-3 col-sm-12" style="margin-bottom: 30px;">
-                <div class="items">
-                    <a href="{{ URL::route('product_show',array($product->slug,$product->id)) }}"><img
-                                src="{{ asset($product->thumbnail) }}" class="img-responsive"></a>
+    </div>
+    @foreach($product as $pro)
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
+        </div>
+        <div class="col-md-9">
+            <div id="loading"></div>
+            <div class="row profile-products" style="margin-top: 10px;">
+                <div class="h2-custom">
+                    <img src="{{$pro->thumbnail}}"
+                         class="img-thumbnail" alt="Cinque Terre" width="504" height="504">
+                </div>
+                <br>
 
-                    <div class="item-content">
-                        <a href="{{ URL::route('product_show',array($product->slug,$product->id)) }}">
-                            <p class="title">{{$product->title}}</p>
-                        </a>
+                <div class="media" style="width: 432px; margin-top: -13px ">
+                    <small style="margin-left: 64px;margin-top: 25px;position: absolute;">5 days ago</small>
+                    <a class="media-left" href="#">
+                        <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                             width="55" height="55">
+                    </a>
 
-                        <p class="p-price"><span class="price">Price</span><span class="price-value"> <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-                        <p class="p-price"><span class="discount">Discount</span><span class="discount-value">  <?php if($product->price!="0.00"){?>CHF {{$product->price}}<?php } ?></span></p>
-                        <p class="p-price">  <span class="price">{{ Lang::get('app.Availability') }}: <?php echo $product->availability; ?></span></p>
-                        <?php if (Auth::guest()){?>
+                    <div class="media-body">
+                        <h4 class="media-heading user_name">Feride</h4>
+                    </div>
+                </div>
+                <br>
 
-                        <?php } else { ?>
-                        <?php 	$following = \Illuminate\Support\Facades\DB::table('user_follows')->where('follow_user_id', '=',$product->user_id)->where('follower_user_id','=',Auth::user()->id)->get();?>
-                        <?php if(sizeof($following)>0){?>
-
-                        <div class="user-follow">
-                            <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
-                            <a class="" style="color:#6ADAA2;border:none;margin-left:0px;display:block" href='{{ URL::to("/followingprofile/$product->user_id") }}'>
-                                {{Lang::get('app.Following')}}
-                                <i class="fa fa-plus"></i>
+                <div class="form-group" style="display: inline">
+                    <div class="col-md-6">
+                        <textarea class="form-control" rows="5" id="comment"
+                                  style="margin-right: -38.75px; margin-left: 0px; width: 494px;"></textarea>
+                    </div>
+                </div>
+                <div >
+                <span style="margin-top: 117px;margin-left: -473px;position: absolute;"> + Jaime 12`321 Vues 321`321 </span>
+                    <a class="bold-11" href='{{ URL::to("/partager") }}'><span style="color: blue; margin-top: 117px;margin-left: -26px;position: absolute;">Partager</span></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row" style="margin-left: 15px">
+                        <div class="col-md-12" style="margin-top: 86px">
+                            <textbox name="comment"></textbox>
+                            <a style="position: absolute;margin-top: -9px;" href="#">
+                                <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                                     width="55" height="55">
                             </a>
 
-
+                            <input class="form-control input-lg" id="inputlg" type="text"
+                                   style="margin-left: 59px;width: 376px;">
+                            <button id="searchBDir"></button>
                         </div>
-                        <?php } else {?>
+                    </div>
+                </div>
 
-                        <div class="user-follow">
-                            <span class="home-username">{{ Lang::get('app.By')}} <?php echo $product->user->username;?></span>
-                            {!! Form::open(array('method' => 'POST', 'route' => array('follow', $product->user_id), 'class'=>'formCart')) !!}
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <button type="submit" class="btn-follow" id=""
-                                    style="padding:10px;border:none;margin-left:0px;display:block">
-                                {{ Lang::get('app.Follow user')}}
-                                <i class="fa fa-plus"></i>
-                            </button>
+                <div class="row">
+                    <div>
+                        <div class="comments-list pre-scrollable" style="position: absolute; margin-left: 523px;margin-top: -426px;">
+                            <div class="media" style="margin-top: 9px">
+                                <small style="margin-left: 64px;margin-top: 25px;position: absolute;">5 days ago</small>
+                                <a class="media-left" href="#">
+                                    <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                                         width="55" height="55">
+                                </a>
 
-                            {!! Form::close() !!}
-                        </div>
-                        <?php } ?>
-                        <?php } ?>
-                        <?php  $url=URL::route('product_show',array($product->slug,$product->id));?>
-                        <div class="tools">
+                                <div class="media-body">
+                                    <h4 class="media-heading user_name">Dardan Ismajli</h4>
 
+                                    <p style="margin-top: 35px;margin-left: -62px;">
+                                        Wow! this is really great.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media" style="width: 432px;">
+                                <small style="margin-left: 64px;margin-top: 25px;position: absolute;">5 days ago</small>
+                                <a class="media-left" href="#">
+                                    <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"
+                                         width="55" height="55">
+                                </a>
 
-                            <!--Add To Cart Button-->
-                            {!! Form::open(array('method' => 'POST', 'route' => array('add_cart', $product->id), 'class'=>'formCart')) !!}
-                            <button type="submit" class="add-cart-btn" style="">
-                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="padding-left: 10px">To cart</span></button>
+                                <div class="media-body">
 
-                            {!! Form::close() !!}
-                                    <!--Share Button-->
+                                    <h4 class="media-heading user_name">Feride</h4>
 
-                            <!--Add To Wishlist Button-->
-                            {!! Form::open(array('method' => 'POST', 'route' => array('add_wishlist', $product->id), 'class'=>'formCart')) !!}
-                            <button type="submit" class="wishlist-btn" id="cartBtn">
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="hover-state">{{ Lang::get('app.Wishlist')}}</span>
-
-                            </button>
-                            {!! Form::close() !!}
+                                    <p style="margin-top: 35px;margin-left: -62px;">
+                                        Wow! this is really great.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-                                <?php } ?>
+        </div>
+    @endforeach
+@stop
+<style>
+    .myshop {
+        color: #E28D33 !important;
+    }
 
-                        <?php }?>
-</div>
-</div>
-</div>
-    </div>
+    .styledTB {
+        position: relative;
+        display: inline-block;
+        height: 40px; /* Arbitrary number */
+        width: 400px; /* Arbitrary number */
+    }
+
+    .styledTB input {
+        width: 85%; /* Arbitrary number */
+        height: 100%;
+        margin-left: 59px;
+        margin-top: -48px;
+        padding-right: 40px;
+        box-sizing: border-box;
+    }
+
+    #searchBDir {
+        height: 57%;
+        width: 30px; /* Or however long you'd like your button to be, matches padding-right above */
+        background-image: url(http://image.flaticon.com/icons/svg/260/260109.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%); /* OR margin-top: -20px (Half of the container's height) if you're supporting older browsers */
+    }
+</style>

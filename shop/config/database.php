@@ -56,7 +56,11 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', '127.0.0.1'),
+<<<<<<< HEAD
 			'database'  => env('DB_DATABASE', 'shopch_database'),
+=======
+			'database'  => env('DB_DATABASE', 'shopch_db'),
+>>>>>>> dda3ee17ac6acf733401cd7e0f77f27c593062f1
 			'username'  => env('DB_USERNAME', 'root'),
 			'password'  => env('DB_PASSWORD', ''),
 			'charset'   => 'utf8',

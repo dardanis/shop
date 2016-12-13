@@ -50,7 +50,7 @@
                 <div class="col-lg-6 col-md-6 product-view">
                     @include('new_template/client/pages/productpartials/product_gallery')
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-6 col-md-6" style="padding-left:20px;">
                     @include('new_template/client/pages/productpartials/product_data')
                 </div>
                 <!--Product Gallery-->

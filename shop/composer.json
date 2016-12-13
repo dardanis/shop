@@ -18,8 +18,15 @@
 		"chencha/share": "^5.2",
 	  "mobiledetect/mobiledetectlib": "^2.8",
 		"davejamesmiller/laravel-breadcrumbs": "^3.0",
+<<<<<<< HEAD
 		
 		"barryvdh/laravel-ide-helper": "^2.2"
+=======
+
+		"barryvdh/laravel-ide-helper": "^2.2",
+		"guzzlehttp/guzzle": "~5.3|~6.0",
+		"barryvdh/laravel-debugbar": "^2.3"
+>>>>>>> dda3ee17ac6acf733401cd7e0f77f27c593062f1
 
 	},
 	"require-dev": {

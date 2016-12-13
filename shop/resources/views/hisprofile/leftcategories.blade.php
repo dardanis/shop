@@ -1,5 +1,6 @@
 <?php $querycategory_id="";?>
 <?php if(isset($_GET['cat_id'])){?>
+
 <?php $querycategory_id=$_GET['cat_id'];?>
 <?php } ?>
 

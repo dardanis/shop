@@ -1,12 +1,9 @@
 <?php    $user = App\User::find(Auth::user()->id);?>
-
-
-
 @extends('new_template.client.layouts.default')
 @section('content')
 
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @include('common/breadcrumbs')
+     @include('common/breadcrumbs')
     </div>
 
     <div class="col-md-12 col-sm-12 col-xs-12 user-profile-top">
@@ -33,18 +30,22 @@
         <div class="user-profile-top h2-custom">
             <div class="user-profile-top h2-custom">
                 <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.Categories')}}</h2>
-                @include('hisprofile/leftcategories')
+                     <div class="row profile-products">
+                    @include('products.product_by_category')
+            </div>
             </div>
         </div>
-
+        <div class="user-profile-top h2-custom">
+        @include('hisprofile/attributes')
+        </div>
 
     </div>
     <div class="col-md-9">
         @include('common/default_filter')
+        <div id="loading"></div>
         <div class="row profile-products products-div">
-            <div id="loading"></div>
 
-            @include('hisprofile/productlist')
+        @include('events/eventslist')
 
         </div>
     </div>

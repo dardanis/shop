@@ -8,8 +8,9 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/comments/storecomments?') }} " enctype="multipart/form-data">
                 <?php } ?>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="text" name="comment" class="form-control" placeholder="Put a comment here"/>
-                <input type="hidden" name="offer_id" value="<?php echo $o->id;?>"/>
+                <textarea name="comment" class="form-control"></textarea>
+            
+                <input type="hidden" name="offer_id" value=""/>
                 <div class="col-sm-6 col-sm-offset-6" style="margin-right:20px;margin-top: 20px;">
                     <button type="submit" class="btn btn-success">
                         {{ Lang::get('app.Comment') }}

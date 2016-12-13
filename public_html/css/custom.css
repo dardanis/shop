@@ -49,7 +49,7 @@ padding-top: 10px;
 .usernav .glyphicon{
 font-size:30px;
 
-color:#E28D33;
+color:blue;
 
 }
 .usernav{
@@ -57,10 +57,10 @@ color:#E28D33;
 }
 .search-div .glyphicon{
 	color:#E28D33;
-	height:20px;
+	
 }
 .searchcategory .glyphicon{
-	height:20px;
+	
 }
 .seach-keyword{
 	width:60%;
@@ -113,7 +113,7 @@ body{
 }
 .div-content{
 	background:white;
-	height:435px;
+	min-height:530px;
 	margin-bottom: 50px;
 
 	padding-left: 20px;
@@ -154,11 +154,14 @@ body{
 .items{
 	border:2px solid #DADADC;
 	margin-top:30px;
+	min-height: 330px;
 }
 .items .title{
 		padding-top:10px;
 		font-size:15px;
 		color:#000;
+		word-break: break-word;
+		    min-height: 52px;
 }
 .item-content{
 	padding-left: 10px;
@@ -753,4 +756,8 @@ padding-top: 20px;
 	display: block;
 	height: 300px;
 	width: 300px;
+}
+.user-follow{
+	float:left;
+	margin-right:10px;
 }
