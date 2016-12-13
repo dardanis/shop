@@ -84,20 +84,10 @@
                         </form>
                         <?php if (Auth::guest()){?>
                         <div class="col-md-3 col-sm-12 col-xs-12 usernav">
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>
-                                <a class="bold-11"
-                                   href='{{ URL::to("/newsfeed") }}'><span>{{Lang::get('app.Newsfeed')}}</span></a>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4 ">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-                                <a class="bold-11"
-                                   href="{{ url('wishlist') }}"><span>{{ Lang::get("app.Wishlist")}}</span></a>
-                            </div>
 
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <a class="bold-11" href="{{ url('login') }}" style="margin-top: 0px;">
-                                    <span class="glyphicon glyphicon-user " aria-hidden="true"></span><br>
+                            <div class="col-md-12 col-sm-4 col-xs-4">
+                                <a class="bold-11" href="{{ url('login') }}" style="margin-top: 0px; float:right;">
+                                    <span class="glyphicon glyphicon-user " style="color: #E28D33" aria-hidden="true"></span><br>
                                     <span>{{ Lang::get("app.Login")}}</span></a>
 
                             </div>
@@ -274,7 +264,7 @@
 
     #user{
         display: inline-block;
-        color: blue;
+        color: #E28D33;
         position: absolute;
         margin-left:-14px;
     }
