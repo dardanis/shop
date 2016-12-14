@@ -14,7 +14,7 @@ border-color:white;
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
 	background:#4c5256;
-	margin-top: -30px;
+	margin-top: -39px;
 }
 .navbar-inverse .navbar-brand{
 font-weight: bold;
@@ -75,6 +75,7 @@ color:blue;
 }
 .btn-search{
 	width:10%;
+	height: 34px;
 	float:left;
 	border-left:0px;
 }
@@ -90,15 +91,16 @@ color:blue;
 	float:left;
 }
 .seach-distance{
-	width:28%;
+	width:30%;
 	float:left;
 	border-radius:0px;
-	background:#6ADAA2;
+	background: green;
 	color:white;
 	border-left:0px;
 }
 .btn-location{
 	width:14%;
+	height: 34px;
 	float:left;
 	border-radius: 0px;
 	border-left:0px;
@@ -725,7 +727,7 @@ text-align:left;
 
 
 .under-lang{
-padding-top: 20px;
+padding-top: 6px;
 }
 
 .products-div{

@@ -44,9 +44,9 @@
                         <!-- search by category -->
                         <form action="/" method="get">
                             <div class="col-md-4  col-sm-12 col-xs-12 search-div">
-                                <div class="col-md-12 searchcategory">
+                                <div class="col-md-12 searchcategory" style="margin-left: 50px;">
                                     <div class="form-group">
-                                        <span class="bold-11">Keyword</span><br>
+                                        <span class="bold-11" style="padding-left: 8px;">Keyword</span><br>
                                         <input type="text" class="form-control seach-keyword" placeholder="keyword">
 
                                         <select class="form-control seach-category">
@@ -56,7 +56,7 @@
                                         </select>
 
                                         <button type="button" class="btn btn-default btn-search">
-                                            <span class="glyphicon glyphicon-search"></span>
+                                            <span class="glyphicon glyphicon-search" style="font-size: 26px; position: absolute; margin-left: -13px; margin-top: 23px;"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                             <div class="col-md-3 col-sm-12 col-xs-12 searchdistance">
                                 <div class="col-md-12 searchcategory">
                                     <div class="form-group">
-                                        <span class="bold-11">Distance and location</span><br>
+                                        <span class="bold-11" style="padding-left: 8px;">Distance and location</span><br>
                                         <input type="text" class="form-control seach-location">
 
                                         <select class="form-control seach-distance">
@@ -76,7 +76,7 @@
                                         </select>
 
                                         <button type="button" class="btn btn-default btn-location">
-                                            <span class="glyphicon glyphicon-map-marker"></span>
+                                            <span class="glyphicon glyphicon-map-marker fa-5x" style="font-size: 26px; position: absolute; margin-left: -13px; margin-top: 23px;"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
                                     <span style="font-size: 10px">{{Lang::get('app.Newsfeed')}}</span></a>
                             </div>
                             <div class="col-md-2 col-sm-2 col-xs-2">
-                                <a>
+                                <a class="bold-11" href="#">
                                     <div style="display: inline; white-space:nowrap;">
                                         <span  class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                         <span id="user" class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
