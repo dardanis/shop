@@ -16,6 +16,7 @@
             <input id="image-upload-form" type="submit" class="btn btn-primary hidden"/>
         </div>
     </form>
+
 </div>
 <div class="col-md-3 col-sm-3 col-xs-3">
     <h2><?php echo $user->name;?><span style="padding-left: 10px;"><?php echo $user->lastname;?></span></h2>
@@ -50,6 +51,28 @@
     <br>
 
 </div>
+<div class="col-md-6">
+<div class="cover">
+    @if(!is_null($user->cover))
+    <img src="/img/users/{!! $user->id !!}/{!! $user->cover!!}" style="width: 750px;border-radius: 0px;">
+    @else
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/c1/91/f8/c191f86f1e60d4b8a2c2066c0bb78473.jpg" style="width: 750px;border-radius: 0px;">
+    @endif
+    <form method="post"
+          action="{{action('ProfileController@updateCoverImage', $user->id)}}"
+          id="cover-upload-form"
+          class="col-xs-12"
+          enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
+
+        <div class="fullRelLeft upload-images-container pull-center">
+            <span class="btn btn-default btn-file">Browse <input id="cover" type="file" name="image"></span>
+            <input id="cover-upload-form" type="submit" class="btn btn-primary hidden"/>
+        </div>
+    </form>
+</div>
+</div>
+
 <style>
     .btn-file {
         position: relative;
@@ -74,5 +97,8 @@
 <script>
     $('#photo').change(function () {
         $('#image-upload-form').submit();
+    });
+    $('#cover').change(function () {
+        $('#cover-upload-form').submit();
     });
 </script>

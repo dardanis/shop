@@ -25,6 +25,7 @@ Route::get('magazinehome',['as'=>'magazinehome','uses'=>'HomeController@magazine
 
 
 Route::post('updateProfileImage/{id}', 'ProfileController@updateProfileImage');
+Route::post('updateCoverImage/{id}', 'ProfileController@updateCoverImage');
 Route::get('viewprofile',['as'=>'viewprofile','uses'=>'ProfileController@index']);
 Route::get('followingprofile',['as'=>'followingprofile','uses'=>'ProfileController@followingprofile']);
 Route::get('newsfeed', ['as'=>'newsfeed','uses'=>'ProfileController@newsfeed']);

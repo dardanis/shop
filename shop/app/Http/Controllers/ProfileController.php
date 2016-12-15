@@ -104,6 +104,26 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profile Image Successfully saved');
     }
 
+    public function updateCoverImage(Request $request, $userId)
+    {
+        $user = User::where('id', $userId)->first();
+        $user->profile = $request->file('image');
+
+        $directory = public_path("img/users/$user->id");
+
+        if (!File::exists($directory)) {
+            File::makeDirectory($directory);
+        }
+
+        $imageName = $user->id . '-cover-' . uniqid() . '.' . $user->profile->getClientOriginalExtension();
+        $user->profile->move($directory, $imageName);
+        $user->update([
+            'cover' => $imageName
+        ]);
+
+        return redirect()->back()->with('success', 'Profile Image Successfully saved');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
