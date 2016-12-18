@@ -2,7 +2,11 @@
 <script src="{{ asset('/js/libs/jquery-ui-1.10.4.custom.min.js') }}"></script>
 <script src="{{ asset('/js/libs/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+    
     <div class="container">
         <!-- search and user menu -->
         <div class="navbar-header">

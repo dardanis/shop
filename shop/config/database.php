@@ -56,7 +56,13 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', '127.0.0.1'),
+<<<<<<< HEAD
 			'database'  => env('DB_DATABASE', 'ferizajp_shop'),
+=======
+
+			'database'  => env('DB_DATABASE', 'shopdb'),
+
+>>>>>>> 803e81256d722c9a749c29cf3e3eaa5e4505f1e4
 			'username'  => env('DB_USERNAME', 'root'),
 			'password'  => env('DB_PASSWORD', 'asd123qwe'),
 			'charset'   => 'utf8',
