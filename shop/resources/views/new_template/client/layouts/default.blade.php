@@ -34,9 +34,7 @@
 <?php $detect = new Mobile_Detect;?>
 <?php if($detect->isMobile() || $detect->isTablet()){?>
 <style>
-    header{
-        height: 450px;
-    }
+
     .searchdistance{
         padding-bottom: 20px;
     }
@@ -83,7 +81,7 @@
         height: 20px;
     }
     .usernav{
-        padding-top: 20px;
+        padding-top: 10px;
     }
 </style>
 <?php } else {?>
@@ -92,7 +90,7 @@
         height:10px;
         }
          header{
-             height: 209px;
+             height: 175px;
         }
         .profile-left{
             padding-left: 0px;
@@ -109,7 +107,7 @@
             height: 20px;
         }
         .usernav{
-            padding-top: 20px;
+            padding-top: 10px;
         }
     </style>
 <?php } ?>
@@ -134,7 +132,7 @@ $(document).ready(function(){
     }
       checkUrlmenu();
 })
-  
+
     var checkUrl = function () {
         var found = false;
         $("ul li a").each(function () {

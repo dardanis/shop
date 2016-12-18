@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
-        <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
+        <div class="user-profile-top h2-custom" >
             <div class="user-profile-top h2-custom">
                 <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
                 <h4>John Doe (4)</h4>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-9">
             <div id="loading"></div>
-            <div class="row profile-products" style="margin-top: 10px;">
+            <div class="row profile-products">
                 <div class="h2-custom">
                     <img src="{{$pro->thumbnail}}"
                          class="img-thumbnail" alt="Cinque Terre" width="504" height="504">

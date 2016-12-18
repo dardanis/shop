@@ -9,23 +9,6 @@
     <p class="title-tab" style="color:#E28D33;"><a href="{{ url("/client/basic/profile") }}" ><?php echo $user->name; ?> <?php echo $user->lastname;?><span class="glyphicon glyphicon-cog" aria-hidden="true" style="float:right"></span></a></p>
 </div>
 
-<div class="left-tabs type-tab">
-    <p class="title-tab">Mes achats</p>
-    <ul>
-        <li><span class="type-name">Shop</span><span class="type-number">(100)</span>
-            <span class="plus-icon"><span class="glyphicon glyphicon-plus plus-green" aria-hidden="true"></span></span>
-        </li>
-        <li><span class="type-name">Events</span><span class="type-number">(200)</span>
-            <span class="plus-icon"><span class="glyphicon glyphicon-plus plus-red" aria-hidden="true"></span></span>
-        </li>
-        <li><span class="type-name">Magazine</span><span class="type-number">(300)</span>
-            <span class="plus-icon"><span class="glyphicon glyphicon-plus plus-green" aria-hidden="true"></span></span>
-        </li>
-        <li><span class="type-name">Traveling</span><span class="type-number">(400)</span>
-            <span class="plus-icon"><span class="glyphicon glyphicon-plus plus-red" aria-hidden="true"></span></span>
-        </li>
-    </ul>
-</div>
 <?php $types=\App\product_type::all();?>
 
 <?php foreach($types as $t){?>

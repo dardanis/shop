@@ -22,16 +22,16 @@
             <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.Informations')}}</h2>
             <p style="margin-left: 10px;">{{ Lang::get('app.Adresse') }}: </p>
             <div class="profile-informations" style="margin-left: 20px;">
-               
 
-      
+
+
 
             </div>
             <p  style="margin-left: 10px;"> {{ Lang::get('app.Contact') }}:</p>
             <div class="profile-informations"  style="margin-left: 20px;">
 
 
-         
+
 
             </div>
         </div>
