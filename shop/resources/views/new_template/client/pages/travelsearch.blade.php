@@ -40,19 +40,119 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 filter-range-price no-padding">
+            <div class=".col-sm-9 no-padding">
 
-                <div class="col-md-1 col-sm-1 col-xs-1 col-lg-1 filter-range-price no-padding">
-                    <span class="lbl-price">Prix:</span>
-                </div>
-                <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5 filter-range-price">
-                    <input type="text" class="form-control from-range" id="frompricehome">
-                </div>
-                <span style="float:left;">-</span>
 
-                <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5 filter-range-price">
-                    <input type="text" class="form-control to-range" id="topricehome">
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="username" class="control-label">Arrivee</label>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="text" name="username" class="form-control" style="margin-top: -5px"
+                               placeholder="09-09-2016" autofocus>
+                    </div>
+
+                    <div class="col-md-1">
+                        <label for="username" class="control-label">Adults(18+)</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <select id="country" class="form-control"
+                                style="margin-top: -5px; padding-right: 0px;margin-left: 22px">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="username" class="control-label" style="margin-left: 46px">Entfans(3-17)</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <select id="country" class="form-control" style="margin-top: -5px; padding-right: 0px">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="username" class="control-label">Bebe(<-2)</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <select id="country" class="form-control" style="padding-right: 0px; margin-left: 15px; margin-top: -6px">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="username" class="control-label">Depart</label>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="text" name="username" class="form-control" style="margin-top: -5px"
+                               placeholder="10-10-2016" autofocus>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="username" class="control-label">Surface en M2</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <select id="country" class="form-control"
+                                style="margin-top: -5px; padding-right: 0px; margin-left: -58px; width: 90px">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="username" class="control-label" style="margin-left: -35px">Nombre de piece</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <select id="country" class="form-control"
+                                style="margin-top: -5px; margin-left: -81px; padding-right: 0px">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="username" class="control-label" style="margin-left: -80px">Price</label>
+                    </div>
+                    <div class="col-sm-1" style="width: 100px">
+                        <input type="text" name="username" class="form-control" style="margin-top: -32px;margin-left: -36px"
+                               placeholder="" autofocus>
+                        <input type="text" name="username" class="form-control" style="margin-top: -35px; margin-left: 56px"
+                               placeholder="" autofocus>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="country" class="col-sm-9 control-label" style="margin-left: 21px">Type d`etablissement</label>
+                        <div class="col-sm-3">
+                            <select id="country" class="form-control">
+                                <option>Selectionnez</option>
+                                <option>Bahamas</option>
+                                <option>Cambodia</option>
+                                <option>Denmark</option>
+                                <option>Ecuador</option>
+                                <option>Fiji</option>
+                                <option>Gabon</option>
+                                <option>Haiti</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
             </div>
+
         </div>
 
     </div>
