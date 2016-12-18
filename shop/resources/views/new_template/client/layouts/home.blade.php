@@ -21,15 +21,7 @@
 
 <!-- include js files -->
 
-<script src="{{ asset('/js/libs/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ asset('/js/libs/jquery-ui-1.10.4.custom.min.js') }}"></script>
-<script src="{{ asset('/js/libs/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
-<script src="{{ asset('/js/dropzone.js') }}"></script>
-<script src="{{ asset('/js/upload.js') }}"></script>
-<script src="{{ asset('/js/review.js ') }}"></script>
-<script src="{{ asset('/js/photopreview.js ') }}"></script>
 
 </body>
 </html>
