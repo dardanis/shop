@@ -9,7 +9,7 @@
         <div class="user-profile-top h2-custom" style=" margin-top: 10px;">
             <div class="user-profile-top h2-custom">
                 <h2 style="padding-top:20px;text-align: center;">{{ Lang::get('app.People')}}</h2>
-                <h4>Dardan Ismajli (4)</h4>
+                <h4>John Doe (4)</h4>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
                     </a>
 
                     <div class="media-body">
-                        <h4 class="media-heading user_name">Feride</h4>
+                        <h4 class="media-heading user_name">John Doe</h4>
                     </div>
                 </div>
                 <br>
@@ -76,7 +76,7 @@
                                 </a>
 
                                 <div class="media-body">
-                                    <h4 class="media-heading user_name">Dardan Ismajli</h4>
+                                    <h4 class="media-heading user_name">John Doe</h4>
 
                                     <p style="margin-top: 35px;margin-left: -62px;">
                                         Wow! this is really great.
@@ -92,7 +92,7 @@
 
                                 <div class="media-body">
 
-                                    <h4 class="media-heading user_name">Feride</h4>
+                                    <h4 class="media-heading user_name">John Doe</h4>
 
                                     <p style="margin-top: 35px;margin-left: -62px;">
                                         Wow! this is really great.

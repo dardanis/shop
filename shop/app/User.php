@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['role_id','name','lastname', 'email','username','password','active'];
+	protected $fillable = ['role_id', 'profile','cover','name','lastname', 'email','username','password','active'];
 
 	protected $dates=['trial_ends_at','subscription_ends_at'];
 	/**
