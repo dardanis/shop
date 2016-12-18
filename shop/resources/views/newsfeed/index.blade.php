@@ -1,6 +1,5 @@
 @extends('new_template.client.layouts.default')
 @section('content')
-
     <div class="col-md-12 col-sm-12 col-xs-12">
         @include('common/breadcrumbs')
     </div>
