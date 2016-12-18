@@ -28,9 +28,20 @@
     <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
     </div>
     <div class="col-md-9">
-        <div class="row search-profile" id="default-filter1">
+        <div class="row search-profile">
 
+            <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12 no-padding">
+                <div class="control-group">
+                    <label class="control-label" for="input01">Text input</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge">
+                        <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 filter-range-price no-padding">
             <div class=".col-sm-9 no-padding">
+
 
                 <div class="row">
                     <div class="col-md-1">

@@ -83,7 +83,7 @@
         height:10px;
     }
     header{
-        height: 200px;
+        height: 174px;
     }
     .profile-left{
         padding-left: 0px;
@@ -109,7 +109,7 @@
 
 <style>
     .usernav{
-        padding-top: 20px;
+        padding-top: 10px;
     }
 
 </style>
