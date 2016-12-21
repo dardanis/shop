@@ -14,7 +14,7 @@ border-color:white;
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
 	background:#4c5256;
-	margin-top: -39px;
+	margin-top: -25px;
 }
 .navbar-inverse .navbar-brand{
 font-weight: bold;
@@ -245,7 +245,8 @@ color:#000;
 }
 .navbar-inverse .navbar-toggle{
 	background: #333;
-	margin-right: 50px;
+	margin-right: 5px;
+	margin-top: -1px;
 }
 .breadcrumb{
 	background: none
