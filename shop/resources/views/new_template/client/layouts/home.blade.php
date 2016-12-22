@@ -29,8 +29,15 @@
 <?php if($detect->isMobile() || $detect->isTablet()){?>
 <style>
     header{
-        height: 450px;
+        height: 304px;
     }
+
+    .main-content{
+        height: 299px !important;
+        position:relative !important;
+    }
+
+
     .searchdistance{
         padding-bottom: 20px;
     }

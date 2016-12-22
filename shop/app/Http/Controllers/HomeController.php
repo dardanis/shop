@@ -37,6 +37,11 @@ class HomeController extends Controller {
 		return view('profile.myProfile');
 	}
 
+	public function flightSearch()
+	{
+		return view('new_template.client.pages.flightSearch');
+	}
+
 	public function index(Request $request)
 	{
 
