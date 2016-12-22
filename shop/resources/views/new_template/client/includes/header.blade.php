@@ -7,22 +7,16 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
     <div class="container">
-        <!-- search and user menu -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"></a>
-        </div>
-
-
         <div class="row" style="padding-top: 10px;">
             <div class="container">
                 <div class="main-content">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <div class="language" style="">
 
                         <div class="lang">
@@ -39,7 +33,7 @@
                         </div>
                     </div>
                     <div class="under-lang">
-                        <div class="col-md-2 logo-div">
+                        <div class="col-md-2 col-xs-12">
                             <h2 class="logo">
                                 <a class="logo" href="{{ url('/') }}" id="logo">LOGO HERE</a>
                             </h2>
@@ -47,7 +41,7 @@
                         <!-- search by category -->
                         <form action="/" method="get">
                             <div class="col-md-4  col-sm-12 col-xs-12 search-div">
-                                <div class="col-md-12 searchcategory" style="margin-left: 50px;">
+                                <div class="col-md-12 searchcategory">
                                     <div class="form-group">
                                         <span class="bold-11" style="padding-left: 8px;">Keyword</span><br>
                                         <input type="text" class="form-control seach-keyword" placeholder="keyword">
@@ -137,8 +131,8 @@
                         </div>
 
                         <?php } else if(Auth::user()->role_id != 1){?>
-                        <div class="col-md-3 col-sm-3 col-xs-3 usernav">
-                            <div class="col-md-3 col-sm-4 col-xs-4">
+                        <div class="col-md-3 col-sm-3 col-xs-12 usernav">
+                            <div class="col-md-3 col-sm-4 col-xs-3">
                                 <a class="bold-11" href='{{ URL::to("/newsfeed") }}'>
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>
                                     <span style="font-size: 10px">{{Lang::get('app.Newsfeed')}}</span></a>
@@ -151,7 +145,7 @@
                                     </div>
                                     <span style="font-size: 10px">Folowing</span></a>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4 ">
+                            <div class="col-md-4 col-sm-4 col-xs-3 ">
                                 <a class="bold-11" href="{{ url('wishlist') }}">
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
                                     <span style="font-size: 10px">{{ Lang::get("app.Wishlist")}}</span></a>
@@ -271,6 +265,9 @@
         position: absolute;
         margin-left:-14px;
     }
+</style>
+<style>
+
 </style>
 <script>
     $(document).ready(function () {
