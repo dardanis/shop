@@ -33,6 +33,11 @@ class HomeController extends Controller {
 		return view('new_template.client.pages.travelsearch');
 	}
 
+	public function flightSearch()
+	{
+		return view('new_template.client.pages.flightSearch');
+	}
+
 	public function index(Request $request)
 	{
 

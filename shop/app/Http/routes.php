@@ -9,6 +9,7 @@ Route::controllers([
  */
 Route::get('shopSearch', 'HomeController@shopSearch');
 Route::get('travelSearch', 'HomeController@travelSearch');
+Route::get('flightSearch', 'HomeController@flightSearch');
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');
