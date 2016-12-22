@@ -105,5 +105,10 @@ Breadcrumbs::register('newsfeed', function($breadcrumbs) {
     $breadcrumbs->push('NewsFeed', route('newsfeed'));
 });
 
+Breadcrumbs::register('myProfile', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('myProfile', route('myProfile'));
+});
+
 
 

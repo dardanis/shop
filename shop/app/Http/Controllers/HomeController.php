@@ -32,6 +32,10 @@ class HomeController extends Controller {
 	{
 		return view('new_template.client.pages.travelsearch');
 	}
+	public function myProfile()
+	{
+		return view('profile.myProfile');
+	}
 
 	public function index(Request $request)
 	{
