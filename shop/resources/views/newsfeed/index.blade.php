@@ -17,7 +17,6 @@
         <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
         </div>
         <div class="col-md-9">
-
             <div class="row profile-products">
                 <div class="h2-custom">
                     <img src="{{$pro->thumbnail}}"
