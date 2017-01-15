@@ -14,6 +14,8 @@ Route::get('myProfile', ['as'=>'myProfile','uses'=>'HomeController@myProfile']);
 
 Route::get('flightSearch', 'HomeController@flightSearch');
 
+Route::get('userInfo', ['as'=>'userInfo','uses'=>'ProfileController@userInfo']);
+
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');

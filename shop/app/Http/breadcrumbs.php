@@ -110,5 +110,10 @@ Breadcrumbs::register('myProfile', function($breadcrumbs) {
     $breadcrumbs->push('myProfile', route('myProfile'));
 });
 
+Breadcrumbs::register('userInfo', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('userInfo', route('userInfo'));
+});
+
 
 

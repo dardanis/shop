@@ -124,6 +124,16 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profile Image Successfully saved');
     }
 
+    public function userInfo()
+    {
+        $user = User::where('id', auth()->user()->id)->get();
+
+        return view('profile.myinfo', [
+            'user' => $user,
+        ]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
