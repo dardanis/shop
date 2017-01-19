@@ -133,6 +133,27 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function getfriendlist()
+    {
+        $user = auth()->user();
+
+
+        $friend = User::with('follower')->where('id', $user->id)->get();
+
+//        dd($friend);
+        return view('profile.friendlist', [
+            'friends' => $friend
+        ]);
+
+    }
+
+    public function friendlist()
+    {
+        $user = auth()->user();
+
+
+    }
+
 
     /**
      * Show the form for creating a new resource.

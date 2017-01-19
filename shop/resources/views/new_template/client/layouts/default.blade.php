@@ -272,6 +272,7 @@ $(document).ready(function(){
 </script>
 <script>
     $(document).on('change', '#sub-cat', function () {
+
         var type = $(this).find(':selected').val();
         var token = $('#token').val();
         $.ajax({
