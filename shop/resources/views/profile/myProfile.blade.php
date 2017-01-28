@@ -23,162 +23,85 @@
             </div>
         </div>
 
-
+    </div>
+    <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
     </div>
     <div class="col-md-9">
-        <div class="row profile-products" style="height: 552px; border-radius: 0px;">
-            <h2 class="title">{{Lang::get('app.Kosova')}}</h2>
+        <div class="row profile-products">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
 
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="pull-right" style="margin-top: -22px;">
-                <ul class="pagination">
-                    <li><a href="#">❮</a></li>
-                    <li><a href="#">❯</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 
     <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
     </div>
     <div class="col-md-9">
-        <div class="row profile-products" style="height: 552px; border-radius: 0px;">
-            <h2 class="title">{{Lang::get('app.Albania')}}</h2>
+        <div class="row profile-products">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style="border: 0px">
+                    <img class="img-responsive" style="width: 357px"
+                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
+                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
+                    <h4>De: <strong>Kosova</strong></h4>
+                </div>
+            </div>
 
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
             </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail" style="border: 0px">
-                    <img class="img-responsive" style="width: 357px"
-                         src="http://wallpaper-gallery.net/images/blue-images/blue-images-23.jpg"
-                         alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                    <h4>De: <strong>Kosova</strong></h4>
-                </div>
-            </div>
-            <div class="pull-right" style="margin-top: -22px;">
-                <ul class="pagination">
-                    <li><a href="#">❮</a></li>
-                    <li><a href="#">❯</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 @stop
 <style>

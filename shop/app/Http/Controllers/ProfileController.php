@@ -124,6 +124,37 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profile Image Successfully saved');
     }
 
+    public function userInfo()
+    {
+        $user = User::where('id', auth()->user()->id)->get();
+
+        return view('profile.myinfo', [
+            'user' => $user,
+        ]);
+    }
+
+    public function getfriendlist()
+    {
+        $user = auth()->user();
+
+
+        $friend = User::with('follower')->where('id', $user->id)->get();
+
+//        dd($friend);
+        return view('profile.friendlist', [
+            'friends' => $friend
+        ]);
+
+    }
+
+    public function friendlist()
+    {
+        $user = auth()->user();
+
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
