@@ -6,7 +6,7 @@ class UserFollow extends Model {
 
     protected $table = 'user_follows';
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }

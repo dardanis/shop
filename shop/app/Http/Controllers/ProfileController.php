@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Album;
+use App\AlbumPivot;
 use App\Category;
 use App\FollowUser;
 use App\Http\Requests;
@@ -137,20 +139,61 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-
         $friend = User::with('follower')->where('id', $user->id)->get();
 
-//        dd($friend);
         return view('profile.friendlist', [
             'friends' => $friend
         ]);
 
     }
 
-    public function friendlist()
+    public function newsfeedlist()
+    {
+        $user = User::where('id', '=', Auth::user()->id)->first();
+        $following = UserFollow::where('follower_user_id', '=', Auth::user()->id)->get();
+        $sort = "desc";
+        $product = [];
+        foreach ($following as $f) {
+            $product = Product::orderBy('created_at', $sort)->where('user_id', '=', $f->follow_user_id)->get();
+        }
+
+//        dd($product, $following, $user);
+        return view('profile.newsfeedlist')->with('user', $user)->with('following', $following)->with('product', $product);
+    }
+
+
+    public function albums()
+    {
+        $user = auth()->user();
+        $albums = Album::where('user_id', $user->id)->get();
+
+        return view('profile.albums',[
+            'albums' => $albums
+        ]);
+    }
+
+    public function album($albumId)
+    {
+        $user = auth()->user();
+        $albums = Album::where('user_id', $user->id)->where('id', $albumId)->first();
+        $album = AlbumPivot::where('album_id', $albums->id)->get();
+
+//        dd($album);
+
+       return view('profile.albums',[
+           'albums' => $album
+       ]);
+    }
+
+    public function getAddImage($albumId)
     {
         $user = auth()->user();
 
+        $albums = Album::where('user_id', $user->id)->get();
+
+        return view('profile.addImage',[
+            'albums' => $albums
+        ]);
 
     }
 

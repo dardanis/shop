@@ -18,6 +18,16 @@ Route::get('userInfo', ['as'=>'userInfo','uses'=>'ProfileController@userInfo']);
 
 Route::get('friendlist', ['as'=>'friendlist','uses'=>'ProfileController@getfriendlist']);
 
+Route::get('newsfeedlist', ['as'=>'newsfeedlist','uses'=>'ProfileController@newsfeedlist']);
+
+Route::get('albums', ['as'=>'albums','uses'=>'ProfileController@albums']);
+
+Route::get('album/{id}', ['as'=>'album','uses'=>'ProfileController@album']);
+
+Route::get('album/{id}/image', ['as'=>'albumImage','uses'=>'ProfileController@getAddImage']);
+//Route::get('album/addimage/{id}', 'ProfileController@getAddImage');
+
+
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('viewprofile', 'ProfileController@index');
