@@ -32,13 +32,17 @@
         <div class="row profile-products" style="margin-top: 10px;">
             <h2 style="padding-top:0px;text-align: left;">{{ Lang::get('app.Shop')}}</h2>
             <div class="fullRelLeft upload-images-container pull-center">
-                <span class="btn btn-default btn-file">Browse <input id="cover" type="file" name="image"></span>
+                <span class="btn btn-default btn-file">Browse <input type='file' onchange="readURL(this);" />
+    <img id="blah" src="#" /></span>
                 <input id="cover-upload-form" type="submit" class="btn btn-primary hidden"/>
             </div>
         </div>
     </div>
 @stop
+
+
 <style>
+
     label {
         display: block;
         padding-left: 15px;

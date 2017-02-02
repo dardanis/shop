@@ -1,7 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Album;
+use App\AlbumImage;
+use App\AlbumImagePivot;
 use App\AlbumPivot;
+use App\AlbumVideo;
+use App\AlbumVideoPivot;
 use App\Category;
 use App\FollowUser;
 use App\Http\Requests;
@@ -165,7 +169,7 @@ class ProfileController extends Controller
     public function albums()
     {
         $user = auth()->user();
-        $albums = Album::where('user_id', $user->id)->get();
+        $albums = AlbumImage::where('user_id', $user->id)->get();
 
         return view('profile.albums',[
             'albums' => $albums
@@ -175,13 +179,15 @@ class ProfileController extends Controller
     public function album($albumId)
     {
         $user = auth()->user();
-        $albums = Album::where('user_id', $user->id)->where('id', $albumId)->first();
-        $album = AlbumPivot::where('album_id', $albums->id)->get();
+        $albums = AlbumImage::where('user_id', $user->id)->where('id', $albumId)->first();
+        $album = AlbumImagePivot::where('album_id', $albums->id)->get();
 
+        $myAlbums = AlbumImage::where('user_id', $user->id)->get();
 //        dd($album);
 
        return view('profile.albums',[
-           'albums' => $album
+           'albums' => $album,
+           'myAlbums' => $myAlbums
        ]);
     }
 
@@ -189,11 +195,41 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        $albums = Album::where('user_id', $user->id)->get();
+        $albums = AlbumImage::where('user_id', $user->id)->get();
 
         return view('profile.addImage',[
             'albums' => $albums
         ]);
+
+    }
+
+    public function getVideo()
+    {
+        $user = auth()->user();
+        $albums = AlbumVideo::where('user_id', $user->id)->get();
+
+        return view('profile.GetVideo',[
+            'albums' => $albums
+        ]);
+    }
+
+    public function getAlbumVideo($albumId)
+    {
+        $user = auth()->user();
+        $albums = AlbumVideo::where('user_id', $user->id)->where('id', $albumId)->first();
+        $album = AlbumVideoPivot::where('album_id', $albums->id)->get();
+
+        $myVideos = AlbumVideo::where('user_id', $user->id)->get();
+
+        return view('profile.addVideo',[
+            'videos' => $album,
+            'albumname' => $myVideos
+        ]);
+    }
+
+    public function postVideo()
+    {
+        $user = auth()->user();
 
     }
 

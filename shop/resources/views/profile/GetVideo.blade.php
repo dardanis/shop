@@ -4,20 +4,18 @@
     <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 profile-left">
         <div class="user-profile-top h2-custom" style=" margin-top: 10px; background: #dadadc">
             <div class="user-profile-top h2-custom" style="background: #dadadc">
-                <h2 style="padding-top:20px;text-align: left;">{{ Lang::get('app.People')}}</h2>
-
                 <div class="left-tabs type-tab">
                     <p class="title-tab">{{ Lang::get("app.Albums") }}</p>
                     <ul>
-                        @foreach($myAlbums as $album)
-                        <li class="add-product-cat">
+                        @foreach($albums as $album)
+                            <li class="add-product-cat">
 
-                            <a href='{{ action('ProfileController@album', [$album->id]) }}' style="color:blue">{{$album->name}}</a>
-                            <a href="{{ action('ProfileController@getAddImage', [$album->id])}}" title="Add Image">
+                                <a href='{{ action('ProfileController@getAlbumVideo', [$album->id]) }}' style="color:blue">{{$album->name}}</a>
+                                <a href="{{ action('ProfileController@getAlbumVideo', [$album->id])}}" title="Add Image">
                                         <span class="glyphicon glyphicon-plus plus-red" aria-hidden="true"
                                               style="float:right;margin-right:20px;"></span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -32,15 +30,16 @@
         <div class="row profile-products" style="margin-top: 10px;">
             <h2 style="padding-top:0px;text-align: left;">{{ Lang::get('app.Shop')}}</h2>
             @foreach($albums as $album)
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <img src="{{$album->image}}">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <iframe width="250" height="150" src="https://www.youtube.com/embed/{{ $album->video }}"
+                                frameborder="0" allowfullscreen></iframe>
 
-                    {{--<div class="caption">--}}
+                        {{--<div class="caption">--}}
                         {{--<h4>{{''}}</h4>--}}
-                    {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>

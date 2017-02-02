@@ -25,7 +25,14 @@ Route::get('albums', ['as'=>'albums','uses'=>'ProfileController@albums']);
 Route::get('album/{id}', ['as'=>'album','uses'=>'ProfileController@album']);
 
 Route::get('album/{id}/image', ['as'=>'albumImage','uses'=>'ProfileController@getAddImage']);
-//Route::get('album/addimage/{id}', 'ProfileController@getAddImage');
+
+
+Route::get('getVideo', ['as'=>'getVideo','uses'=>'ProfileController@getVideo']);
+
+Route::get('getAlbumVideo/{id}', ['as'=>'getAlbumVideo','uses'=>'ProfileController@getAlbumVideo']);
+
+//Route::get('getAlbumVideo/{id}', ['as'=>'getAlbumVideo','uses'=>'ProfileController@getAlbumVideo']);
+
 
 
 

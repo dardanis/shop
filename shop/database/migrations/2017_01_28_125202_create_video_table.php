@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlbumsTable extends Migration
+class CreateVideoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,20 @@ class CreateAlbumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('album_image', function (Blueprint $table) {
+        Schema::create('album_video', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
             $table->timestamps();
         });
 
-        Schema::create('album_image_pivot', function (Blueprint $table) {
+        Schema::create('album_video_pivot', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('album_id');
-            $table->string('image');
+            $table->string('video');
             $table->timestamps();
+
         });
-
-
-
     }
 
     /**
@@ -37,7 +35,7 @@ class CreateAlbumsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('album_image_pivot');
-        Schema::drop('album_image');
+        Schema::drop('album_video_pivot');
+        Schema::drop('album_video');
     }
 }

@@ -116,4 +116,10 @@ Breadcrumbs::register('userInfo', function($breadcrumbs) {
 });
 
 
+Breadcrumbs::register('getVideo', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('getVideo', route('getVideo'));
+});
+
+
 
