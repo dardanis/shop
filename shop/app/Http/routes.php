@@ -26,12 +26,15 @@ Route::get('album/{id}', ['as'=>'album','uses'=>'ProfileController@album']);
 
 Route::get('album/{id}/image', ['as'=>'albumImage','uses'=>'ProfileController@getAddImage']);
 
+Route::post('album/save/{id}', 'ProfileController@saveImage');
+
 
 Route::get('getVideo', ['as'=>'getVideo','uses'=>'ProfileController@getVideo']);
 
 Route::get('getAlbumVideo/{id}', ['as'=>'getAlbumVideo','uses'=>'ProfileController@getAlbumVideo']);
 
-//Route::get('getAlbumVideo/{id}', ['as'=>'getAlbumVideo','uses'=>'ProfileController@getAlbumVideo']);
+Route::get('addVideo/{id}/album', ['as'=>'getAlbumVideo','uses'=>'ProfileController@getAddVideo']);
+Route::post('addVideo/{id}/album', ['as'=>'getAlbumVideo','uses'=>'ProfileController@postVideo']);
 
 
 

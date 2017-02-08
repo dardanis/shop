@@ -170,9 +170,11 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $albums = AlbumImage::where('user_id', $user->id)->get();
+        $myAlbums = AlbumImage::where('user_id', $user->id)->get();
 
         return view('profile.albums',[
-            'albums' => $albums
+            'albums' => $albums,
+            'myAlbums' => $myAlbums
         ]);
     }
 
@@ -203,6 +205,27 @@ class ProfileController extends Controller
 
     }
 
+    public function saveImage(Request $request, $albumId)
+    {
+//        dd($request->all(), $albumId);
+        $album = new AlbumImagePivot();
+        $album->album_id = $albumId;
+        $album->image = $request->file('image');
+
+        $directory = public_path("img/albums/$album->album_id");
+
+        if (!File::exists($directory)) {
+            File::makeDirectory($directory);
+        }
+
+        $imageName = $album->album_id . '-' . uniqid() . '.' . $album->image->getClientOriginalExtension();
+        $album->image->move($directory, $imageName);
+        $album->image = $imageName;
+        $album->save();
+
+        return redirect()->back()->with('success', 'Image Successfully saved');
+    }
+
     public function getVideo()
     {
         $user = auth()->user();
@@ -227,10 +250,47 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function postVideo()
+    public function getAddVideo($albumId)
     {
         $user = auth()->user();
 
+        $albums = AlbumVideo::where('user_id', $user->id)->get();
+
+        return view('profile.postVideo',[
+            'albums' => $albums
+        ]);
+    }
+
+    public function postVideo(Request $request, $albumId)
+    {
+//        dd($albumId, $request->all());
+
+            preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/",
+                $request->get('video'), $matches);
+
+            $image = $request->get('video');
+            $query_string = array();
+
+            parse_str(parse_url($image, PHP_URL_QUERY), $query_string);
+
+            $image = $query_string["v"];
+
+            // get the corresponding thumbnail images
+            $thumbnail = "http://img.youtube.com/vi/" . $image . "/0.jpg";
+
+        $video = new AlbumVideoPivot();
+        $video->album_id = $albumId;
+        $video->video = $image;
+        $video->save();
+//            $offer=new Offers();
+//            $offer->user_id=$user_id['id'];
+//            $offer->video= $matches[1];
+//            $offer->description = $request->get('offer-description');
+//            $offer->image_path = $thumbnail;
+//            if($offer->save())
+        return redirect()->action(
+            'ProfileController@getAlbumVideo', $albumId
+        );
     }
 
 

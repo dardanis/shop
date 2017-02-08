@@ -14,7 +14,7 @@
 
                                 <a href='{{ action('ProfileController@album', [$album->id]) }}'
                                    style="color:blue">{{$album->name}}</a>
-                                <a href="{{ action('ProfileController@getAddImage', [$album->id])}}" title="Add Image">
+                                <a href="{{ action('ProfileController@getAddVideo', [$album->id])}}" title="Add Image">
                                         <span class="glyphicon glyphicon-plus plus-red" aria-hidden="true"
                                               style="float:right;margin-right:20px;"></span>
                                 </a>
@@ -35,19 +35,13 @@
             <h2 style="padding-top:0px;text-align: left;">{{ Lang::get('app.Shop')}}</h2>
 
             <div class="fullRelLeft upload-images-container pull-center">
-                <form method="post" action="{{ action("ProfileController@saveImage", $album->id) }} " enctype="multipart/form-data">
+                <form method="post" action="{{ action("ProfileController@postVideo", $album->id) }} " enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
 
-                    <div style="display: inline">
-                        <img id="output" style="display: inline; width: 100px; height: 100px;"/>
-                    <span class="input-group-btn" style="display: inline">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"
-                                style="width: 100px; height: 100px;">
-                        <span class="glyphicon glyphicon-plus"><input type="file" name="image"
-                                                                      onchange="loadFile(event)"></span>
-                        </button>
-                    </span>
-                    </div>
+
+                    <input type="text" name="video" class="form-control" placeholder="{{ Lang::get('app.Add youtube link') }}" style="margin-top:20px;"/>
+                    <input type="text" name="title" class="form-control" placeholder="{{ Lang::get('app.Title') }}" style="margin-top:20px;"/><br>
+                    <textarea class="form-control" placeholder="{{ Lang::get('app.Description') }}" name="description"></textarea>
 
                     <div class="col-sm-6 col-sm-offset-6" style="margin-right:20px;margin-top: 20px;">
                         <button type="submit" class="btn btn-success">

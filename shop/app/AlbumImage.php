@@ -8,4 +8,7 @@ class AlbumImage extends Model
 {
     protected $table = 'album_image';
 
+    public $fillable = ['album_id', 'name'];
+
+    public $timestamps = true;
 }

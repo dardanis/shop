@@ -11,7 +11,7 @@
                             <li class="add-product-cat">
 
                                 <a href='{{ action('ProfileController@getAlbumVideo', [$name->id]) }}' style="color:blue">{{$name->name}}</a>
-                                <a href="{{ action('ProfileController@getAlbumVideo', [$name->id])}}" title="Add Image">
+                                <a href="{{ action('ProfileController@getAddVideo', [$name->id])}}" title="Add Image">
                                         <span class="glyphicon glyphicon-plus plus-red" aria-hidden="true"
                                               style="float:right;margin-right:20px;"></span>
                                 </a>

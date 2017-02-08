@@ -10,14 +10,15 @@
                     <p class="title-tab">{{ Lang::get("app.Albums") }}</p>
                     <ul>
                         @foreach($myAlbums as $album)
-                        <li class="add-product-cat">
+                            <li class="add-product-cat">
 
-                            <a href='{{ action('ProfileController@album', [$album->id]) }}' style="color:blue">{{$album->name}}</a>
-                            <a href="{{ action('ProfileController@getAddImage', [$album->id])}}" title="Add Image">
+                                <a href='{{ action('ProfileController@album', [$album->id]) }}'
+                                   style="color:blue">{{$album->name}}</a>
+                                <a href="{{ action('ProfileController@getAddImage', [$album->id])}}" title="Add Image">
                                         <span class="glyphicon glyphicon-plus plus-red" aria-hidden="true"
                                               style="float:right;margin-right:20px;"></span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -31,17 +32,15 @@
     <div class="col-md-9">
         <div class="row profile-products" style="margin-top: 10px;">
             <h2 style="padding-top:0px;text-align: left;">{{ Lang::get('app.Shop')}}</h2>
-            @foreach($albums as $album)
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <img src="{{$album->image}}">
-
-                    {{--<div class="caption">--}}
-                        {{--<h4>{{''}}</h4>--}}
-                    {{--</div>--}}
-                </div>
-            </div>
-            @endforeach
+            @if(!is_null($albums))
+                @foreach($albums as $album)
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <img src="/img/albums/{!! $album->album_id !!}/{!! $album->image!!}">
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 @stop
@@ -61,5 +60,10 @@
         position: relative;
         top: -1px;
         *overflow: hidden;
+    }
+
+    .thumbnail img {
+        height: 250px;
+        width: 100%;
     }
 </style>

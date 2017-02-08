@@ -12,9 +12,9 @@
 
 </ul>
 <p class="text-green-15 right" style="">
-    <a href="#" class="text-green-15 right" style="padding-left: 10px;text-decoration:none;" id="show-offer-create">
-        {{ Lang::get('app.Ajouter un titre') }} +
-    </a>
+    {{--<a href="#" class="text-green-15 right" style="padding-left: 10px;text-decoration:none;" id="show-offer-create">--}}
+        {{--{{ Lang::get('app.Ajouter un titre') }} +--}}
+    {{--</a>--}}
 
 </p>
 
